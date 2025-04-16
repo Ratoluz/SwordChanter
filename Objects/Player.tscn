@@ -108,7 +108,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cut1y"]
-size = Vector2(13, 16)
+size = Vector2(13, 2)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_n6db0")
@@ -119,5 +119,5 @@ animation = &"walk"
 frame_progress = 0.213147
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(-0.5, 7)
 shape = SubResource("RectangleShape2D_cut1y")
