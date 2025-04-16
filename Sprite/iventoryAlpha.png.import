@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c681d2qnudksg"
-path="res://.godot/imported/grass.png-1a43288f798109382f87d1456b08c542.ctex"
+uid="uid://byf3c14aqjt1y"
+path="res://.godot/imported/iventoryAlpha.png-dd61671ba2e20ba1261c197ca87a197b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/grass.png"
-dest_files=["res://.godot/imported/grass.png-1a43288f798109382f87d1456b08c542.ctex"]
+source_file="res://Sprite/iventoryAlpha.png"
+dest_files=["res://.godot/imported/iventoryAlpha.png-dd61671ba2e20ba1261c197ca87a197b.ctex"]
 
 [params]
 

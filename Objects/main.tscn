@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://Objects/Player.tscn" id="1_wfcdt"]
 [ext_resource type="Texture2D" uid="uid://yd6s8mqdo346" path="res://Sprite/tabel.png" id="2_h4pkl"]
-[ext_resource type="Texture2D" uid="uid://c681d2qnudksg" path="res://Sprite/grass.png" id="3_2r4pp"]
+[ext_resource type="Texture2D" uid="uid://c681d2qnudksg" path="res://Sprite/Tilemap/grass.png" id="3_2r4pp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2r4pp"]
 texture = ExtResource("3_2r4pp")
@@ -11,8 +11,9 @@ texture = ExtResource("3_2r4pp")
 [sub_resource type="TileSet" id="TileSet_d7gkb"]
 sources/0 = SubResource("TileSetAtlasSource_2r4pp")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h4pkl"]
-radius = 8.0025
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2r4pp"]
+radius = 7.0
+height = 16.0
 
 [node name="Main" type="Node"]
 
@@ -30,8 +31,9 @@ position = Vector2(-8, 0)
 texture = ExtResource("2_h4pkl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-8, -1)
-shape = SubResource("CircleShape2D_h4pkl")
+position = Vector2(-8.14, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2r4pp")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_wfcdt")]
 position = Vector2(49, 63)
