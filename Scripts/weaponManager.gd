@@ -4,6 +4,7 @@ var currentWeapon
 var player
 var distanceFromPlayer = 30
 var firstScale 
+var angle 
 
 func _ready() -> void:
 	currentWeapon = $/root/Main/SwordObject
@@ -21,7 +22,7 @@ func _set_weapon_pos():
 	if currentWeapon != null:
 		var mousePos = get_global_mouse_position()
 		var dir = mousePos - player.position
-		var angle = dir.angle()
+		angle = dir.angle()
 		currentWeapon.rotation = angle
 		
 		currentWeapon.position = Vector2(player.position.x + cos(angle) * distanceFromPlayer, player.position.y + sin(angle) * distanceFromPlayer)

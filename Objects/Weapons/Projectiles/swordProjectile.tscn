@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvwom6k2bee1y"]
+
+[ext_resource type="Texture2D" uid="uid://dnjm5sa0j5jat" path="res://Sprite/Weapons/Projectiles/swordProjectile.png" id="1_at0e5"]
+[ext_resource type="Script" uid="uid://cpug0c7nt7ed1" path="res://Scripts/Weapons/Projectiles/swordProjectile.gd" id="1_yqv7v"]
+
+[node name="SwordProjectile" type="Area2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_yqv7v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_at0e5")
