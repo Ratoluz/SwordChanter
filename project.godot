@@ -17,11 +17,9 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=256
-window/size/viewport_height=144
-window/size/mode=2
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 
 [input]
 
@@ -49,4 +47,3 @@ Move_Down={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
-2d/snap/snap_2d_transforms_to_pixel=true

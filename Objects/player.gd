@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 60
+var current_speed = 250
 var screen_size
 
 func _ready() -> void:
@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func apply_velocity():
 	var input_direction = Input.get_vector('Move_Left', 'Move_Right', 'Move_Up', 'Move_Down')
-	velocity = speed * input_direction 
+	velocity = current_speed * input_direction 
 	
 func flip():
 	if not $AnimatedSprite2D.flip_h and velocity.x < 0:
@@ -29,6 +29,3 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	flip()
 	play_anims()
-	
-
-	
