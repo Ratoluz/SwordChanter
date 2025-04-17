@@ -37,4 +37,3 @@ shape = SubResource("CapsuleShape2D_2r4pp")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_wfcdt")]
 position = Vector2(49, 63)
-speed = 100
