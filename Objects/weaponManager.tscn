@@ -4,3 +4,5 @@
 
 [node name="WeaponManager" type="Area2D"]
 script = ExtResource("1_yek4o")
+
+[node name="Timer" type="Timer" parent="."]

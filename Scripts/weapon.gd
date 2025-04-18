@@ -3,6 +3,10 @@ extends Area2D
 
 var damage: float = 10
 var cooldown: float = 0.5
+var projectile: PackedScene 
+var projectileSpeed: float = 1000
+var weaponManager
+var customAddChild
 
 var can_attack: bool = true
 var timer: Timer

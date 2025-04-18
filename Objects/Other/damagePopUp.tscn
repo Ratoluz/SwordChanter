@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvoyyuwb7emcg"]
+
+[ext_resource type="Script" uid="uid://bdbig4jufw7sp" path="res://Scripts/Other/damagePopUp.gd" id="1_7cxjv"]
+
+[node name="DamagePopUp" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_7cxjv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -12.0
+offset_right = 21.0
+offset_bottom = 11.0
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

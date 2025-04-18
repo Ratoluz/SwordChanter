@@ -2,6 +2,7 @@ extends Area2D
 
 var angle
 var speed
+var damage
 
 func _move(delta):
 	rotation = angle + deg_to_rad(45)
@@ -10,3 +11,10 @@ func _move(delta):
 
 func _process(delta: float) -> void:
 	_move(delta)
+
+
+func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.name == 'Dummy':
+		area.play_anim()
+		area.display_damage(damage)
+		queue_free()
