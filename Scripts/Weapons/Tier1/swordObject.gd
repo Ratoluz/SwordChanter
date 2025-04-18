@@ -8,5 +8,5 @@ func _ready() -> void:
 	weapon.projectile = load("res://Objects/Weapons/Projectiles/swordProjectile.tscn")
 	weapon.weaponManager = $/root/Main/Player/WeaponManager
 	weapon.projectileSpeed = 1300
-	weapon.damage = 10
+	weapon.damage = 12
 	weapon.cooldown = 0.3

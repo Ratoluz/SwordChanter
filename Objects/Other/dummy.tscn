@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctdi4epxwspfx"]
+[gd_scene load_steps=10 format=3 uid="uid://ctdi4epxwspfx"]
 
 [ext_resource type="Texture2D" uid="uid://44gou4tnmhyj" path="res://Sprite/dummy.png" id="1_k7e7g"]
 [ext_resource type="Script" uid="uid://cqcat8a2c2jy0" path="res://Scripts/Other/dummy.gd" id="1_lk4ub"]
+[ext_resource type="FontFile" uid="uid://du62clawr6qeb" path="res://Fonts/TeenyTinyPixls.ttf" id="3_6q3js"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lk4ub"]
 atlas = ExtResource("1_k7e7g")
@@ -43,18 +44,33 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7e7g"]
 size = Vector2(9, 16)
 
+[sub_resource type="FontVariation" id="FontVariation_ciorf"]
+base_font = ExtResource("3_6q3js")
+
 [node name="Dummy" type="Area2D"]
-scale = Vector2(6, 6)
 script = ExtResource("1_lk4ub")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_s1pd3")
 animation = &"hit"
-frame_progress = 0.604314
+frame_progress = 0.407006
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
+scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_k7e7g")
+
+[node name="Dps" type="Label" parent="."]
+offset_left = -45.0
+offset_top = -136.0
+offset_right = 51.0
+offset_bottom = -100.0
+theme_override_fonts/font = SubResource("FontVariation_ciorf")
+theme_override_font_sizes/font_size = 30
+text = "Dps:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
