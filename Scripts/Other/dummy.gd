@@ -7,13 +7,10 @@ var damage_history = []
 var dps = 0
 var dps_damage_time = 2.0
 
-func play_anim():
-	$AnimatedSprite2D.play('hit')
-
 func _on_animated_sprite_2d_animation_looped() -> void:
 	$AnimatedSprite2D.stop()
 
-func add_to_damage_history(damage):
+func _add_to_damage_history(damage):
 	var now = Time.get_ticks_msec() 
 	damage_history.append({"time": now, "damage": damage})
 
@@ -24,7 +21,7 @@ func _calculate_dps():
 		for entry in damage_history:
 			total_damage += entry["damage"]
 			entry_num += 1
-		var dps = total_damage/entry_num
+		var dps = total_damage/dps_damage_time
 		dps = snapped(dps, 0.01)
 		dps_label.text = "Dps: " +  str(dps)
 		return
@@ -39,7 +36,7 @@ func _process(delta: float) -> void:
 	_remove_old_damage_history()
 	_calculate_dps()
 
-func create_damage_pop_up(damage, is_critical):
+func _create_damage_pop_up(damage, is_critical):
 	var temp_pop_up = pop_up.instantiate()
 	temp_pop_up.position = position + Vector2(0,-70)
 	var pop_up_node = temp_pop_up.get_child(0)
@@ -48,6 +45,7 @@ func create_damage_pop_up(damage, is_critical):
 		pop_up_node.add_theme_color_override("font_color", Color(1, 0, 0))
 	get_tree().root.add_child(temp_pop_up)
 
-func display_damage(damage, is_critical):
-	add_to_damage_history(damage)
-	create_damage_pop_up(damage, is_critical)
+func take_damage(damage, is_critical):
+	$AnimatedSprite2D.play('hit')
+	_add_to_damage_history(damage)
+	_create_damage_pop_up(damage, is_critical)

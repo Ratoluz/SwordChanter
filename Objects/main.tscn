@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dwqseoo600wbk"]
+[gd_scene load_steps=12 format=4 uid="uid://dwqseoo600wbk"]
 
 [ext_resource type="PackedScene" uid="uid://c33ob7xhxyhje" path="res://Objects/customAddChild.tscn" id="1_ngdle"]
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://Objects/Player.tscn" id="1_wfcdt"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://7llxuw3tkr86" path="res://Objects/Weapons/Tier1/swordObject.tscn" id="4_d7gkb"]
 [ext_resource type="PackedScene" uid="uid://bhc6omgswrfnv" path="res://Objects/weaponManager.tscn" id="4_k26ky"]
 [ext_resource type="PackedScene" uid="uid://ctdi4epxwspfx" path="res://Objects/Other/dummy.tscn" id="7_gslk2"]
+[ext_resource type="PackedScene" uid="uid://btxtp03efwydn" path="res://Objects/Weapons/Tier1/waterWandObject.tscn" id="8_svdc1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2r4pp"]
 texture = ExtResource("3_2r4pp")
@@ -21,7 +22,7 @@ height = 16.0
 
 [node name="Main" type="Node"]
 
-[node name="CustomAddChild" parent="." instance=ExtResource("1_ngdle")]
+[node name="projectileParent" parent="." instance=ExtResource("1_ngdle")]
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 z_index = -99
@@ -46,11 +47,15 @@ texture = ExtResource("2_h4pkl")
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_2r4pp")
 
-[node name="SwordObject" parent="." instance=ExtResource("4_d7gkb")]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-2.38419e-07, 1.90735e-06)
 scale = Vector2(1, 1)
 
 [node name="Dummy" parent="." instance=ExtResource("7_gslk2")]
 position = Vector2(505, 0)
+
+[node name="SwordObject" parent="." instance=ExtResource("4_d7gkb")]
+position = Vector2(-115, -264)
+
+[node name="WaterWandObject" parent="." instance=ExtResource("8_svdc1")]
+position = Vector2(41, -262)

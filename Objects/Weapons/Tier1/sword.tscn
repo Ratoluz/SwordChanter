@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0q2trfits23c"]
-
-[ext_resource type="Script" uid="uid://ditdtwj3a5cp5" path="res://Scripts/Weapons/Tier1/sword.gd" id="1_hbw80"]
-
-[node name="SwordClass" type="Area2D"]
-script = ExtResource("1_hbw80")

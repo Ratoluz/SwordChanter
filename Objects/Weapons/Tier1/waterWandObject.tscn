@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://btxtp03efwydn"]
+
+[ext_resource type="Texture2D" uid="uid://dyi7ueo71w3sg" path="res://Sprite/Weapons/Tier1/waterWand.png" id="1_0ddj5"]
+[ext_resource type="Script" uid="uid://upcu4r774oka" path="res://Scripts/Weapons/Tier1/waterWandObject.gd" id="1_mirk8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mirk8"]
+size = Vector2(5.539, 21.6846)
+
+[node name="WaterWandObject" type="Area2D"]
+scale = Vector2(6, 6)
+script = ExtResource("1_mirk8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0ddj5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.166667, 0.166667)
+rotation = 0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_mirk8")

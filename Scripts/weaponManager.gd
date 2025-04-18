@@ -7,7 +7,7 @@ var firstScale
 var angle 
 
 func _ready() -> void:
-	currentWeapon = $/root/Main/SwordObject
+	currentWeapon = $/root/Main/WaterWandObject
 	player = $/root/Main/Player
 	firstScale = currentWeapon.scale.x
 

@@ -8,9 +8,10 @@ var projectile: PackedScene
 var projectileSpeed: float = 1000
 var critical_chance: float = 0.3
 var critical_chance_multiplier: float = 1.3
+var spread: float = 0
 var is_critical: bool = false
 var weaponManager
-var customAddChild
+var projectile_parent
 
 var can_attack: bool = true
 var timer: Timer
@@ -37,4 +38,13 @@ func attack():
 		print('can attack again')
 
 func _perform_attack():
-	print('attack not overrided')
+	_critical_damage()
+	var tempProjectile = projectile.instantiate()
+	projectile_parent.custom_add_child(tempProjectile)
+	tempProjectile.position = weaponManager.currentWeapon.position
+	tempProjectile.angle = weaponManager.angle 
+	tempProjectile.speed = projectileSpeed
+	tempProjectile.damage = current_damage
+	tempProjectile.is_critical = is_critical
+	tempProjectile.spread = spread
+	tempProjectile.initialize()
