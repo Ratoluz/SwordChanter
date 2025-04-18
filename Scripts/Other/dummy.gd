@@ -5,7 +5,7 @@ var pop_up: PackedScene = preload("res://Objects/Other/damagePopUp.tscn")
 @onready var dps_label = $Dps
 var damage_history = []
 var dps = 0
-var dps_damage_time = 5.0
+var dps_damage_time = 2.0
 
 func play_anim():
 	$AnimatedSprite2D.play('hit')
@@ -25,10 +25,10 @@ func _calculate_dps():
 			total_damage += entry["damage"]
 			entry_num += 1
 		var dps = total_damage/entry_num
-		dps = round(dps)
+		dps = snapped(dps, 0.01)
 		dps_label.text = "Dps: " +  str(dps)
 		return
-	dps_label.text = "Dps: 0" 
+	dps_label.text = "" 
 
 func _remove_old_damage_history():
 	var now = Time.get_ticks_msec() 
@@ -39,12 +39,15 @@ func _process(delta: float) -> void:
 	_remove_old_damage_history()
 	_calculate_dps()
 
-func create_damage_pop_up(damage):
-	var tempPopUp = pop_up.instantiate()
-	tempPopUp.position = position + Vector2(0,-70)
-	tempPopUp.get_child(0).text = str(damage)
-	get_tree().root.add_child(tempPopUp)
+func create_damage_pop_up(damage, is_critical):
+	var temp_pop_up = pop_up.instantiate()
+	temp_pop_up.position = position + Vector2(0,-70)
+	var pop_up_node = temp_pop_up.get_child(0)
+	pop_up_node.text = str(damage)
+	if is_critical:
+		pop_up_node.add_theme_color_override("font_color", Color(1, 0, 0))
+	get_tree().root.add_child(temp_pop_up)
 
-func display_damage(damage):
+func display_damage(damage, is_critical):
 	add_to_damage_history(damage)
-	create_damage_pop_up(damage)
+	create_damage_pop_up(damage, is_critical)

@@ -62,10 +62,10 @@ scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_k7e7g")
 
 [node name="Dps" type="Label" parent="."]
-offset_left = -45.0
-offset_top = -136.0
-offset_right = 51.0
-offset_bottom = -100.0
+offset_left = -91.0
+offset_top = -141.0
+offset_right = 5.0
+offset_bottom = -105.0
 theme_override_fonts/font = SubResource("FontVariation_ciorf")
 theme_override_font_sizes/font_size = 30
 text = "Dps:"
