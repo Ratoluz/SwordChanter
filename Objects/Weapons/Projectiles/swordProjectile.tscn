@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cpug0c7nt7ed1" path="res://Scripts/Weapons/Projectiles/swordProjectile.gd" id="1_yqv7v"]
 
 [node name="SwordProjectile" type="Area2D"]
-scale = Vector2(4, 4)
+scale = Vector2(6, 6)
 script = ExtResource("1_yqv7v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

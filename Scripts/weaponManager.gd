@@ -2,7 +2,7 @@ extends Area2D
 
 var currentWeapon
 var player
-var distanceFromPlayer = 30
+var distanceFromPlayer = 45
 var firstScale 
 var angle 
 

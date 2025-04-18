@@ -10,4 +10,4 @@ func _ready() -> void:
 	weapon.projectile = load("res://Objects/Weapons/Projectiles/swordProjectile.tscn")
 	weapon.weaponManager = $/root/Main/Player/WeaponManager
 	weapon.customAddChild = $/root/Main/CustomAddChild
-	weapon.projectileSpeed = 700
+	weapon.projectileSpeed = 1100
