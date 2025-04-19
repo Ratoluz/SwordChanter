@@ -12,3 +12,4 @@ func _ready() -> void:
 	weapon.damage = 1
 	weapon.cooldown = 0.1
 	weapon.spread = 12
+	weapon.auto_swing = true

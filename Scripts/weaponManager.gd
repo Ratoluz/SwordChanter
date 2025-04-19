@@ -19,16 +19,22 @@ func _flip_weapon():
 		currentWeapon.scale.y = firstScale
 
 func _set_weapon_pos():
-	if currentWeapon != null:
-		var mousePos = get_global_mouse_position()
-		var dir = mousePos - player.position
-		angle = dir.angle()
-		currentWeapon.rotation = angle
-		
-		currentWeapon.position = Vector2(player.position.x + cos(angle) * distanceFromPlayer, player.position.y + sin(angle) * distanceFromPlayer)
+	var mousePos = get_global_mouse_position()
+	var dir = mousePos - player.position
+	angle = dir.angle()
+	currentWeapon.rotation = angle
+	
+	currentWeapon.position = Vector2(player.position.x + cos(angle) * distanceFromPlayer, player.position.y + sin(angle) * distanceFromPlayer)
 
-func _process(delta: float) -> void:
-	_set_weapon_pos()
-	_flip_weapon()
-	if Input.is_action_just_pressed("Attack") and currentWeapon != null:
+func _attack():
+	if Input.is_action_pressed("Attack") and currentWeapon.weapon.auto_swing:
 		currentWeapon.weapon.attack()
+		return
+	if Input.is_action_just_pressed("Attack"):
+		currentWeapon.weapon.attack()
+			
+func _process(delta: float) -> void:
+	if currentWeapon != null:
+		_attack()
+		_set_weapon_pos()
+		_flip_weapon()

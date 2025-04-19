@@ -10,10 +10,10 @@ base_font = ExtResource("2_e7qki")
 script = ExtResource("1_7cxjv")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -22.0
-offset_top = -18.0
-offset_right = 26.0
-offset_bottom = 18.0
+offset_left = -149.0
+offset_top = -19.0
+offset_right = 155.0
+offset_bottom = 17.0
 theme_override_fonts/font = SubResource("FontVariation_esrmk")
 theme_override_font_sizes/font_size = 30
 text = "10"

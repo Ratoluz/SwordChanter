@@ -10,6 +10,7 @@ var critical_chance: float = 0.3
 var critical_chance_multiplier: float = 1.3
 var spread: float = 0
 var is_critical: bool = false
+var auto_swing: bool = false
 var weaponManager
 var projectile_parent
 
