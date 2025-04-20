@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://ccj43pf0ijj14" path="res://Sprite/goofyaahRuby.png" id="1_g6jmi"]
 
-[node name="TextureRect" type="TextureRect"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_g6jmi")
+[node name="Button" type="TextureButton"]
+offset_right = 16.0
+offset_bottom = 16.0
+texture_normal = ExtResource("1_g6jmi")
+stretch_mode = 4
