@@ -10,3 +10,4 @@ func _ready() -> void:
 	weapon.cooldown = 0.1
 	weapon.spread = 12
 	weapon.auto_swing = true
+	weapon.weapon_name = 'Water Wand'

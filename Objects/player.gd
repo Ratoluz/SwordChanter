@@ -27,7 +27,7 @@ func _play_anims():
 		return
 	$AnimatedSprite2D.play("idle")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_apply_velocity()
 	move_and_slide()
 	_flip()

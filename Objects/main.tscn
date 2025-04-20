@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://dwqseoo600wbk"]
 
-[ext_resource type="PackedScene" uid="uid://dy5i1mi7qacia" path="res://Objects/weapon_list.tscn" id="1_tc0cu"]
+[ext_resource type="PackedScene" uid="uid://dy5i1mi7qacia" path="res://Objects/weapon_array.tscn" id="1_tc0cu"]
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://Objects/Player.tscn" id="1_wfcdt"]
 [ext_resource type="Texture2D" uid="uid://yd6s8mqdo346" path="res://Sprite/tabel.png" id="2_h4pkl"]
 [ext_resource type="Texture2D" uid="uid://c681d2qnudksg" path="res://Sprite/Tilemap/grass.png" id="3_2r4pp"]
@@ -25,7 +25,7 @@ script = ExtResource("8_svdc1")
 
 [node name="Timer" type="Timer" parent="WeaponManager"]
 
-[node name="WeaponList" parent="WeaponManager" instance=ExtResource("1_tc0cu")]
+[node name="WeaponArray" parent="WeaponManager" instance=ExtResource("1_tc0cu")]
 
 [node name="Player" parent="." instance=ExtResource("1_wfcdt")]
 position = Vector2(-3, 27)

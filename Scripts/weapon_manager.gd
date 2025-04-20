@@ -6,23 +6,29 @@ var firstScale: float
 var angle: float
 
 var player: Node
-var weapon_list: Node
+var weapon_array: Node
 
 func _ready() -> void:
 	player = $/root/Main/Player
-	weapon_list = $WeaponList
-	weapon_list.load_weapons()
-	equip_weapon(weapon_list.weapon_array[1])
+	weapon_array = $WeaponArray
+	weapon_array.load_weapons()
+	equip_weapon(weapon_array.weapons[1])
 
 func assign_references(some_weapon):
 	some_weapon.timer = $Timer
-	some_weapon.projectile_parent = $projectileParent
 	some_weapon.weapon_manager = self
 
 func equip_weapon(some_weapon):
+	if currentWeapon != null:
+		currentWeapon.queue_free()
+		
 	currentWeapon = some_weapon.instantiate()
 	add_child(currentWeapon)
 	firstScale = currentWeapon.scale.x
+
+func _next_weapon_by_space():
+	if Input.is_action_just_pressed("Change_Weapon"):
+		print(weapon_array.name_to_index(currentWeapon.weapon.weapon_name))
 
 func _flip_weapon():
 	var mousePos = get_global_mouse_position()
@@ -46,8 +52,9 @@ func _attack():
 	if Input.is_action_just_pressed("Attack"):
 		currentWeapon.weapon.attack()
 			
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if currentWeapon != null:
 		_attack()
 		_set_weapon_pos()
 		_flip_weapon()
+		_next_weapon_by_space()

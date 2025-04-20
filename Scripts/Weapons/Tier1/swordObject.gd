@@ -8,3 +8,4 @@ func _ready() -> void:
 	weapon.projectileSpeed = 1300
 	weapon.damage = 12
 	weapon.cooldown = 0.3
+	weapon.weapon_name = 'Sword'
