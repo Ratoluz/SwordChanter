@@ -17,5 +17,3 @@ texture = ExtResource("1_at0e5")
 position = Vector2(1.25, -1.25)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_yqv7v")
-
-[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

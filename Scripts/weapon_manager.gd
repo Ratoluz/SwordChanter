@@ -27,11 +27,6 @@ func equip_weapon(key):
 	add_child(currentWeapon)
 	firstScale = currentWeapon.scale.x
 
-func _next_weapon_by_space():
-	if Input.is_action_just_pressed("Change_Weapon"):
-		var currnet_key_index = weapon_array.key_to_keyindex(current_weapon_key)
-		equip_weapon(weapon_array.keys[weapon_array.give_next_keyindex(currnet_key_index)])
-
 func _flip_weapon():
 	var mousePos = get_global_mouse_position()
 	if mousePos.x < player.position.x and currentWeapon.scale.x > 0:
@@ -59,4 +54,3 @@ func _process(_delta: float) -> void:
 		_attack()
 		_set_weapon_pos()
 		_flip_weapon()
-		_next_weapon_by_space()

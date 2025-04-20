@@ -5,8 +5,8 @@ var menu
 var weapon_manager
 
 var button = preload("res://Objects/UI/WeaponMenu/button.tscn")
-var start_pos_y = 200
-var start_pos_x = 200
+var start_pos_y = 70
+var start_pos_x = 70
 var pos_x_gap = 150
 var button_size := Vector2(100,100)
 var buttons_made := false
@@ -23,7 +23,7 @@ func _make_buttons():
 	buttons_made = true
 	for i in weapon_array.weapons.size():
 		var temp_button = button.instantiate()	
-		$/root/Main/CanvasLayer.add_child(temp_button)
+		menu.add_child(temp_button)
 		var temp_weapon = weapon_array.weapons[weapon_array.keys[i]].instantiate()
 		$/root/Main.add_child(temp_weapon)
 		temp_button.texture_normal = temp_weapon.get_node('Sprite2D').texture 
