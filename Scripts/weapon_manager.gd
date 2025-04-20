@@ -1,14 +1,27 @@
-extends Area2D
+extends Node2D
 
-var currentWeapon
-var player
-var distanceFromPlayer = 45
-var firstScale 
-var angle 
+var currentWeapon: Node
+var distanceFromPlayer: float = 45
+var firstScale: float 
+var angle: float
+
+var player: Node
+var weapon_list: Node
 
 func _ready() -> void:
-	currentWeapon = $/root/Main/WaterWandObject
 	player = $/root/Main/Player
+	weapon_list = $WeaponList
+	weapon_list.load_weapons()
+	equip_weapon(weapon_list.weapon_array[1])
+
+func assign_references(some_weapon):
+	some_weapon.timer = $Timer
+	some_weapon.projectile_parent = $projectileParent
+	some_weapon.weapon_manager = self
+
+func equip_weapon(some_weapon):
+	currentWeapon = some_weapon.instantiate()
+	add_child(currentWeapon)
 	firstScale = currentWeapon.scale.x
 
 func _flip_weapon():

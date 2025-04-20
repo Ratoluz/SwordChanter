@@ -11,14 +11,14 @@ var critical_chance_multiplier: float = 1.3
 var spread: float = 0
 var is_critical: bool = false
 var auto_swing: bool = false
-var weaponManager
+var weapon_manager
 var projectile_parent
 
 var can_attack: bool = true
 var timer: Timer
-
+	
 func _critical_damage():
-	var rand = randf_range(0,1.0)
+	var rand = randf_range(0, 1.0)
 	if rand < critical_chance:
 		current_damage = damage * critical_chance_multiplier
 		is_critical = true
@@ -36,14 +36,13 @@ func attack():
 		await(timer.timeout)
 		
 		can_attack = true
-		print('can attack again')
 
 func _perform_attack():
 	_critical_damage()
 	var tempProjectile = projectile.instantiate()
-	projectile_parent.custom_add_child(tempProjectile)
-	tempProjectile.position = weaponManager.currentWeapon.position
-	tempProjectile.angle = weaponManager.angle 
+	weapon_manager.add_child(tempProjectile)
+	tempProjectile.position = weapon_manager.player.position
+	tempProjectile.angle = weapon_manager.angle 
 	tempProjectile.speed = projectileSpeed
 	tempProjectile.damage = current_damage
 	tempProjectile.is_critical = is_critical
