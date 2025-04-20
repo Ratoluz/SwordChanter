@@ -13,7 +13,7 @@ func initialize():
 	angle += angle_offset
 	rotation = angle + deg_to_rad(45)
 	
-func _ready() -> void:
+func _init() -> void:
 	area_shape_entered.connect(_on_area_shape_entered)
 	
 func _move(delta):

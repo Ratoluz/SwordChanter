@@ -1,6 +1,7 @@
 extends Node2D
 
 var currentWeapon: Node
+var current_weapon_key
 var distanceFromPlayer: float = 45
 var firstScale: float 
 var angle: float
@@ -12,23 +13,24 @@ func _ready() -> void:
 	player = $/root/Main/Player
 	weapon_array = $WeaponArray
 	weapon_array.load_weapons()
-	equip_weapon(weapon_array.weapons[1])
+	equip_weapon('swordObject')
 
 func assign_references(some_weapon):
 	some_weapon.timer = $Timer
 	some_weapon.weapon_manager = self
 
-func equip_weapon(some_weapon):
+func equip_weapon(key):
 	if currentWeapon != null:
 		currentWeapon.queue_free()
-		
-	currentWeapon = some_weapon.instantiate()
+	current_weapon_key = key
+	currentWeapon = weapon_array.weapons[key].instantiate()
 	add_child(currentWeapon)
 	firstScale = currentWeapon.scale.x
 
 func _next_weapon_by_space():
 	if Input.is_action_just_pressed("Change_Weapon"):
-		print(weapon_array.name_to_index(currentWeapon.weapon.weapon_name))
+		var currnet_key_index = weapon_array.key_to_keyindex(current_weapon_key)
+		equip_weapon(weapon_array.keys[weapon_array.give_next_keyindex(currnet_key_index)])
 
 func _flip_weapon():
 	var mousePos = get_global_mouse_position()
