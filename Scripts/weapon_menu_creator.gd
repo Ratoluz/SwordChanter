@@ -22,16 +22,14 @@ func _on_button_pressed(i):
 func _make_buttons():
 	buttons_made = true
 	for i in weapon_array.weapons.size():
-		var temp_button = button.instantiate()	
+		var temp_button = button.instantiate()
 		menu.add_child(temp_button)
-		var temp_weapon = weapon_array.weapons[weapon_array.keys[i]].instantiate()
-		$/root/Main.add_child(temp_weapon)
-		temp_button.texture_normal = temp_weapon.get_node('Sprite2D').texture 
+
+		temp_button.texture_normal = weapon_array.weapons[weapon_array.keys[i]].sprite 
 		temp_button.position = Vector2(start_pos_x + i * pos_x_gap, start_pos_y) 
 		temp_button.size = button_size
 		temp_button.pressed.connect(_on_button_pressed.bind(i))
-		temp_weapon.queue_free()
-		
+
 func _open_menu():
 	if Input.is_action_just_released("Open_Menu"):
 		if not buttons_made:

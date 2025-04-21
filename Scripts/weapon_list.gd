@@ -2,9 +2,10 @@ extends Node
 
 var weapons = {}
 var keys = []
+
 func load_weapons():
-	weapons['swordObject'] = load('res://Objects/Weapons/Melee/Tier1/Sword.tscn')
-	weapons['waterWandObject'] = load('res://Objects/Weapons/Magic/Tier1/WaterWand.tscn')
+	weapons['Sword'] = load('res://Objects/Resources/Weapons/Melee/Tier1/Sword.tres')
+	weapons['WaterWand'] = load('res://Objects/Resources/Weapons/Magic/Tier1/WaterWand.tres')
 	keys = weapons.keys()
 
 func key_to_keyindex(key):

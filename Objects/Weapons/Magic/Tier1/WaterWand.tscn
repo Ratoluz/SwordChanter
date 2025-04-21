@@ -1,21 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://boauxdt270pap"]
+[gd_scene load_steps=3 format=3 uid="uid://boauxdt270pap"]
 
 [ext_resource type="Script" uid="uid://fe45rlblpy50" path="res://Scripts/weapon.gd" id="1_uwpsh"]
-[ext_resource type="Resource" uid="uid://dh1w621awhgi1" path="res://Objects/Resources/Weapons/Magic/Tier1/WaterWand.tres" id="2_uwpsh"]
 [ext_resource type="Texture2D" uid="uid://dyi7ueo71w3sg" path="res://Sprite/Weapons/Tier1/waterWand.png" id="3_2oadk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0m0sb"]
-size = Vector2(5.65686, 22.6274)
-
-[node name="WaterWand" type="Area2D"]
+[node name="WaterWand" type="Node2D"]
 scale = Vector2(6, 6)
 script = ExtResource("1_uwpsh")
-stats = ExtResource("2_uwpsh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_2oadk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.17233e-07, -2.68221e-07)
-rotation = 0.785398
-shape = SubResource("RectangleShape2D_0m0sb")

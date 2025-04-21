@@ -1,5 +1,5 @@
 class_name WeaponStats
-extends Resource
+extends ItemStats
 
 @export var damage: float = 10
 @export var cooldown: float = 0.5
