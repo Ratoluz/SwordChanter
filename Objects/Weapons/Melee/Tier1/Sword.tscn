@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6p8sps2ag1cn"]
+
+[ext_resource type="Script" uid="uid://fe45rlblpy50" path="res://Scripts/weapon.gd" id="1_3olwl"]
+[ext_resource type="Resource" uid="uid://7erb52467wgc" path="res://Objects/Resources/Weapons/Melee/Tier1/Sword.tres" id="2_hu4jd"]
+[ext_resource type="Texture2D" uid="uid://dubx616qe8wgg" path="res://Sprite/Weapons/Tier1/sword.png" id="3_6hjss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0m0sb"]
+size = Vector2(5.65686, 22.6274)
+
+[node name="Sword" type="Area2D"]
+scale = Vector2(6, 6)
+script = ExtResource("1_3olwl")
+stats = ExtResource("2_hu4jd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_6hjss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.17233e-07, -2.68221e-07)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_0m0sb")

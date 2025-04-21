@@ -43,11 +43,11 @@ func _set_weapon_pos():
 	currentWeapon.position = Vector2(player.position.x + cos(angle) * distanceFromPlayer, player.position.y + sin(angle) * distanceFromPlayer)
 
 func _attack():
-	if Input.is_action_pressed("Attack") and currentWeapon.weapon.auto_swing:
-		currentWeapon.weapon.attack()
+	if Input.is_action_pressed("Attack") and currentWeapon.auto_swing:
+		currentWeapon.attack()
 		return
 	if Input.is_action_just_pressed("Attack"):
-		currentWeapon.weapon.attack()
+		currentWeapon.attack()
 			
 func _process(_delta: float) -> void:
 	if currentWeapon != null:

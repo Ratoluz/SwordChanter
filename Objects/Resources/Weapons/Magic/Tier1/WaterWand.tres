@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=3 format=3 uid="uid://dh1w621awhgi1"]
+
+[ext_resource type="PackedScene" uid="uid://ccjfxqm5ecdd0" path="res://Objects/Weapons/Projectiles/waterWandProjectile.tscn" id="1_thvvn"]
+[ext_resource type="Script" uid="uid://gg0deibfccbj" path="res://Scripts/Resources/weapon_stats.gd" id="2_rga6u"]
+
+[resource]
+script = ExtResource("2_rga6u")
+damage = 2.0
+cooldown = 0.1
+projectile = ExtResource("1_thvvn")
+projectileSpeed = 1300.0
+critical_chance = 0.3
+critical_chance_multiplier = 1.3
+auto_swing = true
+spread = 12.0
+metadata/_custom_type_script = "uid://gg0deibfccbj"

@@ -37,8 +37,6 @@ func _open_menu():
 		if not buttons_made:
 			_make_buttons()
 		menu.visible = not menu.visible
-		
-		
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_open_menu()

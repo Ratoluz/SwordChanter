@@ -1,21 +1,39 @@
 class_name Weapon
 extends Area2D
 
-var damage: float = 10
-var current_damage: float = damage
-var cooldown: float = 0.5
+@export var stats: WeaponStats
+#Public
+var damage: float 
+var cooldown: float 
 var projectile: PackedScene 
-var projectileSpeed: float = 1000
-var critical_chance: float = 0.3
-var critical_chance_multiplier: float = 1.3
-var spread: float = 0
-var is_critical: bool = false
+var projectileSpeed: float
+var critical_chance: float
+var critical_chance_multiplier: float 
+var spread: float
 var auto_swing: bool = false 
-var can_attack: bool = true
-var weapon_name: String
-
+#Private
 var weapon_manager
 var timer: Timer
+var current_damage: float = damage
+var is_critical: bool = false
+var can_attack: bool = true
+
+func _set_vars_from_resource():
+	damage = stats.damage
+	cooldown = stats.cooldown
+	projectile = stats.projectile
+	projectileSpeed = stats.projectileSpeed
+	critical_chance = stats.critical_chance
+	critical_chance_multiplier = stats.critical_chance_multiplier
+	spread = stats.spread
+	auto_swing = stats.auto_swing
+func _set_references():
+	weapon_manager = $/root/Main/WeaponManager
+	timer = weapon_manager.get_node('Timer')
+	
+func _ready() -> void:
+	_set_vars_from_resource()
+	_set_references()
 	
 func _critical_damage():
 	var rand = randf_range(0, 1.0)
