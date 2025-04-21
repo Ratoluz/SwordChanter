@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6p8sps2ag1cn"]
-
-[ext_resource type="Script" uid="uid://fe45rlblpy50" path="res://Scripts/weapon.gd" id="1_3olwl"]
-
-[node name="Sword" type="Node2D"]
-scale = Vector2(6, 6)
-script = ExtResource("1_3olwl")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]

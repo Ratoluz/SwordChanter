@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs0ikmd6b6x86"]
-
-[ext_resource type="Script" uid="uid://cgih2nhhm6sox" path="res://Scripts/weapon_menu_creator.gd" id="1_fmn5b"]
-
-[node name="WeaponMenuCreator" type="Node2D"]
-script = ExtResource("1_fmn5b")
