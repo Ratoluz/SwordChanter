@@ -36,6 +36,6 @@ func _process(delta: float) -> void:
 	_move(delta)
 
 func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	#if area.name == 'Dummy':
-	area.take_damage(damage, is_critical)
-	queue_free()
+	if area.name == 'Dummy':
+		area.take_damage(damage, is_critical)
+		queue_free()

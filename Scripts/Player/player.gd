@@ -11,6 +11,7 @@ var flipped: bool
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	$AnimatedSprite2D.play("idle")
+	health_bar.max_value = max_hp
 	health_bar.value = current_hp
 
 func _apply_velocity():
@@ -39,7 +40,7 @@ func take_damage(damage, is_critical):
 		get_tree().change_scene_to_file("res://Scenes/UI/death_screen.tscn")
 	
 func _physics_process(_delta: float) -> void:
-	print(current_hp)
+	#print(current_hp)
 	_apply_velocity()
 	move_and_slide()
 	_flip()
