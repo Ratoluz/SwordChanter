@@ -1,6 +1,7 @@
 class_name Weapon
 extends Node2D
 
+@export var weapon_stats: WeaponStats
 #Public
 var damage: float 
 var cooldown: float 
@@ -49,6 +50,8 @@ func _set_references():
 	
 func _ready() -> void:
 	_set_references()
+	set_stats(weapon_stats)
+	_set_custom_stats(weapon_stats)
 	
 func _critical_damage():
 	var rand = randf_range(0, 1.0)

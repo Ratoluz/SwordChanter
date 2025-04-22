@@ -1,6 +1,5 @@
 extends Node2D
 
-var weapon_node: PackedScene = preload('res://Scenes/Weapons/WeaponNode.tscn')
 var current_weapon
 
 var distance_from_player: float = 45
@@ -13,16 +12,17 @@ var weapon_array: Node
 func _ready() -> void:
 	player = $/root/Main/Player
 	weapon_array = $WeaponArray
-	weapon_array.load_weapons()
+	weapon_array.load_weapon_stats()
+	weapon_array.load_weapon_scenes()
 	equip_weapon('Sword')
 
 func equip_weapon(key):
 	if current_weapon != null:
 		current_weapon.queue_free()
-	current_weapon = weapon_node.instantiate()
-	current_weapon.set_script(weapon_array.weapons[key].custom_script)
-	current_weapon.set_stats(weapon_array.weapons[key])
-	distance_from_player = weapon_array.weapons[key].distance_from_player
+	current_weapon = weapon_array.weapons_scenes[key].instantiate()
+	#current_weapon.set_script(weapon_array.weapons[key].custom_script)
+	#current_weapon.set_stats(weapon_array.weapons[key])
+	distance_from_player = weapon_array.weapon_stats[key].distance_from_player
 	add_child(current_weapon)
 	firstScale = current_weapon.scale.x
 

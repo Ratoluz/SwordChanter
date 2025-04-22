@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var current_speed = 250
+@export var current_speed: int = 250
 var screen_size
 var flipped: bool
 

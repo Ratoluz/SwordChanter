@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gg0deibfccbj" path="res://Scripts/Resources/weapon_stats.gd" id="1_djaxj"]
 [ext_resource type="Script" uid="uid://fe45rlblpy50" path="res://Scripts/Weapons/weapon.gd" id="1_wn8w8"]
-[ext_resource type="PackedScene" uid="uid://bu5x3wtcsry66" path="res://Scenes/Weapons/Projectiles/ShotgunBullet.tscn" id="2_mly2o"]
+[ext_resource type="PackedScene" uid="uid://bu5x3wtcsry66" path="res://Scenes/Weapons/Tier1/Shotgun/ShotgunBullet.tscn" id="2_mly2o"]
 [ext_resource type="Texture2D" uid="uid://csanfmw6kqrus" path="res://Sprites/Items/Weapons/Tier1/Shotgun/Shotgun.png" id="4_ofndw"]
 
 [resource]

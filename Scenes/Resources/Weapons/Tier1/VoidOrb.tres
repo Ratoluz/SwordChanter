@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://csjmpjuikylf6" path="res://Scripts/Weapons/Tier1/VoidOrb/voidorb.gd" id="1_h6eib"]
 [ext_resource type="Texture2D" uid="uid://ckwa168qdepct" path="res://Sprites/Items/Weapons/Tier1/VoidOrb/voidOrb.png" id="2_2w5yx"]
-[ext_resource type="PackedScene" uid="uid://b50vh4qj0d2p5" path="res://Scenes/Weapons/Projectiles/VoidOrbProjectile.tscn" id="2_ekipu"]
+[ext_resource type="PackedScene" uid="uid://b50vh4qj0d2p5" path="res://Scenes/Weapons/Tier1/VoidOrb/VoidOrbProjectile.tscn" id="2_ekipu"]
 [ext_resource type="Script" uid="uid://d0ldc1ktmvfqw" path="res://Scripts/Weapons/Tier1/VoidOrb/void_orb_stats.gd" id="3_4lukm"]
-[ext_resource type="PackedScene" uid="uid://cc4sld18tk1yc" path="res://Scenes/Weapons/Projectiles/VoidOrb2Projectile.tscn" id="3_ekipu"]
+[ext_resource type="PackedScene" uid="uid://cc4sld18tk1yc" path="res://Scenes/Weapons/Tier1/VoidOrb/VoidOrb2Projectile.tscn" id="3_ekipu"]
 
 [resource]
 script = ExtResource("3_4lukm")

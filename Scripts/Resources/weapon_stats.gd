@@ -13,4 +13,4 @@ extends ItemStats
 @export var rotate_sprite: bool = false
 @export var auto_swing: bool = false 
 @export var spread: float = 0
-@export var distance_from_player: float = 45
+@export var distance_from_player: float = 50

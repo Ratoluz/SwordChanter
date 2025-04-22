@@ -1,7 +1,7 @@
 extends Projectile
 
 var timer2: Timer
-var projectile = preload('res://Scenes/Weapons/Projectiles/VoidOrb2Projectile.tscn')
+var projectile = preload('res://Scenes/Weapons/Tier1/VoidOrb/VoidOrb2Projectile.tscn')
 
 #var player
 var projectile_2_angle: float
