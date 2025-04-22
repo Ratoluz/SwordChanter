@@ -6,13 +6,24 @@ var speed: float
 var damage: float
 var is_critical: bool
 var spread = 0
+var timer: SceneTreeTimer
+var rotate_sprite
+var live_time 
 
 func initialize():
 	var angle_offset: float = 0
 	angle_offset = randf_range(-spread, spread)
 	angle_offset = deg_to_rad(angle_offset)
 	angle += angle_offset
-	rotation = angle + deg_to_rad(45)
+	if rotate_sprite:	
+		global_rotation = angle + deg_to_rad(45)
+	else:
+		global_rotation = angle + deg_to_rad(90)
+	print(rad_to_deg(angle))
+	timer = get_tree().create_timer(live_time)
+	timer.timeout.connect(die)
+func die():
+	queue_free()
 	
 func _init() -> void:
 	area_shape_entered.connect(_on_area_shape_entered)

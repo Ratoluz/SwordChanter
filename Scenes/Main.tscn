@@ -28,8 +28,8 @@ height = 16.0
 visible = false
 offset_left = 73.0
 offset_top = 158.0
-offset_right = 700.0
-offset_bottom = 785.0
+offset_right = 637.0
+offset_bottom = 722.0
 script = ExtResource("8_h1m7h")
 
 [node name="WeaponManager" type="Node2D" parent="."]

@@ -8,14 +8,18 @@
 [resource]
 script = ExtResource("2_l5dw7")
 custom_script = ExtResource("1_l5dw7")
-damage = 3.5
+damage = 2.0
 cooldown = 0.5
 projectile = ExtResource("1_f1d03")
-projectileSpeed = 1000.0
+speed = 1000.0
 critical_chance = 0.1
 critical_chance_multiplier = 2.0
+bullet_number = 1
+live_time = 2.0
+rotate_sprite = true
 auto_swing = false
 spread = 0.0
+distance_from_player = 45.0
 sprite = ExtResource("3_f1d03")
 item_name = "Sword"
 description = "It was too big to be called a sword. Massive, thick, heavy, and far too rough. Indeed, it was a heap of raw iron."

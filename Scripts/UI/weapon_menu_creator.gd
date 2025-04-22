@@ -8,6 +8,7 @@ var button = preload("res://Scenes/UI/WeaponMenu/button.tscn")
 var start_pos_y = 70
 var start_pos_x = 70
 var pos_x_gap = 150
+var pos_y_gap = 150
 var button_size := Vector2(100,100)
 var buttons_made := false
 
@@ -21,14 +22,16 @@ func _on_button_pressed(i):
 
 func _make_buttons():
 	buttons_made = true
-	for i in weapon_array.weapons.size():
-		var temp_button = button.instantiate()
-		menu.add_child(temp_button)
-
-		temp_button.texture_normal = weapon_array.weapons[weapon_array.keys[i]].sprite 
-		temp_button.position = Vector2(start_pos_x + i * pos_x_gap, start_pos_y) 
-		temp_button.size = button_size
-		temp_button.pressed.connect(_on_button_pressed.bind(i))
+	for x in range((weapon_array.weapons.size() / 3) + 1):
+		for y in range(3):
+			if x * 3 + y >= weapon_array.weapons.size():
+				break
+			var temp_button = button.instantiate()
+			menu.add_child(temp_button)
+			temp_button.texture_normal = weapon_array.weapons[weapon_array.keys[x * 3 + y]].sprite 
+			temp_button.position = Vector2(start_pos_x + (y) * pos_x_gap, start_pos_y + x * pos_y_gap) 
+			temp_button.size = button_size
+			temp_button.pressed.connect(_on_button_pressed.bind(x * 3 + y))
 
 func _open_menu():
 	if Input.is_action_just_released("Open_Menu"):

@@ -7,6 +7,7 @@ func load_weapons():
 	weapons['Sword'] = load('res://Scenes/Resources/Weapons/Tier1/Sword.tres')
 	weapons['WaterWand'] = load('res://Scenes/Resources/Weapons/Tier1/WaterWand.tres')
 	weapons['VoidOrb'] = load('res://Scenes/Resources/Weapons/Tier1/VoidOrb.tres')
+	weapons['Shotgun'] = load('res://Scenes/Resources/Weapons/Tier1/Shotgun.tres')
 	keys = weapons.keys()
 
 func key_to_keyindex(key):

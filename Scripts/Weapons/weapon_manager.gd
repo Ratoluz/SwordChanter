@@ -3,7 +3,7 @@ extends Node2D
 var weapon_node: PackedScene = preload('res://Scenes/Weapons/WeaponNode.tscn')
 var current_weapon
 
-var distanceFromPlayer: float = 45
+var distance_from_player: float = 45
 var firstScale: float 
 var angle: float
 
@@ -22,6 +22,7 @@ func equip_weapon(key):
 	current_weapon = weapon_node.instantiate()
 	current_weapon.set_script(weapon_array.weapons[key].custom_script)
 	current_weapon.set_stats(weapon_array.weapons[key])
+	distance_from_player = weapon_array.weapons[key].distance_from_player
 	add_child(current_weapon)
 	firstScale = current_weapon.scale.x
 
@@ -37,7 +38,7 @@ func _set_weapon_pos():
 	var dir = mousePos - player.position
 	angle = dir.angle()
 	current_weapon.rotation = angle
-	current_weapon.position = Vector2(player.position.x + cos(angle) * distanceFromPlayer, player.position.y + sin(angle) * distanceFromPlayer)
+	current_weapon.position = Vector2(player.position.x + cos(angle) * distance_from_player, player.position.y + sin(angle) * distance_from_player)
 
 func _attack():
 	if Input.is_action_pressed("Attack") and current_weapon.auto_swing:

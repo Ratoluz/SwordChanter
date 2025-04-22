@@ -5,9 +5,12 @@ extends Node2D
 var damage: float 
 var cooldown: float 
 var projectile: PackedScene 
-var projectileSpeed: float
+var speed: float
 var critical_chance: float
 var critical_chance_multiplier: float 
+var bullet_number: int
+var live_time: float
+var rotate_sprite: bool
 var spread: float
 var auto_swing: bool = false 
 var sprite: Texture2D
@@ -30,9 +33,12 @@ func set_stats(stats):
 	damage = stats.damage
 	cooldown = stats.cooldown
 	projectile = stats.projectile
-	projectileSpeed = stats.projectileSpeed
+	speed = stats.speed
 	critical_chance = stats.critical_chance
 	critical_chance_multiplier = stats.critical_chance_multiplier
+	bullet_number = stats.bullet_number
+	live_time = stats.live_time
+	rotate_sprite = stats.rotate_sprite
 	spread = stats.spread
 	auto_swing = stats.auto_swing
 	_set_custom_stats(stats)
@@ -55,7 +61,8 @@ func _critical_damage():
 
 func attack():
 	if can_attack:
-		_perform_attack()
+		for i in range(bullet_number):
+			_perform_attack()
 		can_attack = false
 		
 		timer.wait_time = cooldown
@@ -72,9 +79,11 @@ func _perform_attack():
 	weapon_manager.add_child(tempProjectile)
 	tempProjectile.position = weapon_manager.player.position
 	tempProjectile.angle = weapon_manager.angle 
-	tempProjectile.speed = projectileSpeed
+	tempProjectile.speed = speed
 	tempProjectile.damage = current_damage
 	tempProjectile.is_critical = is_critical
 	tempProjectile.spread = spread
+	tempProjectile.live_time = live_time
+	tempProjectile.rotate_sprite = rotate_sprite
 	_set_projectile_stats(tempProjectile)
 	tempProjectile.initialize()

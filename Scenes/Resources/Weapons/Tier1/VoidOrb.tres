@@ -9,7 +9,6 @@
 [resource]
 script = ExtResource("3_4lukm")
 projectile_2_angle = 90.0
-projectile_2_damage = 7.0
 projectile_2 = ExtResource("3_ekipu")
 custom_script = ExtResource("1_h6eib")
 damage = 6.0
