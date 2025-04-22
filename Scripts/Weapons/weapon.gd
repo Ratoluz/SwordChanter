@@ -20,6 +20,8 @@ var current_damage: float = damage
 var is_critical: bool = false
 var can_attack: bool = true
 
+func _set_custom_stats(stats):
+	pass
 func set_stats(stats):
 	sprite = stats.sprite
 	$Sprite2D.texture = sprite
@@ -33,6 +35,7 @@ func set_stats(stats):
 	critical_chance_multiplier = stats.critical_chance_multiplier
 	spread = stats.spread
 	auto_swing = stats.auto_swing
+	_set_custom_stats(stats)
 	
 func _set_references():
 	weapon_manager = $/root/Main/WeaponManager
@@ -61,6 +64,8 @@ func attack():
 		
 		can_attack = true
 
+func _set_projectile_stats(tempProjectile):
+	pass
 func _perform_attack():
 	_critical_damage()
 	var tempProjectile = projectile.instantiate()
@@ -71,4 +76,5 @@ func _perform_attack():
 	tempProjectile.damage = current_damage
 	tempProjectile.is_critical = is_critical
 	tempProjectile.spread = spread
+	_set_projectile_stats(tempProjectile)
 	tempProjectile.initialize()

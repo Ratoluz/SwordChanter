@@ -19,8 +19,8 @@ func _ready() -> void:
 func equip_weapon(key):
 	if current_weapon != null:
 		current_weapon.queue_free()
-
 	current_weapon = weapon_node.instantiate()
+	current_weapon.set_script(weapon_array.weapons[key].custom_script)
 	current_weapon.set_stats(weapon_array.weapons[key])
 	add_child(current_weapon)
 	firstScale = current_weapon.scale.x

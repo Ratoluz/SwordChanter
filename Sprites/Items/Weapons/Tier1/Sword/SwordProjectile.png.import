@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs0lcj64xntq6"
-path="res://.godot/imported/WaterWandProjectile.png-c1ce89719635129b5e21979c3cfb42d4.ctex"
+uid="uid://dnjm5sa0j5jat"
+path="res://.godot/imported/SwordProjectile.png-0477e6d3a95623e86867cb60b83cc92c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Weapons/Projectiles/WaterWandProjectile.png"
-dest_files=["res://.godot/imported/WaterWandProjectile.png-c1ce89719635129b5e21979c3cfb42d4.ctex"]
+source_file="res://Sprites/Items/Weapons/Tier1/Sword/SwordProjectile.png"
+dest_files=["res://.godot/imported/SwordProjectile.png-0477e6d3a95623e86867cb60b83cc92c.ctex"]
 
 [params]
 

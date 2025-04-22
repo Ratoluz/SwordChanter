@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyi7ueo71w3sg"
-path="res://.godot/imported/WaterWand.png-d443b3879b8bfadf116a31e12fb25bed.ctex"
+uid="uid://ckwa168qdepct"
+path="res://.godot/imported/voidOrb.png-eff7f6b0f57115f9eaabdd2e7b064455.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Weapons/Magic/Tier1/WaterWand.png"
-dest_files=["res://.godot/imported/WaterWand.png-d443b3879b8bfadf116a31e12fb25bed.ctex"]
+source_file="res://Sprites/Items/Weapons/Tier1/VoidOrb/voidOrb.png"
+dest_files=["res://.godot/imported/voidOrb.png-eff7f6b0f57115f9eaabdd2e7b064455.ctex"]
 
 [params]
 

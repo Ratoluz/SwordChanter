@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccjfxqm5ecdd0"]
 
 [ext_resource type="Script" uid="uid://cpug0c7nt7ed1" path="res://Scripts/Weapons/projectile.gd" id="1_ga1mu"]
-[ext_resource type="Texture2D" uid="uid://bs0lcj64xntq6" path="res://Sprites/Items/Weapons/Projectiles/WaterWandProjectile.png" id="1_rmf3o"]
+[ext_resource type="Texture2D" uid="uid://bs0lcj64xntq6" path="res://Sprites/Items/Weapons/Tier1/WaterWand/WaterWandProjectile.png" id="1_rmf3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga1mu"]
 size = Vector2(24, 24)

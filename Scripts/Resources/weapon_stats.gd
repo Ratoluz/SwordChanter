@@ -1,6 +1,7 @@
 class_name WeaponStats
 extends ItemStats
 
+@export var custom_script: Script
 @export var damage: float = 10
 @export var cooldown: float = 0.5
 @export var projectile: PackedScene 

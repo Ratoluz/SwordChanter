@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=5 format=3 uid="uid://7erb52467wgc"]
+
+[ext_resource type="PackedScene" uid="uid://bvwom6k2bee1y" path="res://Scenes/Weapons/Projectiles/swordProjectile.tscn" id="1_f1d03"]
+[ext_resource type="Script" uid="uid://fe45rlblpy50" path="res://Scripts/Weapons/weapon.gd" id="1_l5dw7"]
+[ext_resource type="Script" uid="uid://gg0deibfccbj" path="res://Scripts/Resources/weapon_stats.gd" id="2_l5dw7"]
+[ext_resource type="Texture2D" uid="uid://dubx616qe8wgg" path="res://Sprites/Items/Weapons/Tier1/Sword/Sword.png" id="3_f1d03"]
+
+[resource]
+script = ExtResource("2_l5dw7")
+custom_script = ExtResource("1_l5dw7")
+damage = 3.5
+cooldown = 0.5
+projectile = ExtResource("1_f1d03")
+projectileSpeed = 1000.0
+critical_chance = 0.1
+critical_chance_multiplier = 2.0
+auto_swing = false
+spread = 0.0
+sprite = ExtResource("3_f1d03")
+item_name = "Sword"
+description = "It was too big to be called a sword. Massive, thick, heavy, and far too rough. Indeed, it was a heap of raw iron."
+metadata/_custom_type_script = "uid://gg0deibfccbj"

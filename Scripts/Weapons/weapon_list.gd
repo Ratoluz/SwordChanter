@@ -4,8 +4,9 @@ var weapons = {}
 var keys = []
 
 func load_weapons():
-	weapons['Sword'] = load('res://Scenes/Resources/Weapons/Melee/Tier1/Sword.tres')
-	weapons['WaterWand'] = load('res://Scenes/Resources/Weapons/Magic/Tier1/WaterWand.tres')
+	weapons['Sword'] = load('res://Scenes/Resources/Weapons/Tier1/Sword.tres')
+	weapons['WaterWand'] = load('res://Scenes/Resources/Weapons/Tier1/WaterWand.tres')
+	weapons['VoidOrb'] = load('res://Scenes/Resources/Weapons/Tier1/VoidOrb.tres')
 	keys = weapons.keys()
 
 func key_to_keyindex(key):
