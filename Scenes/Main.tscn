@@ -41,7 +41,6 @@ script = ExtResource("1_50glp")
 
 [node name="Player" parent="." instance=ExtResource("3_bmxlf")]
 position = Vector2(-3, 27)
-scale = Vector2(6, 6)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 

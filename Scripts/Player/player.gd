@@ -2,13 +2,16 @@ extends CharacterBody2D
 
 @export var current_speed: int = 250
 @export var max_hp: int = 100
-@export var current_hp: int = 100
+@onready var current_hp: int = max_hp
+@onready var health_bar: ProgressBar = $HealthBar
+
 var screen_size
 var flipped: bool
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	$AnimatedSprite2D.play("idle")
+	health_bar.value = current_hp
 
 func _apply_velocity():
 	var input_direction = Input.get_vector('Move_Left', 'Move_Right', 'Move_Up', 'Move_Down')
@@ -31,6 +34,7 @@ func _play_anims():
 func take_damage(damage, is_critical):
 	#$AnimatedSprite2D.play('hit')
 	current_hp = current_hp - damage
+	health_bar.value = current_hp
 	if current_hp <= 0:
 		get_tree().change_scene_to_file("res://Scenes/UI/death_screen.tscn")
 	
