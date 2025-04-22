@@ -50,4 +50,4 @@ func take_damage(damage, is_critical):
 
 
 func _on_body_entered(body: Node2D) -> void:
-	body.take_damage(1,false)
+	body.take_damage(10,false)

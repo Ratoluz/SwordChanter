@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlvas8q7ehv27"]
+
+[ext_resource type="Script" uid="uid://ceabhnunfpkmx" path="res://Scenes/UI/death_screen.gd" id="1_u28jg"]
+
+[node name="Death_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = 41.0
+offset_right = 52.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u28jg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1105.0
+offset_bottom = 636.0
+color = Color(0.638844, 0.194083, 0.144549, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 81.0
+offset_right = 735.0
+offset_bottom = 136.0
+text = "U died"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 376.0
+offset_right = 683.0
+offset_bottom = 498.0
+text = "Respawn
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

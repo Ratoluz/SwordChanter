@@ -31,6 +31,8 @@ func _play_anims():
 func take_damage(damage, is_critical):
 	#$AnimatedSprite2D.play('hit')
 	current_hp = current_hp - damage
+	if current_hp <= 0:
+		get_tree().change_scene_to_file("res://Scenes/UI/death_screen.tscn")
 	
 func _physics_process(_delta: float) -> void:
 	print(current_hp)
