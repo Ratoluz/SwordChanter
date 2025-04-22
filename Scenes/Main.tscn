@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dwqseoo600wbk"]
+[gd_scene load_steps=13 format=4 uid="uid://dwqseoo600wbk"]
 
 [ext_resource type="Script" uid="uid://blhgla1fg323i" path="res://Scripts/Weapons/weapon_manager.gd" id="1_50glp"]
 [ext_resource type="PackedScene" uid="uid://dy5i1mi7qacia" path="res://Scenes/Weapons/WeaponArray.tscn" id="2_vy5pj"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ctdi4epxwspfx" path="res://Scenes/Other/Dummy.tscn" id="6_frkhe"]
 [ext_resource type="PackedScene" uid="uid://dmxf54t8ial7e" path="res://Scenes/UI/WeaponMenu/menu.tscn" id="7_1p5hy"]
 [ext_resource type="Script" uid="uid://cgih2nhhm6sox" path="res://Scripts/UI/weapon_menu_creator.gd" id="8_h1m7h"]
+[ext_resource type="PackedScene" uid="uid://g2kr5y6da2w" path="res://Scenes/Enemies/goblin.tscn" id="9_vy5pj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2r4pp"]
 texture = ExtResource("4_4kpch")
@@ -63,3 +64,6 @@ shape = SubResource("CapsuleShape2D_2r4pp")
 
 [node name="Dummy" parent="." instance=ExtResource("6_frkhe")]
 position = Vector2(505, 0)
+
+[node name="Goblin" parent="." instance=ExtResource("9_vy5pj")]
+position = Vector2(-502, -139)

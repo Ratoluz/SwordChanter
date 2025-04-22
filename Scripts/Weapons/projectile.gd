@@ -39,3 +39,7 @@ func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int
 	if area.name == 'Dummy':
 		area.take_damage(damage, is_critical)
 		queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	body.take_damage(damage, is_critical)
+	queue_free()
