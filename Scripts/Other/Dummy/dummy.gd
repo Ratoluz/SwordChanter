@@ -46,3 +46,8 @@ func take_damage(damage, is_critical):
 	$AnimatedSprite2D.play('hit')
 	_add_to_damage_history(damage)
 	_create_damage_pop_up(damage, is_critical)
+	
+
+
+func _on_body_entered(body: Node2D) -> void:
+	body.take_damage(1,false)

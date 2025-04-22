@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var current_speed: int = 250
+@export var max_hp: int = 100
+@export var current_hp: int = 100
 var screen_size
 var flipped: bool
 
@@ -26,8 +28,12 @@ func _play_anims():
 		$AnimatedSprite2D.play("walk")
 		return
 	$AnimatedSprite2D.play("idle")
-
+func take_damage(damage, is_critical):
+	#$AnimatedSprite2D.play('hit')
+	current_hp = current_hp - damage
+	
 func _physics_process(_delta: float) -> void:
+	print(current_hp)
 	_apply_velocity()
 	move_and_slide()
 	_flip()
