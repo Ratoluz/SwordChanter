@@ -19,6 +19,7 @@ live_time = 2.0
 rotate_sprite = true
 auto_swing = true
 spread = 12.0
+distance_from_player = 50.0
 sprite = ExtResource("3_rga6u")
 item_name = "Water Wand"
 description = "Shoots sparkles of water"

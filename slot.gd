@@ -31,10 +31,10 @@ func _get_drag_data(at_position):
 	var preview_texture = TextureRect.new()
 	preview_texture.texture = item.sprite
 	preview_texture.size = Vector2(16, 16)
-	preview_texture.position = -Vector2(8, 8)
+	preview_texture.position = -Vector2(8*(5), 8*(5))
 	preview_texture.scale = Vector2(5, 5)
 	preview_texture.z_index = 100
-
+	
 	var preview = Control.new()
 	preview.add_child(preview_texture)
 	set_drag_preview(preview)
