@@ -42,8 +42,8 @@ script = ExtResource("1_50glp")
 
 [node name="Player" parent="." instance=ExtResource("3_bmxlf")]
 position = Vector2(-3, 27)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
+current_speed = 250
+max_hp = 100
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 z_index = -99

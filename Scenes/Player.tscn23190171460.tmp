@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://vntnhm8hh417"]
+[gd_scene load_steps=12 format=3 uid="uid://vntnhm8hh417"]
 
 [ext_resource type="Script" uid="uid://bxp6ywaie312n" path="res://Scripts/Player/player.gd" id="1_n6db0"]
-[ext_resource type="Script" uid="uid://b723mfj5fb6uo" path="res://Scenes/camera_2d.gd" id="2_dewec"]
 [ext_resource type="Texture2D" uid="uid://ch5doy1f7lwy3" path="res://Sprites/Player/Animations/PlayerWalk.png" id="2_n6db0"]
 [ext_resource type="PackedScene" uid="uid://c8sms26cr4jl4" path="res://inventory.tscn" id="3_gntrk"]
 
@@ -64,7 +63,6 @@ script = ExtResource("1_n6db0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.166667, 0.166667)
-script = ExtResource("2_dewec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l4x1r")

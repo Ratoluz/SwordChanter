@@ -4,16 +4,23 @@ extends CharacterBody2D
 @export var max_hp: int = 100
 @onready var current_hp: int = max_hp
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var inventory = $Inventory
+@onready var camera = $Camera2D
 
 var pop_up: PackedScene = preload("res://Scenes/UI/DamagePopUp.tscn")
 var screen_size
 var flipped: bool
+var can_move = true
+var zoom_amount = Vector2(0.7, 0.7)
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	$AnimatedSprite2D.play("idle")
 	health_bar.max_value = max_hp
 	health_bar.value = current_hp
+	inventory.inventory_opened.connect(_on_inventory_opened)
+	inventory.inventory_closed.connect(_on_inventory_closed)
+
 
 func _apply_velocity():
 	var input_direction = Input.get_vector('Move_Left', 'Move_Right', 'Move_Up', 'Move_Down')
@@ -54,6 +61,17 @@ func take_damage(damage, is_critical):
 func _physics_process(_delta: float) -> void:
 	#print(current_hp)
 	_apply_velocity()
-	move_and_slide()
-	_flip()
-	_play_anims()
+	if can_move:
+		move_and_slide()
+		_flip()
+		_play_anims()
+	else:
+		$AnimatedSprite2D.play("idle")
+
+func _on_inventory_opened():
+	can_move = false
+	Engine.time_scale = 0.3
+	
+func _on_inventory_closed():
+	can_move = true
+	Engine.time_scale = 1.0
