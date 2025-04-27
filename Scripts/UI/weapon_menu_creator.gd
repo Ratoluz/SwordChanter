@@ -4,7 +4,7 @@ var weapon_array
 var menu
 var weapon_manager
 
-var button = preload("res://scenes/UI/weapon_menu/button.tscn")
+var button = preload("res://Scenes/UI/WeaponMenu/button.tscn")
 var start_pos_y = 70
 var start_pos_x = 70
 var pos_x_gap = 150
