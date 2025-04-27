@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var inventory = $Inventory
 @onready var camera = $Camera2D
 
-var pop_up: PackedScene = preload("res://Scenes/UI/DamagePopUp.tscn")
+var pop_up: PackedScene = preload("res://scenes/UI/damage_pop_up.tscn")
 var screen_size
 var flipped: bool
 var can_move = true
@@ -56,7 +56,7 @@ func take_damage(damage, is_critical):
 	health_bar.value = current_hp
 	_create_damage_pop_up(damage, is_critical)
 	if current_hp <= 0:
-		get_tree().change_scene_to_file("res://Scenes/UI/death_screen.tscn")
+		get_tree().change_scene_to_file("res://scenes/UI/death_screen.tscn")
 	
 func _physics_process(_delta: float) -> void:
 	#print(current_hp)

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://efd305ewl0hl"]
-
-[ext_resource type="Texture2D" uid="uid://ccj43pf0ijj14" path="res://Sprites/Items/Materials/Tier1/Ruby.png" id="1_g6jmi"]
-
-[node name="Button" type="TextureButton"]
-offset_right = 16.0
-offset_bottom = 16.0
-texture_normal = ExtResource("1_g6jmi")
-stretch_mode = 4

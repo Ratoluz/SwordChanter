@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b50vh4qj0d2p5"]
+
+[ext_resource type="Script" uid="uid://brrk5fsqsdgao" path="res://scripts/weapons/tier1/VoidOrb/void_orb_projectile.gd" id="1_vh716"]
+[ext_resource type="Texture2D" uid="uid://bbawnklnotgp2" path="res://sprites/items/weapons/tier1/void_orb/void_orb_projectile.png" id="2_nrhgx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqv7v"]
+size = Vector2(10, 10.1352)
+
+[node name="VoidOrb" type="Area2D"]
+scale = Vector2(6, 6)
+script = ExtResource("1_vh716")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nrhgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yqv7v")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.45
