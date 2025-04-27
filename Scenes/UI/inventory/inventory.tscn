@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8sms26cr4jl4"]
 
-[ext_resource type="PackedScene" uid="uid://64q4x6l64b2q" path="res://slot.tscn" id="1_pohso"]
-[ext_resource type="Script" uid="uid://dgmj56gv6tmjv" path="res://inventory.gd" id="1_psafj"]
-[ext_resource type="Resource" uid="uid://e8jec17g6tpx" path="res://ruby.tres" id="3_5tt2m"]
+[ext_resource type="PackedScene" uid="uid://64q4x6l64b2q" path="res://Scenes/UI/inventory/slot.tscn" id="1_pohso"]
+[ext_resource type="Script" uid="uid://dgmj56gv6tmjv" path="res://Scenes/UI/inventory/inventory.gd" id="1_psafj"]
+[ext_resource type="Resource" uid="uid://e8jec17g6tpx" path="res://Scenes/Resources/materials/ruby.tres" id="3_5tt2m"]
 
 [node name="Inventory" type="Control" node_paths=PackedStringArray("hotbar", "grid")]
 layout_mode = 3
