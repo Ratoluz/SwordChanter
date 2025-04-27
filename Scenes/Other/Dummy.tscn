@@ -1,8 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctdi4epxwspfx"]
+[gd_scene load_steps=11 format=3 uid="uid://ctdi4epxwspfx"]
 
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://44gou4tnmhyj" path="res://sprites/decorations/dummy.png" id="1_k7e7g"]
 [ext_resource type="Script" uid="uid://cqcat8a2c2jy0" path="res://scripts/other/Dummy/dummy.gd" id="1_lk4ub"]
 [ext_resource type="FontFile" uid="uid://du62clawr6qeb" path="res://fonts/TeenyTinyPixls.ttf" id="3_6q3js"]
+=======
+[ext_resource type="Texture2D" uid="uid://44gou4tnmhyj" path="res://Sprites/Decorations/dummy.png" id="1_k7e7g"]
+[ext_resource type="Script" uid="uid://cqcat8a2c2jy0" path="res://Scripts/Other/Dummy/dummy.gd" id="1_lk4ub"]
+[ext_resource type="Resource" uid="uid://urmhccf2d8yt" path="res://Scenes/Other/dummy.tres" id="2_ouqss"]
+[ext_resource type="FontFile" uid="uid://du62clawr6qeb" path="res://Fonts/TeenyTinyPixls.ttf" id="3_6q3js"]
+>>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lk4ub"]
 atlas = ExtResource("1_k7e7g")
@@ -49,6 +56,7 @@ base_font = ExtResource("3_6q3js")
 
 [node name="Dummy" type="Area2D"]
 script = ExtResource("1_lk4ub")
+stats = ExtResource("2_ouqss")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)

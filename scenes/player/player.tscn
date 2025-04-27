@@ -1,9 +1,16 @@
 [gd_scene load_steps=13 format=3 uid="uid://vntnhm8hh417"]
 
+<<<<<<< Updated upstream:scenes/player/player.tscn
 [ext_resource type="Script" uid="uid://bxp6ywaie312n" path="res://scripts/player/player.gd" id="1_n6db0"]
 [ext_resource type="Script" uid="uid://b723mfj5fb6uo" path="res://scripts/player/player_camera.gd" id="2_dewec"]
 [ext_resource type="Texture2D" uid="uid://ch5doy1f7lwy3" path="res://sprites/player/animations/player_walk.png" id="2_n6db0"]
 [ext_resource type="PackedScene" uid="uid://c8sms26cr4jl4" path="res://scenes/UI/inventory/inventory.tscn" id="3_gntrk"]
+=======
+[ext_resource type="Script" uid="uid://bxp6ywaie312n" path="res://Scripts/Player/player.gd" id="1_n6db0"]
+[ext_resource type="Script" uid="uid://b723mfj5fb6uo" path="res://Scenes/camera_2d.gd" id="2_dewec"]
+[ext_resource type="Texture2D" uid="uid://ch5doy1f7lwy3" path="res://Sprites/Player/Animations/PlayerWalk.png" id="2_n6db0"]
+[ext_resource type="PackedScene" uid="uid://c8sms26cr4jl4" path="res://Inventory/inventory.tscn" id="3_gntrk"]
+>>>>>>> Stashed changes:Scenes/Player.tscn
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yk4ok"]
 atlas = ExtResource("2_n6db0")
@@ -60,6 +67,7 @@ bg_color = Color(1, 0, 0.301961, 1)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(6, 6)
+collision_mask = 17
 script = ExtResource("1_n6db0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
