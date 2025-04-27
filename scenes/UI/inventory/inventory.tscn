@@ -1,21 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8sms26cr4jl4"]
 
-<<<<<<<< Updated upstream:scenes/UI/inventory/inventory.tscn
 [ext_resource type="PackedScene" uid="uid://64q4x6l64b2q" path="res://scenes/UI/inventory/slot.tscn" id="1_pohso"]
 [ext_resource type="Script" uid="uid://dgmj56gv6tmjv" path="res://scripts/UI/inventory/inventory.gd" id="1_psafj"]
 [ext_resource type="Resource" uid="uid://7erb52467wgc" path="res://resources/weapons/tier1/sword.tres" id="3_5tt2m"]
-========
-[ext_resource type="Script" uid="uid://dgmj56gv6tmjv" path="res://Inventory/inventory.gd" id="1_88mhb"]
-[ext_resource type="PackedScene" uid="uid://64q4x6l64b2q" path="res://Inventory/slot.tscn" id="2_2aw4r"]
-[ext_resource type="Resource" uid="uid://e8jec17g6tpx" path="res://Scenes/Resources/Materials/ruby.tres" id="3_spuu0"]
->>>>>>>> Stashed changes:Inventory/inventory.tscn6438454210.tmp
 
-[node name="Inventory" type="Control"]
+[node name="Inventory" type="Control" node_paths=PackedStringArray("hotbar", "grid")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_88mhb")
+script = ExtResource("1_psafj")
+hotbar = NodePath("UI/Hotbar")
+grid = NodePath("UI/GridContainer")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -38,42 +34,42 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 4
 
-[node name="Slot" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-item = ExtResource("3_spuu0")
+item = ExtResource("3_5tt2m")
 amount = 1
 
-[node name="Slot2" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot2" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot3" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot3" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot4" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot4" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot5" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot5" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot6" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot6" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot7" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot7" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot8" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot8" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot9" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot9" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot10" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot10" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot11" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot11" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot12" parent="UI/GridContainer" instance=ExtResource("2_2aw4r")]
+[node name="Slot12" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
 [node name="Hotbar" type="HBoxContainer" parent="UI"]
@@ -91,14 +87,14 @@ scale = Vector2(5, 5)
 pivot_offset = Vector2(32, 16)
 theme_override_constants/separation = 0
 
-[node name="Slot" parent="UI/Hotbar" instance=ExtResource("2_2aw4r")]
+[node name="Slot" parent="UI/Hotbar" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot2" parent="UI/Hotbar" instance=ExtResource("2_2aw4r")]
+[node name="Slot2" parent="UI/Hotbar" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot3" parent="UI/Hotbar" instance=ExtResource("2_2aw4r")]
+[node name="Slot3" parent="UI/Hotbar" instance=ExtResource("1_pohso")]
 layout_mode = 2
 
-[node name="Slot4" parent="UI/Hotbar" instance=ExtResource("2_2aw4r")]
+[node name="Slot4" parent="UI/Hotbar" instance=ExtResource("1_pohso")]
 layout_mode = 2
