@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var current_speed: int = 250
 @export var max_hp: int = 100
@@ -58,6 +59,16 @@ func take_damage(damage, is_critical):
 	if current_hp <= 0:
 		get_tree().change_scene_to_file("res://Scenes/UI/death_screen.tscn")
 	
+func pickup_item(item_drop: ItemDrop):
+	print("Picking up: ", item_drop.stack)
+	var remaining_stack = inventory.add_item(item_drop.stack)
+	if remaining_stack:
+		print("Inventory full, remaining stack: ", remaining_stack)
+		item_drop.stack = remaining_stack
+	else:
+		print("Item picked up successfully!")
+		item_drop.queue_free()
+		
 func _physics_process(_delta: float) -> void:
 	#print(current_hp)
 	_apply_velocity()

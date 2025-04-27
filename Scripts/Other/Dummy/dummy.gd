@@ -1,6 +1,9 @@
 extends Area2D
 
+@export var stats: EnemyStats
+
 var pop_up: PackedScene = preload("res://Scenes/UI/DamagePopUp.tscn")
+var item_drop : PackedScene = preload("res://Scenes/Resources/item_drop/item_drop.tscn")
 
 @onready var dps_label = $Dps
 var damage_history = []
@@ -46,8 +49,19 @@ func take_damage(damage, is_critical):
 	$AnimatedSprite2D.play('hit')
 	_add_to_damage_history(damage)
 	_create_damage_pop_up(damage, is_critical)
+	drop()
 	
-
+func drop() -> void:
+	if not stats or not stats.loot_table:
+		return
+		
+	var dropped_items = stats.loot_table.roll_loot()
+	for item_stack in dropped_items:
+		if item_stack and not item_stack.is_empty():
+			var drop_instance = item_drop.instantiate()
+			drop_instance.initialize(item_stack, global_position)
+			# Add to the current scene with proper layer
+			get_tree().current_scene.call_deferred("add_child", drop_instance)
 
 func _on_body_entered(body: Node2D) -> void:
 	body.take_damage(10,false)

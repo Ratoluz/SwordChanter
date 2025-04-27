@@ -4,12 +4,14 @@
 [ext_resource type="Script" uid="uid://dgmj56gv6tmjv" path="res://Scenes/UI/inventory/inventory.gd" id="1_psafj"]
 [ext_resource type="Resource" uid="uid://e8jec17g6tpx" path="res://Scenes/Resources/materials/ruby.tres" id="3_5tt2m"]
 
-[node name="Inventory" type="Control"]
+[node name="Inventory" type="Control" node_paths=PackedStringArray("hotbar", "grid")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_psafj")
+hotbar = NodePath("UI/Hotbar")
+grid = NodePath("UI/GridContainer")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -39,47 +41,36 @@ amount = 1
 
 [node name="Slot2" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot3" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot4" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot5" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot6" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot7" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot8" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot9" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot10" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot11" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot12" parent="UI/GridContainer" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Hotbar" type="HBoxContainer" parent="UI"]
 anchors_preset = 7
@@ -98,16 +89,12 @@ theme_override_constants/separation = 0
 
 [node name="Slot" parent="UI/Hotbar" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot2" parent="UI/Hotbar" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot3" parent="UI/Hotbar" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null
 
 [node name="Slot4" parent="UI/Hotbar" instance=ExtResource("1_pohso")]
 layout_mode = 2
-amount = null

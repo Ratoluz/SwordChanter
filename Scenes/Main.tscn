@@ -42,6 +42,8 @@ script = ExtResource("1_50glp")
 
 [node name="Player" parent="." instance=ExtResource("3_bmxlf")]
 position = Vector2(-3, 27)
+current_speed = null
+max_hp = null
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 z_index = -99

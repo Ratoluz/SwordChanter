@@ -1,12 +1,23 @@
 extends Control
+class_name Inventory
 
 signal inventory_opened
 signal inventory_closed
+signal inventory_updated
 
-@export var hotbar : HBoxContainer
-@export var grid : GridContainer
+@onready var hotbar : HBoxContainer
+@onready var grid : GridContainer = $UI/GridContainer
+var slots : Array[Slot] = []
 
 var is_open: bool = false
+
+func _ready():
+	slots = []
+	for child in grid.get_children():
+		if child is Slot:
+			slots.append(child)
+	for slot in slots:
+		slot.update_slot()
 
 func _input(event):
 	if event.is_action_pressed("inventory"):
@@ -20,3 +31,59 @@ func toggle_inventory():
 		emit_signal("inventory_opened")
 	else:
 		emit_signal("inventory_closed")
+
+func add_item(item_stack: ItemStack) -> ItemStack:
+	if not item_stack or item_stack.is_empty():
+		return null
+		
+	for slot in slots:
+		if slot.item == item_stack.item and slot.amount < ItemStack.max_count:
+			var remaining_space = ItemStack.max_count - slot.amount
+			var add_amount = min(remaining_space, item_stack.count)
+			slot.amount += add_amount
+			item_stack.count -= add_amount
+			slot.update_slot()
+			
+			if item_stack.count <= 0:
+				emit_signal("inventory_updated")
+				return null
+	
+	for slot in slots:
+		if slot.item == null:
+			slot.set_slot(item_stack.item, item_stack.count)
+			emit_signal("inventory_updated")
+			return null
+	
+	emit_signal("inventory_updated")
+	return item_stack
+
+
+func has_item(item: ItemStats, amount: int = 1) -> bool:
+	var total = 0
+	for slot in slots:
+		if slot.item == item:
+			total += slot.amount
+			if total >= amount:
+				return true
+	return false
+
+func remove_item(item: ItemStats, amount: int = 1) -> bool:
+	if not has_item(item, amount):
+		return false
+		
+	var remaining = amount
+	for slot in slots:
+		if slot.item == item:
+			var remove_amount = min(remaining, slot.amount)
+			slot.amount -= remove_amount
+			remaining -= remove_amount
+			
+			if slot.amount <= 0:
+				slot.clear_slot()
+				
+			if remaining <= 0:
+				emit_signal("inventory_updated")
+				return true
+				
+	emit_signal("inventory_updated")
+	return false
