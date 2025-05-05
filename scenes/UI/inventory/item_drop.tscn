@@ -8,7 +8,7 @@
 radius = 11.0
 
 [node name="ItemDrop" type="Node2D"]
-scale = Vector2(5, 5)
+z_index = 5
 script = ExtResource("1_g4j5n")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]

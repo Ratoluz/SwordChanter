@@ -59,7 +59,7 @@ func drop() -> void:
 	for item_stack in dropped_items:
 		if item_stack and not item_stack.is_empty():
 			var drop_instance = item_drop.instantiate()
-			drop_instance.initialize(item_stack, global_position)
+			drop_instance.initialize(item_stack, position)
 			# Add to the current scene with proper layer
 			get_tree().current_scene.call_deferred("add_child", drop_instance)
 

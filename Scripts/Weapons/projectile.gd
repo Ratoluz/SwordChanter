@@ -19,7 +19,6 @@ func initialize():
 		global_rotation = angle + deg_to_rad(45)
 	else:
 		global_rotation = angle + deg_to_rad(90)
-	print(rad_to_deg(angle))
 	timer = get_tree().create_timer(live_time)
 	timer.timeout.connect(die)
 func die():
