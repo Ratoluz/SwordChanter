@@ -72,6 +72,7 @@ text = "Dps:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

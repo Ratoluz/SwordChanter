@@ -19,7 +19,6 @@ scale = Vector2(6, 6)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="WeaponMenu" parent="CanvasLayer" instance=ExtResource("1_4rvhm")]
-visible = false
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 z_index = -99

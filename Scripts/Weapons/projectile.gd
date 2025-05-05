@@ -26,6 +26,7 @@ func die():
 	
 func _init() -> void:
 	area_shape_entered.connect(_on_area_shape_entered)
+	body_shape_entered.connect(_on_body_shape_entered)
 	
 func _move(delta):
 	var dir = Vector2(cos(angle), sin(angle))
@@ -39,6 +40,7 @@ func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int
 		area.take_damage(damage, is_critical)
 		queue_free()
 
-func _on_body_entered(body: Node2D) -> void:
-	body.take_damage(damage, is_critical)
-	queue_free()
+func _on_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+	if body.name == "Goblin":
+		body.take_damage(damage, is_critical)
+		queue_free()
