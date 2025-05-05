@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://biov7vqj040bx"
-path="res://.godot/imported/Goblinr.png-0a9462d02e8012c7b4464a207ba5f106.ctex"
+path="res://.godot/imported/Goblinr.png-06cc2009a55eb69be5cf32d8326d0235.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Resources/Weapons/Enemies/Goblinr.png"
-dest_files=["res://.godot/imported/Goblinr.png-0a9462d02e8012c7b4464a207ba5f106.ctex"]
+source_file="res://scenes/Resources/Weapons/Enemies/Goblinr.png"
+dest_files=["res://.godot/imported/Goblinr.png-06cc2009a55eb69be5cf32d8326d0235.ctex"]
 
 [params]
 

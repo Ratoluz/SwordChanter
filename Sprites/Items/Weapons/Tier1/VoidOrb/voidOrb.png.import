@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckwa168qdepct"
-path="res://.godot/imported/voidOrb.png-eff7f6b0f57115f9eaabdd2e7b064455.ctex"
+path="res://.godot/imported/voidOrb.png-a64d10a57431ffe3e26c84df9d605635.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Weapons/Tier1/VoidOrb/voidOrb.png"
-dest_files=["res://.godot/imported/voidOrb.png-eff7f6b0f57115f9eaabdd2e7b064455.ctex"]
+source_file="res://sprites/items/weapons/tier1/VoidOrb/voidOrb.png"
+dest_files=["res://.godot/imported/voidOrb.png-a64d10a57431ffe3e26c84df9d605635.ctex"]
 
 [params]
 

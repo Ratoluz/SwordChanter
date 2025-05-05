@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://ctdi4epxwspfx"]
 
-[ext_resource type="Texture2D" uid="uid://44gou4tnmhyj" path="res://Sprites/Decorations/dummy.png" id="1_k7e7g"]
-[ext_resource type="Script" uid="uid://cqcat8a2c2jy0" path="res://Scripts/Other/Dummy/dummy.gd" id="1_lk4ub"]
-[ext_resource type="Resource" uid="uid://sm4hec8dvj33" path="res://Scenes/Other/dummy_stats.tres" id="2_ouqss"]
-[ext_resource type="FontFile" uid="uid://du62clawr6qeb" path="res://Fonts/TeenyTinyPixls.ttf" id="3_6q3js"]
+[ext_resource type="Texture2D" uid="uid://44gou4tnmhyj" path="res://sprites/decorations/dummy.png" id="1_k7e7g"]
+[ext_resource type="Script" uid="uid://cqcat8a2c2jy0" path="res://scripts/other/Dummy/dummy.gd" id="1_lk4ub"]
+[ext_resource type="Resource" uid="uid://sm4hec8dvj33" path="res://scenes/other/dummy_stats.tres" id="2_ouqss"]
+[ext_resource type="FontFile" uid="uid://du62clawr6qeb" path="res://fonts/TeenyTinyPixls.ttf" id="3_6q3js"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lk4ub"]
 atlas = ExtResource("1_k7e7g")
@@ -53,23 +53,21 @@ script = ExtResource("1_lk4ub")
 stats = ExtResource("2_ouqss")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_s1pd3")
 animation = &"hit"
 frame_progress = 0.407006
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
-scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_k7e7g")
 
 [node name="Dps" type="Label" parent="."]
-offset_left = -145.0
-offset_top = -132.0
-offset_right = 151.0
-offset_bottom = -96.0
+offset_left = -26.0
+offset_top = -20.0
+offset_right = 25.0
+offset_bottom = -8.0
 theme_override_fonts/font = SubResource("FontVariation_ciorf")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 5
 text = "Dps:"
 horizontal_alignment = 1
 vertical_alignment = 1

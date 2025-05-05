@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnjm5sa0j5jat"
-path="res://.godot/imported/SwordProjectile.png-0477e6d3a95623e86867cb60b83cc92c.ctex"
+path="res://.godot/imported/SwordProjectile.png-1142eea7d0eb9807d862715f7d514233.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Weapons/Tier1/Sword/SwordProjectile.png"
-dest_files=["res://.godot/imported/SwordProjectile.png-0477e6d3a95623e86867cb60b83cc92c.ctex"]
+source_file="res://sprites/items/weapons/tier1/sword/SwordProjectile.png"
+dest_files=["res://.godot/imported/SwordProjectile.png-1142eea7d0eb9807d862715f7d514233.ctex"]
 
 [params]
 

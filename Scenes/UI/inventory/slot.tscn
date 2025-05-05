@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://64q4x6l64b2q"]
 
-[ext_resource type="Texture2D" uid="uid://c1m5esbxmilbu" path="res://Sprites/UI/IventorySlot.png" id="1_c24ra"]
-[ext_resource type="Script" uid="uid://bvr2sbjjyo0ud" path="res://Scenes/UI/inventory/slot.gd" id="2_khion"]
-[ext_resource type="FontFile" uid="uid://du62clawr6qeb" path="res://Fonts/TeenyTinyPixls.ttf" id="3_hiqfk"]
+[ext_resource type="Texture2D" uid="uid://c1m5esbxmilbu" path="res://sprites/UI/IventorySlot.png" id="1_c24ra"]
+[ext_resource type="Script" uid="uid://bvr2sbjjyo0ud" path="res://scenes/UI/inventory/slot.gd" id="2_khion"]
+[ext_resource type="FontFile" uid="uid://du62clawr6qeb" path="res://fonts/TeenyTinyPixls.ttf" id="3_hiqfk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_khion"]
 texture = ExtResource("1_c24ra")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dh550odxpk565"
-path="res://.godot/imported/go-line-1x.png-77f4b1946c621412e1aa978a35fb368e.ctex"
+path="res://.godot/imported/go-line-1x.png-df9044282465f8b0f8e3418cfbb1d474.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Palette/go-line-1x.png"
-dest_files=["res://.godot/imported/go-line-1x.png-77f4b1946c621412e1aa978a35fb368e.ctex"]
+source_file="res://sprites/palette/go-line-1x.png"
+dest_files=["res://.godot/imported/go-line-1x.png-df9044282465f8b0f8e3418cfbb1d474.ctex"]
 
 [params]
 

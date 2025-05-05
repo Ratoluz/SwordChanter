@@ -1,11 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dbafkfj527hpp"]
 
-[ext_resource type="Script" uid="uid://csjmpjuikylf6" path="res://Scripts/Weapons/Tier1/VoidOrb/voidorb.gd" id="1_hhe72"]
-[ext_resource type="Resource" uid="uid://cbtygw63hd7vb" path="res://Scenes/Resources/Weapons/Tier1/VoidOrb.tres" id="2_hhe72"]
-[ext_resource type="Texture2D" uid="uid://ckwa168qdepct" path="res://Sprites/Items/Weapons/Tier1/VoidOrb/voidOrb.png" id="3_x4ycb"]
+[ext_resource type="Script" uid="uid://csjmpjuikylf6" path="res://scripts/weapons/tier1/VoidOrb/voidorb.gd" id="1_hhe72"]
+[ext_resource type="Resource" uid="uid://cbtygw63hd7vb" path="res://scenes/Resources/Weapons/Tier1/VoidOrb.tres" id="2_hhe72"]
+[ext_resource type="Texture2D" uid="uid://ckwa168qdepct" path="res://sprites/items/weapons/tier1/VoidOrb/voidOrb.png" id="3_x4ycb"]
 
 [node name="Node2D" type="Node2D"]
-scale = Vector2(6, 6)
 script = ExtResource("1_hhe72")
 weapon_stats = ExtResource("2_hhe72")
 

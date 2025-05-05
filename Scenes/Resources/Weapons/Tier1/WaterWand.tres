@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="WeaponStats" load_steps=5 format=3 uid="uid://dh1w621awhgi1"]
 
-[ext_resource type="PackedScene" uid="uid://ccjfxqm5ecdd0" path="res://Scenes/Weapons/Tier1/WaterWand/waterWandProjectile.tscn" id="1_thvvn"]
-[ext_resource type="Script" uid="uid://fe45rlblpy50" path="res://Scripts/Weapons/weapon.gd" id="1_wstv2"]
-[ext_resource type="Script" uid="uid://gg0deibfccbj" path="res://Scripts/Resources/weapon_stats.gd" id="2_rga6u"]
-[ext_resource type="Texture2D" uid="uid://dyi7ueo71w3sg" path="res://Sprites/Items/Weapons/Tier1/WaterWand/WaterWand.png" id="3_rga6u"]
+[ext_resource type="PackedScene" uid="uid://ccjfxqm5ecdd0" path="res://scenes/weapons/tier1/WaterWand/waterWandProjectile.tscn" id="1_thvvn"]
+[ext_resource type="Script" uid="uid://fe45rlblpy50" path="res://scripts/weapons/weapon.gd" id="1_wstv2"]
+[ext_resource type="Script" uid="uid://gg0deibfccbj" path="res://scripts/resources/weapon_stats.gd" id="2_rga6u"]
+[ext_resource type="Texture2D" uid="uid://dyi7ueo71w3sg" path="res://sprites/items/weapons/tier1/WaterWand/WaterWand.png" id="3_rga6u"]
 
 [resource]
 script = ExtResource("2_rga6u")
@@ -11,7 +11,7 @@ custom_script = ExtResource("1_wstv2")
 damage = 1.0
 cooldown = 0.1
 projectile = ExtResource("1_thvvn")
-speed = 1000.0
+speed = 200.0
 critical_chance = 0.1
 critical_chance_multiplier = 2.0
 bullet_number = 1
@@ -19,7 +19,7 @@ live_time = 2.0
 rotate_sprite = true
 auto_swing = true
 spread = 12.0
-distance_from_player = 50.0
+distance_from_player = 7.0
 sprite = ExtResource("3_rga6u")
 item_name = "Water Wand"
 description = "Shoots sparkles of water"
