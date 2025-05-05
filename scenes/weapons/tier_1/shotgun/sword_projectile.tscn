@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu5x3wtcsry66"]
+
+[ext_resource type="Script" uid="uid://cpug0c7nt7ed1" path="res://scripts/weapons/projectile.gd" id="1_0o002"]
+[ext_resource type="Texture2D" uid="uid://byu732g85t0ou" path="res://sprites/items/weapons/tier1/shotgun/shotgun_projectile.png" id="2_vv5o3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqv7v"]
+size = Vector2(4, 6)
+
+[node name="SwordProjectile" type="Area2D"]
+script = ExtResource("1_0o002")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vv5o3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.80755e-07, -1.58946e-07)
+shape = SubResource("RectangleShape2D_yqv7v")

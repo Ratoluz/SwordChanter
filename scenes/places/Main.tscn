@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=4 uid="uid://dwqseoo600wbk"]
 
 [ext_resource type="Script" uid="uid://blhgla1fg323i" path="res://scripts/weapons/weapon_manager.gd" id="1_50glp"]
-[ext_resource type="PackedScene" uid="uid://dy5i1mi7qacia" path="res://scenes/weapons/WeaponArray.tscn" id="2_vy5pj"]
-[ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://scenes/Player.tscn" id="3_bmxlf"]
+[ext_resource type="PackedScene" uid="uid://dy5i1mi7qacia" path="res://scenes/weapons/weapon_array.tscn" id="2_vy5pj"]
+[ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://scenes/player/player.tscn" id="3_bmxlf"]
 [ext_resource type="Texture2D" uid="uid://c681d2qnudksg" path="res://sprites/tilemap/grass.png" id="4_4kpch"]
 [ext_resource type="Texture2D" uid="uid://yd6s8mqdo346" path="res://sprites/decorations/tabel.png" id="5_grg3l"]
 [ext_resource type="PackedScene" uid="uid://ctdi4epxwspfx" path="res://scenes/other/dummy.tscn" id="6_frkhe"]
@@ -44,8 +44,6 @@ script = ExtResource("1_50glp")
 [node name="Player" parent="." instance=ExtResource("3_bmxlf")]
 position = Vector2(-3, 27)
 scale = Vector2(1, 1)
-current_speed = null
-max_hp = null
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 z_index = -99
@@ -63,7 +61,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_2r4pp")
 
 [node name="Dummy" parent="." instance=ExtResource("6_frkhe")]
-position = Vector2(505, 0)
+position = Vector2(96, 17)
 
 [node name="Goblin" parent="." instance=ExtResource("9_vy5pj")]
 position = Vector2(-502, -139)

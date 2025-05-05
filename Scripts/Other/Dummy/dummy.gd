@@ -2,8 +2,8 @@ extends Area2D
 
 @export var stats: EnemyStats
 
-var pop_up: PackedScene = preload("res://Scenes/UI/DamagePopUp.tscn")
-var item_drop : PackedScene = preload("res://Scenes/Resources/item_drop/item_drop.tscn")
+var pop_up: PackedScene = preload("res://scenes/UI/damage_pop_up.tscn")
+var item_drop : PackedScene = preload("res://scenes/UI/inventory/item_drop.tscn")
 
 @onready var dps_label = $Dps
 var damage_history = []
@@ -38,12 +38,12 @@ func _process(_delta: float) -> void:
 
 func _create_damage_pop_up(damage, is_critical):
 	var temp_pop_up = pop_up.instantiate()
-	temp_pop_up.position = position + Vector2(0,-70)
+	temp_pop_up.position =  Vector2(0,-25)
 	var pop_up_node = temp_pop_up.get_child(0)
 	pop_up_node.text = str(damage)
 	if is_critical:
 		pop_up_node.add_theme_color_override("font_color", Color(1, 0, 0))
-	get_tree().root.add_child(temp_pop_up)
+	add_child(temp_pop_up)
 
 func take_damage(damage, is_critical):
 	$AnimatedSprite2D.play('hit')
@@ -63,5 +63,5 @@ func drop() -> void:
 			# Add to the current scene with proper layer
 			get_tree().current_scene.call_deferred("add_child", drop_instance)
 
-func _on_body_entered(body: Node2D) -> void:
-	body.take_damage(10,false)
+#func _on_body_entered(body: Node2D) -> void:
+	#body.take_damage(10,false)

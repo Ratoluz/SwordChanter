@@ -8,7 +8,7 @@ class_name Player
 @onready var inventory = $Inventory
 @onready var camera = $Camera2D
 
-var pop_up: PackedScene = preload("res://Scenes/UI/DamagePopUp.tscn")
+var pop_up: PackedScene = preload("res://scenes/UI/damage_pop_up.tscn")
 var screen_size
 var flipped: bool
 var can_move = true
