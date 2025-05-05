@@ -9,4 +9,4 @@ func _ready() -> void:
 func load_next_dungeon():
 	if len(dungeon_levels) - 1 > current_dungeon:
 		current_dungeon += 1
-		get_tree().change_scene_to_packed(dungeon_levels[current_dungeon])
+		get_tree().change_scene_to_packed(dungeon_levels[current_dungeon]) 

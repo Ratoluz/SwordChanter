@@ -1,8 +1,7 @@
-extends Area2D
+extends DamageTaker
 
 @export var stats: EnemyStats
 
-var pop_up: PackedScene = preload("res://scenes/UI/damage_pop_up.tscn")
 var item_drop : PackedScene = preload("res://scenes/UI/inventory/item_drop.tscn")
 
 @onready var dps_label = $Dps

@@ -24,8 +24,9 @@ var current_damage: float = damage
 var is_critical: bool = false
 var can_attack: bool = true
 
-func _set_custom_stats(stats):
+func _set_custom_stats(_stats):
 	pass
+	
 func set_stats(stats):
 	sprite = stats.sprite
 	$Sprite2D.texture = sprite
@@ -74,7 +75,7 @@ func attack():
 		
 		can_attack = true
 
-func _set_projectile_stats(tempProjectile):
+func _set_projectile_stats(_tempProjectile):
 	pass
 func _perform_attack():
 	_critical_damage()

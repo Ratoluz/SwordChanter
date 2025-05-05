@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dwqseoo600wbk"]
+[gd_scene load_steps=9 format=4 uid="uid://dwqseoo600wbk"]
 
 [ext_resource type="PackedScene" uid="uid://dmxf54t8ial7e" path="res://scenes/UI/WeaponMenu/menu.tscn" id="1_4rvhm"]
 [ext_resource type="TileSet" uid="uid://b3syij3w5ypsf" path="res://animations_and_tilesets/tileset.tres" id="3_q5a5b"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://scenes/player/player.tscn" id="6_d53s4"]
 [ext_resource type="Texture2D" uid="uid://yd6s8mqdo346" path="res://sprites/decorations/tabel.png" id="7_8hr41"]
 [ext_resource type="PackedScene" uid="uid://ctdi4epxwspfx" path="res://scenes/other/dummy.tscn" id="8_2tw74"]
-[ext_resource type="PackedScene" uid="uid://g2kr5y6da2w" path="res://scenes/enemies/goblin.tscn" id="9_0b3tm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2r4pp"]
 radius = 7.0
@@ -51,6 +50,3 @@ shape = SubResource("CapsuleShape2D_2r4pp")
 
 [node name="Dummy" parent="." instance=ExtResource("8_2tw74")]
 position = Vector2(100, 0)
-
-[node name="Goblin" parent="." instance=ExtResource("9_0b3tm")]
-position = Vector2(-100, 0)

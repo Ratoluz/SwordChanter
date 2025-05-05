@@ -30,7 +30,7 @@ func clear_slot():
 func can_accept_item(check_item: ItemStats) -> bool:
 	return item == null or (item == check_item and amount < ItemStack.max_count)
 
-func _get_drag_data(at_position):
+func _get_drag_data(_at_position):
 	if item == null:
 		return null
 
@@ -52,7 +52,7 @@ func _get_drag_data(at_position):
 		"source_slot": self
 	}
 
-func _can_drop_data(at_position, data):
+func _can_drop_data(_at_position, data):
 	# Only allow drops if the data contains valid item info
 	return data is Dictionary and data.has("item") and data.has("amount") and data.has("source_slot")
 

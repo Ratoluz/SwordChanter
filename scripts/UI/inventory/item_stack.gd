@@ -11,9 +11,9 @@ var item : ItemStats:
 		
 var count : int
 
-func _init(item: ItemStats, count: int = 0):
-	self.item = item
-	self.count = count
+func _init(some_item: ItemStats, some_count: int = 0):
+	self.item = some_item
+	self.count = some_count
 	
 func is_empty() -> bool:
 	return item == null

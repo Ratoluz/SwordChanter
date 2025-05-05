@@ -8,8 +8,9 @@ extends Camera2D
 
 var inventory: Node
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	follow_cursor()
+	
 func follow_cursor():
 	var pos = get_local_mouse_position() * 0.02
 	set_position(pos)

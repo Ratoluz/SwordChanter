@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://vntnhm8hh417"]
+[gd_scene load_steps=12 format=3 uid="uid://vntnhm8hh417"]
 
 [ext_resource type="Script" uid="uid://bxp6ywaie312n" path="res://scripts/player/player.gd" id="1_n6db0"]
 [ext_resource type="Script" uid="uid://b723mfj5fb6uo" path="res://scripts/player/camera_2d.gd" id="2_dewec"]
 [ext_resource type="Texture2D" uid="uid://ch5doy1f7lwy3" path="res://sprites/Player/animations/player_walk.png" id="2_n6db0"]
 [ext_resource type="PackedScene" uid="uid://c8sms26cr4jl4" path="res://scenes/UI/inventory/inventory.tscn" id="3_gntrk"]
+[ext_resource type="PackedScene" uid="uid://xpxg6ehx146j" path="res://scenes/player/damage_taker.tscn" id="5_p47bc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yk4ok"]
 atlas = ExtResource("2_n6db0")
@@ -52,12 +53,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cut1y"]
 size = Vector2(14, 16)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyqiw"]
-bg_color = Color(0, 0, 0, 0.988235)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gntrk"]
-bg_color = Color(1, 0, 0.301961, 1)
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_n6db0")
 
@@ -73,13 +68,6 @@ frame_progress = 0.287088
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cut1y")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -7.0
-offset_top = -14.0
-offset_right = 7.0
-offset_bottom = -10.0
-theme_override_styles/background = SubResource("StyleBoxFlat_kyqiw")
-theme_override_styles/fill = SubResource("StyleBoxFlat_gntrk")
-show_percentage = false
-
 [node name="Inventory" parent="." instance=ExtResource("3_gntrk")]
+
+[node name="DamageTaker" parent="." instance=ExtResource("5_p47bc")]
