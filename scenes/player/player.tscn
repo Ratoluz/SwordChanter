@@ -59,7 +59,6 @@ bg_color = Color(0, 0, 0, 0.988235)
 bg_color = Color(1, 0, 0.301961, 1)
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(6, 6)
 script = ExtResource("1_n6db0")
 
 [node name="Camera2D" type="Camera2D" parent="."]

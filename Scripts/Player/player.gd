@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var current_speed: int = 250
+@export var current_speed: int = 500
 @export var max_hp: int = 100
 @onready var current_hp: int = max_hp
 @onready var health_bar: ProgressBar = $HealthBar

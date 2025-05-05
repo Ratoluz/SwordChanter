@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b64dra8vtboso"]
+
+[ext_resource type="Script" uid="uid://dtcg3lvh5yq3c" path="res://scripts/dungeon_generator/dungeon_generator.gd" id="1_e0kq8"]
+[ext_resource type="Script" uid="uid://bl8a82vsajkmn" path="res://scripts/dungeon_generator/room_list.gd" id="2_nj83x"]
+[ext_resource type="Script" uid="uid://p5c0j742uq5l" path="res://scripts/dungeon_generator/minimap_displayer.gd" id="2_xm17j"]
+
+[node name="DungeonGenerator" type="Node2D"]
+script = ExtResource("1_e0kq8")
+
+[node name="RoomList" type="Node2D" parent="."]
+script = ExtResource("2_nj83x")
+
+[node name="MinimapDisplayer" type="Node2D" parent="."]
+script = ExtResource("2_xm17j")

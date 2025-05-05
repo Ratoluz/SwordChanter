@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
+Enums="*res://scripts/global/enums.gd"
+SceneManager="*res://scripts/global/scene_manager.gd"
 
 [display]
 

@@ -18,6 +18,7 @@ func _spawn_projectile(side):
 	var temp_projectile = projectile_2.instantiate()
 	$/root/Main.add_child(temp_projectile)
 	temp_projectile.position = position
+	print( rad_to_deg(rotation) )
 	temp_projectile.angle = deg_to_rad((projectile_2_angle + rad_to_deg(rotation) + 90) + side) 
 	temp_projectile.speed = speed
 	temp_projectile.damage = damage * critical_chance_multiplier
