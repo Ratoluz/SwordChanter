@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://dwqseoo600wbk"]
+[gd_scene load_steps=10 format=4 uid="uid://dwqseoo600wbk"]
 
 [ext_resource type="PackedScene" uid="uid://dmxf54t8ial7e" path="res://scenes/UI/WeaponMenu/menu.tscn" id="1_4rvhm"]
-[ext_resource type="Script" uid="uid://cgih2nhhm6sox" path="res://scripts/UI/weapon_menu_creator.gd" id="2_rhay1"]
 [ext_resource type="TileSet" uid="uid://b3syij3w5ypsf" path="res://animations_and_tilesets/tileset.tres" id="3_q5a5b"]
 [ext_resource type="Script" uid="uid://blhgla1fg323i" path="res://scripts/weapons/weapon_manager.gd" id="4_t5hy0"]
 [ext_resource type="PackedScene" uid="uid://dy5i1mi7qacia" path="res://scenes/weapons/weapon_array.tscn" id="5_wbcfw"]
@@ -21,11 +20,6 @@ scale = Vector2(6, 6)
 
 [node name="WeaponMenu" parent="CanvasLayer" instance=ExtResource("1_4rvhm")]
 visible = false
-offset_left = 73.0
-offset_top = 158.0
-offset_right = 637.0
-offset_bottom = 722.0
-script = ExtResource("2_rhay1")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 z_index = -99
@@ -41,7 +35,7 @@ script = ExtResource("4_t5hy0")
 
 [node name="Timer" type="Timer" parent="WeaponManager"]
 
-[node name="WeaponArray" parent="WeaponManager" instance=ExtResource("5_wbcfw")]
+[node name="WeaponList" parent="WeaponManager" instance=ExtResource("5_wbcfw")]
 
 [node name="Player" parent="." instance=ExtResource("6_d53s4")]
 position = Vector2(-3, 27)
@@ -61,4 +55,3 @@ position = Vector2(100, 0)
 
 [node name="Goblin" parent="." instance=ExtResource("9_0b3tm")]
 position = Vector2(-100, 0)
-scale = Vector2(1, 1)

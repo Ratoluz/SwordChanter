@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cicr4g0l3hasm"]
+[gd_scene load_steps=5 format=3 uid="uid://cicr4g0l3hasm"]
 
 [ext_resource type="PackedScene" uid="uid://b64dra8vtboso" path="res://scenes/dungeon_generator/dungeon_generator.tscn" id="1_cr43l"]
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://scenes/player/player.tscn" id="2_kcu5y"]
+[ext_resource type="PackedScene" uid="uid://dmxf54t8ial7e" path="res://scenes/UI/WeaponMenu/menu.tscn" id="2_vf4mh"]
+[ext_resource type="PackedScene" uid="uid://btykco3oexbsl" path="res://scenes/weapons/weapon_manager.tscn" id="4_uwjar"]
 
 [node name="Main" type="Node2D"]
 scale = Vector2(6, 6)
 
 [node name="DungeonGenerator" parent="." instance=ExtResource("1_cr43l")]
+
+[node name="Player" parent="." instance=ExtResource("2_kcu5y")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -14,4 +18,6 @@ scale = Vector2(6, 6)
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Player" parent="." instance=ExtResource("2_kcu5y")]
+[node name="TextureRect" parent="CanvasLayer" instance=ExtResource("2_vf4mh")]
+
+[node name="WeaponManager" parent="." instance=ExtResource("4_uwjar")]

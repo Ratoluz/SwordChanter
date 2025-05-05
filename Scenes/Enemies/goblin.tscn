@@ -49,7 +49,6 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(1, 0, 0.301961, 1)
 
 [node name="Goblin" type="CharacterBody2D"]
-scale = Vector2(6, 6)
 script = ExtResource("1_dnqii")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

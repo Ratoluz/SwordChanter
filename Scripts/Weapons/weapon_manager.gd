@@ -11,7 +11,7 @@ var weapon_array: Node
 
 func _ready() -> void:
 	player = $/root/Main/Player
-	weapon_array = $WeaponArray
+	weapon_array = $WeaponList
 	weapon_array.load_weapon_stats()
 	weapon_array.load_weapon_scenes()
 	equip_weapon('Sword')
