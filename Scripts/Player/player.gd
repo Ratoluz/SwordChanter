@@ -1,6 +1,9 @@
 class_name Player
 extends CharacterBody2D
 
+var max_health: float = 100
+var current_health: float
+@onready var health_bar = $"/root/Main/CanvasLayer/HealthBar"
 @export var current_speed: int = 500
 @onready var inventory = $Inventory
 @onready var camera = $Camera2D
@@ -11,6 +14,9 @@ var can_move = true
 var zoom_amount = Vector2(0.7, 0.7)
 
 func _ready() -> void:
+	current_health = max_health
+	health_bar.max_value = max_health
+	health_bar.value = current_health
 	screen_size = get_viewport_rect().size
 	$AnimatedSprite2D.play("idle")
 	inventory.inventory_opened.connect(_on_inventory_opened)
@@ -63,5 +69,8 @@ func _on_inventory_closed():
 	can_move = true
 	Engine.time_scale = 1.0
 	
-func take_damage(damage, is_critical):
-	print('ałaa')
+func take_damage(damage):
+	current_health -= damage
+	if current_health <= 0:
+		SceneManager.death()
+	health_bar.value = current_health
