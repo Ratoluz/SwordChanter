@@ -13,4 +13,5 @@ func load_next_dungeon():
 		get_tree().change_scene_to_packed(dungeon_levels[current_dungeon]) 
 
 func death():
+	current_dungeon = -1
 	get_tree().change_scene_to_packed(first_scene)

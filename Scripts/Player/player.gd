@@ -72,5 +72,5 @@ func _on_inventory_closed():
 func take_damage(damage):
 	current_health -= damage
 	if current_health <= 0:
-		SceneManager.death()
+		SceneManager.call_deferred("death")
 	health_bar.value = current_health
