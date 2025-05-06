@@ -1,8 +1,7 @@
-extends CharacterBody2D
 class_name Player
+extends CharacterBody2D
 
 @export var current_speed: int = 500
-
 @onready var inventory = $Inventory
 @onready var camera = $Camera2D
 
@@ -16,6 +15,16 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("idle")
 	inventory.inventory_opened.connect(_on_inventory_opened)
 	inventory.inventory_closed.connect(_on_inventory_closed)
+	
+func _physics_process(_delta: float) -> void:
+	#print(current_hp)
+	_apply_velocity()
+	if can_move:
+		move_and_slide()
+		_flip()
+		_play_anims()
+	else:
+		$AnimatedSprite2D.play("idle")
 
 func _apply_velocity():
 	var input_direction = Input.get_vector('Move_Left', 'Move_Right', 'Move_Up', 'Move_Down')
@@ -45,16 +54,6 @@ func pickup_item(item_drop: ItemDrop):
 	else:
 		print("Item picked up successfully!")
 		item_drop.queue_free()
-		
-func _physics_process(_delta: float) -> void:
-	#print(current_hp)
-	_apply_velocity()
-	if can_move:
-		move_and_slide()
-		_flip()
-		_play_anims()
-	else:
-		$AnimatedSprite2D.play("idle")
 
 func _on_inventory_opened():
 	can_move = false
@@ -63,3 +62,6 @@ func _on_inventory_opened():
 func _on_inventory_closed():
 	can_move = true
 	Engine.time_scale = 1.0
+	
+func take_damage(damage, is_critical):
+	print('ałaa')

@@ -75,19 +75,23 @@ func attack():
 		
 		can_attack = true
 
-func _set_projectile_stats(_tempProjectile):
+func _set_projectile_stats(temp_projectile):
+	temp_projectile.position = weapon_manager.player.position
+	temp_projectile.angle = weapon_manager.angle 
+	temp_projectile.speed = speed
+	temp_projectile.damage = current_damage
+	temp_projectile.is_critical = is_critical
+	temp_projectile.spread = spread
+	temp_projectile.live_time = live_time
+	temp_projectile.rotate_sprite = rotate_sprite
+	_set_projectile_stats_custom(temp_projectile)
+	
+func _set_projectile_stats_custom(temp_projectile):
 	pass
+
 func _perform_attack():
 	_critical_damage()
-	var tempProjectile = projectile.instantiate()
-	weapon_manager.add_child(tempProjectile)
-	tempProjectile.position = weapon_manager.player.position
-	tempProjectile.angle = weapon_manager.angle 
-	tempProjectile.speed = speed
-	tempProjectile.damage = current_damage
-	tempProjectile.is_critical = is_critical
-	tempProjectile.spread = spread
-	tempProjectile.live_time = live_time
-	tempProjectile.rotate_sprite = rotate_sprite
-	_set_projectile_stats(tempProjectile)
-	tempProjectile.initialize()
+	var temp_projectile = projectile.instantiate()
+	weapon_manager.add_child(temp_projectile)
+	_set_projectile_stats(temp_projectile)
+	temp_projectile.initialize()
