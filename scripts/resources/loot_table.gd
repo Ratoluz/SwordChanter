@@ -16,11 +16,8 @@ func roll_loot() -> Array[ItemStack]:
 	if weights.is_empty():
 		return items
 	
-	var rng := RandomNumberGenerator.new()
-	rng.randomize()
-	
 	for i in roll_times:
-		var index := rng.randi_range(0, weights.size() - 1)  # Simple random selection
+		var index := randi_range(0, weights.size() - 1)  # Simple random selection
 		var roll : ItemRoll = item_rolls[index]
 		if roll and roll.item:
 			items.append(ItemStack.new(roll.item, roll.amount))

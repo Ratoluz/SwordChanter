@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://cpxb51ywtpok0"]
+
+[ext_resource type="Resource" uid="uid://cghm3pxufekmq" path="res://resources/enemies/goblin_loot.tres" id="1_8t8dg"]
+[ext_resource type="Script" uid="uid://clrbaw8y5nyjp" path="res://scripts/resources/enemy_stats.gd" id="2_bxi3o"]
+
+[resource]
+script = ExtResource("2_bxi3o")
+max_health = 10.0
+speed = 70.0
+loot_table = ExtResource("1_8t8dg")
+damage = 10.0
+cooldown = 4.0
+projectile_speed = 500.0
+bullet_number = 1
+spread = 0.0
+live_time = 2.0
+metadata/_custom_type_script = "uid://clrbaw8y5nyjp"

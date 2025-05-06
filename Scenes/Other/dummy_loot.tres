@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgkgfa4lnryt4" path="res://scripts/resources/item_roll.gd" id="1_ggq65"]
 [ext_resource type="Resource" uid="uid://e8jec17g6tpx" path="res://resources/materials/ruby.tres" id="2_y12iv"]
-[ext_resource type="Script" uid="uid://cf8whem3tb58q" path="res://scripts/UI/inventory/loot_table.gd" id="3_d2eng"]
+[ext_resource type="Script" uid="uid://cf8whem3tb58q" path="res://scripts/resources/loot_table.gd" id="3_d2eng"]
 
 [sub_resource type="Resource" id="Resource_ggq65"]
 script = ExtResource("1_ggq65")

@@ -3,6 +3,7 @@ extends DamageTaker
 
 @export var stats: EnemyStats
 var projectile: PackedScene = preload('res://scenes/enemies/enemy_projectile.tscn')
+var current_hp: int 
 var max_hp: int 
 var speed: float 
 var damage: float 
@@ -14,12 +15,16 @@ var spread: float
 
 var died := false
 var room
+var flipped := false
+
 @onready var target = $"/root/Main/Player"
 @onready var weapon_manager = $/root/Main/WeaponManager
 @onready var health_bar: ProgressBar = $HealthBar
-@onready var current_hp: int = max_hp
 @onready var agent: NavigationAgent2D = $"NavigationAgent2D"
 @onready var shoot_cooldown: Timer = $"ShootCooldown"
+@onready var animator: AnimatedSprite2D = $"AnimatedSprite2D"
+
+var item_drop : PackedScene = preload("res://scenes/UI/inventory/item_drop.tscn")
 
 func _ready() -> void:
 	set_stats(stats)
@@ -32,10 +37,28 @@ func _ready() -> void:
 	shoot_cooldown.start()
 
 func _physics_process(_delta):
+	_flip()
+	_follow_target()
+
+func _follow_target():
 	agent.target_position = target.global_position
 	var direction = global_position.direction_to(agent.get_next_path_position())
 	velocity = direction * speed
 	move_and_slide()
+	
+func shoot():
+	var temp_projectile = projectile.instantiate()
+	weapon_manager.add_child(temp_projectile)
+	_set_projectile_stats(temp_projectile)
+	
+func _flip():
+	if not animator.flip_h and velocity.x < 0:
+		animator.flip_h = true
+		flipped = true
+		return
+	if animator.flip_h and velocity.x > 0:
+		animator.flip_h = false
+		flipped = false
 
 func take_damage(damage, is_critical):
 	current_hp -= damage
@@ -43,13 +66,9 @@ func take_damage(damage, is_critical):
 	_create_damage_pop_up(damage, is_critical)
 	if current_hp <= 0 and not died:
 		died = true
+		drop()
 		room.on_enemy_death()
 		queue_free()
-
-func shoot():
-	var temp_projectile = projectile.instantiate()
-	weapon_manager.add_child(temp_projectile)
-	_set_projectile_stats(temp_projectile)
 
 func _set_projectile_stats(temp_projectile):
 	temp_projectile.position = global_position / 6 
@@ -65,6 +84,8 @@ func _set_projectile_stats_custom(temp_projectile):
 	pass
 	
 func set_stats(stats):
+	max_hp = stats.max_health
+	current_hp = stats.max_health
 	damage = stats.damage
 	cooldown = stats.cooldown
 	speed = stats.speed
@@ -75,3 +96,14 @@ func set_stats(stats):
 	
 func _set_custom_stats(_stats):
 	pass
+	
+func drop() -> void:
+	if not stats or not stats.loot_table:
+		return
+	var dropped_items = stats.loot_table.roll_loot()
+	for item_stack in dropped_items:
+		if item_stack and not item_stack.is_empty():
+			var drop_instance = item_drop.instantiate()
+			drop_instance.initialize(item_stack, global_position / 6)
+			# Add to the current scene with proper layer
+			get_tree().current_scene.call_deferred("add_child", drop_instance)
