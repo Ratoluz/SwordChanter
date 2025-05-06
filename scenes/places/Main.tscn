@@ -83,8 +83,3 @@ shape = SubResource("CapsuleShape2D_2r4pp")
 
 [node name="Dummy" parent="." instance=ExtResource("8_2tw74")]
 position = Vector2(100, 0)
-
-[connection signal="body_shape_entered" from="Tilemap/HitBoxes/Area2D" to="Tilemap/HitBoxes/Area2D" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@96221" to="Tilemap/HitBoxes/@Area2D@96221" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@96222" to="Tilemap/HitBoxes/@Area2D@96222" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@96223" to="Tilemap/HitBoxes/@Area2D@96223" method="_on_body_shape_entered"]
