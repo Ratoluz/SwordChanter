@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=4 uid="uid://bm5bki5473say"]
+[gd_scene load_steps=3 format=4 uid="uid://bm5bki5473say"]
 
+[ext_resource type="NavigationPolygon" uid="uid://l3yi0kpvvhtk" path="res://animations_and_tilesets/room_navigation_template.tres" id="1_k2mi0"]
 [ext_resource type="TileSet" uid="uid://b3syij3w5ypsf" path="res://animations_and_tilesets/tileset.tres" id="1_p1up3"]
 
-[node name="Room" type="Node2D"]
+[node name="Room" type="NavigationRegion2D"]
+navigation_polygon = ExtResource("1_k2mi0")
+use_edge_connections = false
 
 [node name="Floor" type="TileMapLayer" parent="."]
 z_index = -11

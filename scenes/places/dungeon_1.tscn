@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cicr4g0l3hasm"]
 
-[ext_resource type="PackedScene" uid="uid://b64dra8vtboso" path="res://Scenes/dungeon_generator/dungeon_generator.tscn" id="1_cr43l"]
+[ext_resource type="PackedScene" uid="uid://b64dra8vtboso" path="res://scenes/dungeon_generator/dungeon_generator.tscn" id="1_cr43l"]
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://scenes/player/player.tscn" id="2_kcu5y"]
 [ext_resource type="PackedScene" uid="uid://dmxf54t8ial7e" path="res://scenes/UI/WeaponMenu/menu.tscn" id="2_vf4mh"]
 [ext_resource type="PackedScene" uid="uid://btykco3oexbsl" path="res://scenes/weapons/weapon_manager.tscn" id="4_uwjar"]
@@ -9,6 +9,16 @@
 scale = Vector2(6, 6)
 
 [node name="DungeonGenerator" parent="." instance=ExtResource("1_cr43l")]
+max_num_rooms = 14
+min_num_rooms = 14
+chance_for_room = 0.6
+max_x_grid = 3
+min_x_grid = -3
+max_y_grid = 3
+min_y_grid = -3
+min_chest_room_num = 2
+max_chest_room_num = 2
+min_end_rooms = 3
 
 [node name="Player" parent="." instance=ExtResource("2_kcu5y")]
 

@@ -118,7 +118,7 @@ func _assign_final_room_values():
 	_assign_room_types()
 	for key in rooms:
 		rooms[key].cords = key
-		rooms[key].status = Enums.RoomStatus.UNSEEN
+		rooms[key].status = Enums.RoomStatus.UNEXPLORED
 		rooms[key].level = room_level
 		rooms[key].position = Vector2i(key.x * room_width, key.y * room_height) 
 		rooms[key].instantiate_interior()

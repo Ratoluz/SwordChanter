@@ -68,3 +68,7 @@ offset_bottom = -9.5
 theme_override_styles/background = SubResource("StyleBoxFlat_5ec5f")
 theme_override_styles/fill = SubResource("StyleBoxFlat_v3y8l")
 show_percentage = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 2.0
+target_desired_distance = 2.0
