@@ -1,10 +1,15 @@
 [gd_scene load_steps=3 format=4 uid="uid://bm5bki5473say"]
 
-[ext_resource type="NavigationPolygon" uid="uid://l3yi0kpvvhtk" path="res://animations_and_tilesets/room_navigation_template.tres" id="1_k2mi0"]
 [ext_resource type="TileSet" uid="uid://b3syij3w5ypsf" path="res://animations_and_tilesets/tileset.tres" id="1_p1up3"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_41gfi"]
+vertices = PackedVector2Array(95, 79, 209, 145, -209, 145, 1, 79, -1, 79, -95, 79, 95, 15, 209, -145, 95, 17, 95, -79, -209, -145, 1, -79, -95, -15, -1, -17, 1, -17, -1, 17, -1, -79, -95, -79, 33, -17, 33, 15, 1, 17, -33, 17, -33, -15, -95, -17)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2), PackedInt32Array(5, 4, 2), PackedInt32Array(6, 7, 1, 8), PackedInt32Array(7, 6, 9), PackedInt32Array(10, 7, 9, 11), PackedInt32Array(5, 2, 10, 12), PackedInt32Array(13, 11, 14, 15), PackedInt32Array(11, 13, 16), PackedInt32Array(10, 11, 16), PackedInt32Array(10, 16, 17), PackedInt32Array(15, 14, 18, 19, 20), PackedInt32Array(20, 3, 4, 15), PackedInt32Array(15, 21, 22, 13), PackedInt32Array(10, 17, 23), PackedInt32Array(12, 10, 23), PackedInt32Array(12, 23, 13, 22), PackedInt32Array(8, 20, 19, 6), PackedInt32Array(8, 1, 0)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-224, -160, -224, 160, 224, 160, 224, -160)])
+agent_radius = 15.0
+
 [node name="Room" type="NavigationRegion2D"]
-navigation_polygon = ExtResource("1_k2mi0")
+navigation_polygon = SubResource("NavigationPolygon_41gfi")
 use_edge_connections = false
 
 [node name="Floor" type="TileMapLayer" parent="."]
