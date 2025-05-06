@@ -1,6 +1,7 @@
 class_name Projectile
 extends Area2D
 
+@onready var death_timer: Timer = $"DeathTimer"
 var angle
 var speed: float
 var damage: float

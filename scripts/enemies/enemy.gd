@@ -48,9 +48,9 @@ func take_damage(damage, is_critical):
 
 func shoot():
 	var temp_projectile = projectile.instantiate()
-	_set_projectile_stats(temp_projectile)
 	weapon_manager.add_child(temp_projectile)
-	
+	_set_projectile_stats(temp_projectile)
+
 func _set_projectile_stats(temp_projectile):
 	temp_projectile.position = global_position / 6 
 	temp_projectile.angle =  global_position.direction_to(target.global_position).angle()
@@ -58,6 +58,7 @@ func _set_projectile_stats(temp_projectile):
 	temp_projectile.damage = damage
 	temp_projectile.spread = spread
 	temp_projectile.live_time = live_time
+	temp_projectile.initialize()
 	_set_projectile_stats_custom(temp_projectile)
 	
 func _set_projectile_stats_custom(temp_projectile):
