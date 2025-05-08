@@ -43,11 +43,7 @@ func _ready() -> void:
 	shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
 	
 	shoot_cooldown.timeout.connect(shoot)
-	shoot_cooldown.start()
-	shoot_cooldown.paused = true
 	pick_random_pos_cooldown.timeout.connect(_pick_random_pos)
-	pick_random_pos_cooldown.start()
-	pick_random_pos_cooldown.paused = true
 	flip_cooldown.timeout.connect(_on_filp_cooldown_timeout)
 	
 	agent.avoidance_enabled = true  # Turns on RVO
@@ -145,23 +141,24 @@ func _on_state_chase():
 
 func _on_state_walk_around():
 	_follow_target(rand_pos)
-	print(pick_random_pos_cooldown.paused)
 
 # State Transitions
 func _to_walk_around():
 	_pick_random_pos()
-	pick_random_pos_cooldown.paused = false
-	shoot_cooldown.paused = false
+	pick_random_pos_cooldown.start()
+	pick_random_pos_cooldown.wait_time = randf_range(0.5,0.6)
+	shoot_cooldown.start()
+	shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
 	state = EnemyState.WALK_AROUND
 	shoot()
+	print('WALK AROUND!')
 func _from_walk_around():
-	pick_random_pos_cooldown.paused = true
-	pick_random_pos_cooldown.wait_time = randf_range(0.5,0.6)
-	shoot_cooldown.paused = true
-	shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
+	pick_random_pos_cooldown.stop()
+	shoot_cooldown.stop()
 
 func _to_chase():
 	state = EnemyState.CHASE
+	print('chase')
 func _from_chase():
 	pass
 	
