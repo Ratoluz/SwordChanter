@@ -203,6 +203,7 @@ func _set_can_see_player():
 	if raycast.is_colliding():
 		for i in raycast.get_collision_count():
 			var collider = raycast.get_collider(i)
+			print(i)
 			if collider.name == "Obstacles" or collider.get_node("../").name == "RoomWalls":
 				can_see_player = false
 				label.text = "NOT"
@@ -211,7 +212,7 @@ func _set_can_see_player():
 	can_see_player = true
 	label.text = "SEE"
 	raycast_cooldown.start()
-	raycast_cooldown.start()
+
 func is_point_in_navigation_area(point: Vector2) -> bool:
 	var region_rid = nav_area.get_region_rid()
 	var map_rid = NavigationServer2D.region_get_map(region_rid)
