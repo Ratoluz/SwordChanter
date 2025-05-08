@@ -33,7 +33,7 @@ var can_see_player: bool
 @onready var animator: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var raycast := $"RayCast"
 @onready var nav_area := $"../../"
-@onready var label := $"Label"
+#@onready var label := $"Label"
 var item_drop : PackedScene = preload("res://scenes/UI/inventory/item_drop.tscn")
 
 func _ready() -> void:
@@ -206,11 +206,11 @@ func _set_can_see_player():
 			print(i)
 			if collider.name == "Obstacles" or collider.get_node("../").name == "RoomWalls":
 				can_see_player = false
-				label.text = "NOT"
+				#label.text = "NOT"
 				raycast_cooldown.start()
 				return
 	can_see_player = true
-	label.text = "SEE"
+	#label.text = "SEE"
 	raycast_cooldown.start()
 
 func is_point_in_navigation_area(point: Vector2) -> bool:

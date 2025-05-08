@@ -92,10 +92,3 @@ wait_time = 0.3
 [node name="RayCast" type="ShapeCast2D" parent="."]
 shape = SubResource("RectangleShape2D_fydqd")
 target_position = Vector2(100, 100)
-
-[node name="Label" type="Label" parent="."]
-offset_left = -19.0
-offset_top = -29.0
-offset_right = 21.0
-offset_bottom = -6.0
-text = "state"
