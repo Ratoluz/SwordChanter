@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-var max_health: float = 100
+var max_health: float = 10000 
 var current_health: float
 @onready var health_bar = $"/root/Main/CanvasLayer/HealthBar"
 @export var current_speed: int = 500
