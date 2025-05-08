@@ -22,7 +22,7 @@ tile_map_data = PackedByteArray("AAD5/wUAAAACAAUAAAD3/wUAAAAAAAUAAAD4/wUAAAABAAU
 tile_set = ExtResource("1_wawtl")
 
 [node name="Enemies" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD9/wAAAgAAAAAAAQD+/wIAAgAAAAAAAQABAP//AgAAAAAAAQD//wAAAgAAAAAAAQAAAAMAAgAAAAAAAQD+//7/AgAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAD//wAAAgAAAAAAAQD9/wEAAgAAAAAAAQD//wMAAgAAAAAAAQABAAEAAgAAAAAAAQD9//7/AgAAAAAAAQABAP7/AgAAAAAAAQA=")
 enabled = false
 tile_set = ExtResource("1_wawtl")
 

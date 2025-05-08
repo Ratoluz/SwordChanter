@@ -1,8 +1,8 @@
 class_name Enemy
 extends DamageTaker
 
-enum EnemyState {CHASE, FLEE, WALK_AROUND}
-
+enum EnemyState {CHASE, SNEAK_ATTACK, WALK_AROUND}
+var debug = preload("res://debug_object.tscn")
 @export var stats: EnemyStats
 var projectile: PackedScene = preload('res://scenes/enemies/enemy_projectile.tscn')
 var current_hp: int 
@@ -34,6 +34,7 @@ var can_see_player: bool
 @onready var animator: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var raycast := $"RayCast2D"
 @onready var raycast2 := $"RayCast2D2"
+@onready var nav_area := $"../../"
 var item_drop : PackedScene = preload("res://scenes/UI/inventory/item_drop.tscn")
 
 func _ready() -> void:
@@ -45,11 +46,11 @@ func _ready() -> void:
 	shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
 	
 	shoot_cooldown.timeout.connect(shoot)
-	pick_random_pos_cooldown.timeout.connect(_pick_random_pos)
+	#pick_random_pos_cooldown.timeout.connect(_pick_random_pos)
 	flip_cooldown.timeout.connect(_on_filp_cooldown_timeout)
 	
 	agent.avoidance_enabled = true  # Turns on RVO
-	agent.radius = 70.0  # Set collision radius (adjust based on sprite size)
+	agent.radius = 50.0  # Set collision radius (adjust based on sprite size)
 	agent.neighbor_distance = 1000.0  # How far to check for other agents
 	agent.max_neighbors = 5  # Max agents to avoid at once
 
@@ -134,29 +135,35 @@ func _enemy_AI():
 	match state:
 		EnemyState.CHASE:
 			_on_state_chase()
-			_chase_to_walk_around()
 		EnemyState.WALK_AROUND:
 			_on_state_walk_around()
-			_walk_around_to_chase()
+
 # State Behavoiurs
 func _on_state_chase():
 	_follow_target(target.global_position)
+	var dist_to_player = global_position.distance_to(target.global_position)
+	if dist_to_player < 700 and can_see_player:
+		_to_walk_around()
+		_from_chase()
 
 func _on_state_walk_around():
+	if agent.is_navigation_finished():
+		_pick_random_pos()
 	_follow_target(rand_pos)
-
+	var dist_to_player = global_position.distance_to(target.global_position)
+	if dist_to_player > 700 or not can_see_player:
+		_to_chase()
+		_from_walk_around()
+		
 # State Transitions
 func _to_walk_around():
 	_pick_random_pos()
-	pick_random_pos_cooldown.start()
-	pick_random_pos_cooldown.wait_time = randf_range(0.5,0.6)
 	shoot_cooldown.start()
 	shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
 	state = EnemyState.WALK_AROUND
-	shoot()
 	print('WALK AROUND!')
+	
 func _from_walk_around():
-	pick_random_pos_cooldown.stop()
 	shoot_cooldown.stop()
 	
 func _to_chase():
@@ -164,36 +171,35 @@ func _to_chase():
 	print('chase')
 func _from_chase():
 	pass
-	
-# ------------------------------	
-func _chase_to_walk_around():
-	var dist_to_player = global_position.distance_to(target.global_position)
-	
-	if dist_to_player < 700 and can_see_player:
-		_to_walk_around()
-		_from_chase()
-		
-func _walk_around_to_chase():
-	var dist_to_player = global_position.distance_to(target.global_position)
-	if dist_to_player > 700 or not can_see_player:
-		_to_chase()
-		_from_walk_around()
-		
+
 # State Actions
-func _calculate_random_pos(distance, deviation):
-	var dir = global_position.direction_to(target.global_position).angle()
+func _calculate_random_pos(angle, distance, deviation):
+	var dir = angle
 	var pos = target.global_position - Vector2(cos(dir) * distance, sin(dir) * distance)
 	var random_pos = Vector2(randi_range(-deviation, deviation) + pos.x, randi_range(-deviation, deviation) + pos.y)
 	return random_pos  
 	
 func _pick_random_pos():
-	rand_pos = _calculate_random_pos(500, 70) 
-	if not _can_see_player_from_pos(rand_pos):
-		rand_pos = _calculate_random_pos(60, 20) 
-		print('asa')
-		pick_random_pos_cooldown.wait_time = randf_range(4.5,4.6)
-		return
-	pick_random_pos_cooldown.wait_time = randf_range(0.5,0.6)
+	for x in range(3):
+		var pos = _calculate_random_pos(global_position.direction_to(target.global_position).angle(), 400, 200) 
+		print(is_point_in_navigation_area(pos))
+		if _can_see_player_from_pos(pos) and is_point_in_navigation_area(pos):
+			rand_pos = pos
+			#var temp_debug = debug.instantiate()
+			#weapon_manager.add_child(temp_debug)
+			#temp_debug.global_position = pos
+			return
+	for i in range(3):
+		var pos = _calculate_random_pos(deg_to_rad(randi_range(0,360)), 400, 200)
+		if _can_see_player_from_pos(pos) and is_point_in_navigation_area(pos):
+			rand_pos = pos
+			return
+	for i in range(3):
+		var pos = _calculate_random_pos(deg_to_rad(randi_range(0,360)), 100, 40)
+		#pos = Vector2(10000,10000)
+		if _can_see_player_from_pos(pos) and is_point_in_navigation_area(pos):
+			rand_pos = pos
+			return
 
 func _follow_target(pos):
 	agent.target_position = pos
@@ -231,3 +237,8 @@ func _can_see_player_from_pos(pos):
 		return false
 	return true
 	
+func is_point_in_navigation_area(point: Vector2) -> bool:
+	var region_rid = nav_area.get_region_rid()
+	var map_rid = NavigationServer2D.region_get_map(region_rid)
+	var closest_point = NavigationServer2D.map_get_closest_point(map_rid, point)
+	return closest_point.distance_to(point) < 1.0  # Small threshold
