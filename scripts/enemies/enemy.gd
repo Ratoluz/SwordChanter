@@ -22,6 +22,7 @@ var flipped := false
 var can_turn := true
 var state: EnemyState = EnemyState.CHASE
 var rand_pos: Vector2
+var can_see_player: bool
 
 @onready var target = $"/root/Main/Player"
 @onready var weapon_manager = $/root/Main/WeaponManager
@@ -31,7 +32,8 @@ var rand_pos: Vector2
 @onready var flip_cooldown: Timer = $"FlipCooldown"
 @onready var pick_random_pos_cooldown: Timer = $"PickRandomPosCooldown"
 @onready var animator: AnimatedSprite2D = $"AnimatedSprite2D"
-
+@onready var raycast := $"RayCast2D"
+@onready var raycast2 := $"RayCast2D2"
 var item_drop : PackedScene = preload("res://scenes/UI/inventory/item_drop.tscn")
 
 func _ready() -> void:
@@ -128,6 +130,7 @@ func _on_filp_cooldown_timeout():
 # ----------------ENEMY AI----------------------
 
 func _enemy_AI():
+	_set_can_see_player()
 	match state:
 		EnemyState.CHASE:
 			_on_state_chase()
@@ -155,7 +158,7 @@ func _to_walk_around():
 func _from_walk_around():
 	pick_random_pos_cooldown.stop()
 	shoot_cooldown.stop()
-
+	
 func _to_chase():
 	state = EnemyState.CHASE
 	print('chase')
@@ -165,24 +168,33 @@ func _from_chase():
 # ------------------------------	
 func _chase_to_walk_around():
 	var dist_to_player = global_position.distance_to(target.global_position)
-	if dist_to_player < 700:
+	
+	if dist_to_player < 700 and can_see_player:
 		_to_walk_around()
 		_from_chase()
 		
 func _walk_around_to_chase():
 	var dist_to_player = global_position.distance_to(target.global_position)
-	if dist_to_player > 700:
+	if dist_to_player > 700 or not can_see_player:
 		_to_chase()
 		_from_walk_around()
 		
 # State Actions
-func _pick_random_pos():
+func _calculate_random_pos(distance, deviation):
 	var dir = global_position.direction_to(target.global_position).angle()
-	var pos = target.global_position - Vector2(cos(dir) * 500, sin(dir) * 500)
-	var random_pos = Vector2(randi_range(-50, 50) + pos.x, randi_range(-100, 100) + pos.y)
-	rand_pos = random_pos 
-	pick_random_pos_cooldown.wait_time = randf_range(0.5,0.6)
+	var pos = target.global_position - Vector2(cos(dir) * distance, sin(dir) * distance)
+	var random_pos = Vector2(randi_range(-deviation, deviation) + pos.x, randi_range(-deviation, deviation) + pos.y)
+	return random_pos  
 	
+func _pick_random_pos():
+	rand_pos = _calculate_random_pos(500, 70) 
+	if not _can_see_player_from_pos(rand_pos):
+		rand_pos = _calculate_random_pos(60, 20) 
+		print('asa')
+		pick_random_pos_cooldown.wait_time = randf_range(4.5,4.6)
+		return
+	pick_random_pos_cooldown.wait_time = randf_range(0.5,0.6)
+
 func _follow_target(pos):
 	agent.target_position = pos
 	var direction = global_position.direction_to(agent.get_next_path_position())
@@ -196,3 +208,26 @@ func shoot():
 	weapon_manager.add_child(temp_projectile)
 	_set_projectile_stats(temp_projectile)
 	shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
+	
+func _set_can_see_player():
+	raycast.target_position = to_local(target.global_position)
+	raycast.force_raycast_update()
+	var collider = raycast.get_collider()
+
+	if collider and collider.name == "Obstacles":
+		#print('cant see')
+		can_see_player = false
+		return
+	#print('see')
+	can_see_player = true
+	
+func _can_see_player_from_pos(pos):
+	raycast2.global_position = pos
+	raycast2.target_position = to_local(target.global_position) 
+	raycast2.force_raycast_update()
+	var collider = raycast2.get_collider()
+
+	if collider and collider.name == "Obstacles":
+		return false
+	return true
+	
