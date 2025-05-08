@@ -7,7 +7,8 @@ var current_hp: int
 var max_hp: int 
 var speed: float 
 var damage: float 
-var cooldown: float
+var cooldown_min: float
+var cooldown_max: float
 var projectile_speed: float 
 var bullet_number: int
 var live_time: float 
@@ -32,7 +33,8 @@ func _ready() -> void:
 	health_bar.value = current_hp
 	room = get_node("../../../")
 	agent.target_position = target.position
-	shoot_cooldown.wait_time = cooldown
+	shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
+	print(cooldown_min)
 	shoot_cooldown.timeout.connect(shoot)
 	shoot_cooldown.start()
 
@@ -50,6 +52,7 @@ func shoot():
 	var temp_projectile = projectile.instantiate()
 	weapon_manager.add_child(temp_projectile)
 	_set_projectile_stats(temp_projectile)
+	shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
 	
 func _flip():
 	if not animator.flip_h and velocity.x < 0:
@@ -71,9 +74,11 @@ func take_damage(damage, is_critical):
 		queue_free()
 
 func _set_projectile_stats(temp_projectile):
+	speed = stats.speed
+	projectile_speed = stats.projectile_speed
 	temp_projectile.position = global_position / 6 
 	temp_projectile.angle =  global_position.direction_to(target.global_position).angle()
-	temp_projectile.speed = speed
+	temp_projectile.speed = projectile_speed
 	temp_projectile.damage = damage
 	temp_projectile.spread = spread
 	temp_projectile.live_time = live_time
@@ -87,7 +92,8 @@ func set_stats(stats):
 	max_hp = stats.max_health
 	current_hp = stats.max_health
 	damage = stats.damage
-	cooldown = stats.cooldown
+	cooldown_min = stats.cooldown_min
+	cooldown_max = stats.cooldown_max
 	speed = stats.speed
 	bullet_number = stats.bullet_number
 	live_time = stats.live_time

@@ -8,14 +8,14 @@
 [resource]
 script = ExtResource("2_l5dw7")
 custom_script = ExtResource("1_l5dw7")
-damage = 2.0
+damage = 3.0
 cooldown = 0.5
 projectile = ExtResource("2_px6e1")
 speed = 300.0
 critical_chance = 0.1
 critical_chance_multiplier = 2.0
 bullet_number = 1
-live_time = 2.0
+live_time = 0.2
 rotate_sprite = true
 auto_swing = false
 spread = 0.0
