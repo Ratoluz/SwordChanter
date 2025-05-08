@@ -23,7 +23,7 @@ func _on_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int
 		queue_free()
 		
 func _on_body_entered(body: Node):
-	if body is TileMapLayer:
+	if body.name == "Obstacles" or body.get_node("../").name == "RoomWalls":
 		queue_free()  
 
 func initialize():
