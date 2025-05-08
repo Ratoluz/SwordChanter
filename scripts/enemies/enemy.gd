@@ -11,9 +11,7 @@ var damage: float
 var cooldown_min: float
 var cooldown_max: float
 var projectile_speed: float 
-var bullet_number: int
 var live_time: float 
-var spread: float 
 
 var died := false
 var room
@@ -66,7 +64,6 @@ func _set_projectile_stats(temp_projectile):
 	temp_projectile.angle =  global_position.direction_to(target.global_position).angle()
 	temp_projectile.speed = projectile_speed
 	temp_projectile.damage = damage
-	temp_projectile.spread = spread
 	temp_projectile.live_time = live_time
 	temp_projectile.initialize()
 	_set_projectile_stats_custom(temp_projectile)
@@ -82,9 +79,7 @@ func set_stats(stats):
 	cooldown_max = stats.cooldown_max
 	speed = stats.speed
 	agent.max_speed = speed
-	bullet_number = stats.bullet_number
 	live_time = stats.live_time
-	spread = stats.spread
 	_set_custom_stats(stats)
 
 func _set_custom_stats(_stats):

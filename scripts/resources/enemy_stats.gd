@@ -9,6 +9,4 @@ extends Resource
 @export var cooldown_min: float = 0.3
 @export var cooldown_max: float = 0.5
 @export var projectile_speed: float = 500
-@export var bullet_number = 1
-@export var spread: float = 0
 @export var live_time: float = 2
