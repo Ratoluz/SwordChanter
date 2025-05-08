@@ -38,6 +38,11 @@ func _ready() -> void:
 	shoot_cooldown.timeout.connect(shoot)
 	shoot_cooldown.start()
 
+	agent.avoidance_enabled = true  # Turns on RVO
+	agent.radius = 70.0  # Set collision radius (adjust based on sprite size)
+	agent.neighbor_distance = 1000.0  # How far to check for other agents
+	agent.max_neighbors = 5  # Max agents to avoid at once
+
 func _physics_process(_delta):
 	_flip()
 	_follow_target()
@@ -45,7 +50,9 @@ func _physics_process(_delta):
 func _follow_target():
 	agent.target_position = target.global_position
 	var direction = global_position.direction_to(agent.get_next_path_position())
-	velocity = direction * speed
+	agent.set_velocity(direction * speed) 
+	var adjusted_velocity = await agent.velocity_computed
+	velocity = adjusted_velocity
 	move_and_slide()
 	
 func shoot():
