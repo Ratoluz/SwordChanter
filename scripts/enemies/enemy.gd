@@ -1,8 +1,7 @@
 class_name Enemy
 extends DamageTaker
 
-enum EnemyState {CHASE, SNEAK_ATTACK, WALK_AROUND}
-var debug = preload("res://debug_object.tscn")
+enum EnemyState {CHASE, WALK_AROUND}
 @export var stats: EnemyStats
 var projectile: PackedScene = preload('res://scenes/enemies/enemy_projectile.tscn')
 var current_hp: int 
@@ -46,13 +45,12 @@ func _ready() -> void:
 	shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
 	
 	shoot_cooldown.timeout.connect(shoot)
-	#pick_random_pos_cooldown.timeout.connect(_pick_random_pos)
 	flip_cooldown.timeout.connect(_on_filp_cooldown_timeout)
 	
-	agent.avoidance_enabled = true  # Turns on RVO
-	agent.radius = 50.0  # Set collision radius (adjust based on sprite size)
-	agent.neighbor_distance = 1000.0  # How far to check for other agents
-	agent.max_neighbors = 5  # Max agents to avoid at once
+	agent.avoidance_enabled = true 
+	agent.radius = 70.0 
+	agent.neighbor_distance = 1000.0  
+	agent.max_neighbors = 5  
 
 func _physics_process(_delta):
 	_flip()
@@ -69,10 +67,10 @@ func _set_projectile_stats(temp_projectile):
 	temp_projectile.live_time = live_time
 	temp_projectile.initialize()
 	_set_projectile_stats_custom(temp_projectile)
-	
+
 func _set_projectile_stats_custom(temp_projectile):
 	pass
-	
+
 func set_stats(stats):
 	max_hp = stats.max_health
 	current_hp = stats.max_health
@@ -85,7 +83,7 @@ func set_stats(stats):
 	live_time = stats.live_time
 	spread = stats.spread
 	_set_custom_stats(stats)
-	
+
 func _set_custom_stats(_stats):
 	pass
 
@@ -185,9 +183,6 @@ func _pick_random_pos():
 		print(is_point_in_navigation_area(pos))
 		if _can_see_player_from_pos(pos) and is_point_in_navigation_area(pos):
 			rand_pos = pos
-			#var temp_debug = debug.instantiate()
-			#weapon_manager.add_child(temp_debug)
-			#temp_debug.global_position = pos
 			return
 	for i in range(3):
 		var pos = _calculate_random_pos(deg_to_rad(randi_range(0,360)), 400, 200)
@@ -196,7 +191,6 @@ func _pick_random_pos():
 			return
 	for i in range(3):
 		var pos = _calculate_random_pos(deg_to_rad(randi_range(0,360)), 100, 40)
-		#pos = Vector2(10000,10000)
 		if _can_see_player_from_pos(pos) and is_point_in_navigation_area(pos):
 			rand_pos = pos
 			return
@@ -221,10 +215,8 @@ func _set_can_see_player():
 	var collider = raycast.get_collider()
 
 	if collider and collider.name == "Obstacles":
-		#print('cant see')
 		can_see_player = false
 		return
-	#print('see')
 	can_see_player = true
 	
 func _can_see_player_from_pos(pos):
@@ -241,4 +233,4 @@ func is_point_in_navigation_area(point: Vector2) -> bool:
 	var region_rid = nav_area.get_region_rid()
 	var map_rid = NavigationServer2D.region_get_map(region_rid)
 	var closest_point = NavigationServer2D.map_get_closest_point(map_rid, point)
-	return closest_point.distance_to(point) < 1.0  # Small threshold
+	return closest_point.distance_to(point) < 1.0 
