@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_bxi3o")
 max_health = 10.0
-speed = 140.0
+speed = 200.0
 loot_table = ExtResource("1_8t8dg")
 damage = 10.0
 cooldown_min = 2.0

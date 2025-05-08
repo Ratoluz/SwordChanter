@@ -76,3 +76,5 @@ path_desired_distance = 2.0
 target_desired_distance = 2.0
 
 [node name="ShootCooldown" type="Timer" parent="."]
+
+[node name="PickRandomPosCooldown" type="Timer" parent="."]
