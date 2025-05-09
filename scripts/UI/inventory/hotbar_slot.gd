@@ -6,3 +6,6 @@ extends Slot
 func on_set_as_active():
 	if item is WeaponStats:
 		weapon_manager.equip_weapon(item)
+		return
+	weapon_manager.equip_weapon(null)
+	

@@ -29,13 +29,6 @@ func set_stats():
 func _set_stats_override():
 	pass
 	
-func _set_projectile_stats(temp_projectile):
-	temp_projectile.set_script(projectile_stats.projectile_script)
-	temp_projectile.position = weapon_manager.global_position / 6
-	temp_projectile.angle = weapon_manager.angle 
-	temp_projectile.stats = projectile_stats
-	_set_projectile_stats_override(temp_projectile)
-	
 func _set_projectile_stats_override(temp_projectile):
 	pass
 	
@@ -61,7 +54,7 @@ func attack():
 
 func _perform_attack():
 	var temp_projectile = projectile_template.instantiate()
-	print(projectile_stats == null)
 	get_tree().root.get_node("Main").add_child(temp_projectile)
-	_set_projectile_stats(temp_projectile)
-	temp_projectile.initialize()
+	temp_projectile.set_script(projectile_stats.projectile_script)
+	_set_projectile_stats_override(temp_projectile)
+	temp_projectile.initialize(weapon_manager.global_position / 6, weapon_manager.angle, projectile_stats)

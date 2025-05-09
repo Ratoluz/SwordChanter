@@ -23,16 +23,19 @@ func _process(delta: float) -> void:
 	
 func _on_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body is DamageTaker:
-		body.take_damage(damage, is_critical)
+		body.take_damage(current_damage, is_critical)
 		queue_free()
 		
 func _on_body_entered(body: Node):
 	if body.name == "Obstacles" or body.get_node("../").name == "RoomWalls":
 		queue_free()  
 
-func initialize():
+func initialize(some_position, some_angle, some_stats):
 	body_shape_entered.connect(_on_body_shape_entered)
 	body_entered.connect(_on_body_entered)
+	position = some_position
+	angle = some_angle
+	stats = some_stats
 	_set_stats()
 	var angle_offset: float = 0
 	angle_offset = randf_range(-spread, spread)

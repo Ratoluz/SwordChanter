@@ -54,16 +54,6 @@ func _physics_process(_delta):
 	_flip()
 	_enemy_AI()
 
-func _set_projectile_stats(temp_projectile):
-	temp_projectile.set_script(projectile_stats.projectile_script)
-	temp_projectile.position = global_position / 6 
-	temp_projectile.angle =  global_position.direction_to(target.global_position).angle()
-	temp_projectile.stats = projectile_stats
-	_set_projectile_stats_override(temp_projectile)
-	
-func _set_projectile_stats_override(temp_projectile):
-	pass
-
 func set_stats(stats):
 	projectile_stats = stats.projectile_stats
 	max_hp = stats.max_health
@@ -75,6 +65,9 @@ func set_stats(stats):
 	_set_custom_stats(stats)
 
 func _set_custom_stats(_stats):
+	pass
+
+func _set_projectile_stats_override(temp_projectile):
 	pass
 
 func take_damage(damage, is_critical):
@@ -177,8 +170,8 @@ func shoot():
 	if shoot_cooldown.is_stopped():
 		var temp_projectile = projectile_template.instantiate()
 		get_tree().root.get_node("Main").add_child(temp_projectile)
-		_set_projectile_stats(temp_projectile)
-		temp_projectile.initialize()
+		temp_projectile.set_script(projectile_stats.projectile_script)
+		temp_projectile.initialize(global_position / 6, global_position.direction_to(target.global_position).angle(), projectile_stats)
 		shoot_cooldown.wait_time = randf_range(attack_cooldown_min, attack_cooldown_max)
 		shoot_cooldown.start()
 	

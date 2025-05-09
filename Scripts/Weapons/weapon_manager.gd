@@ -11,6 +11,7 @@ var weapon_template = preload("res://scenes/weapons/weapon_template.tscn")
 func equip_weapon(weapon_stats):
 	if current_weapon != null:
 		current_weapon.queue_free()
+		return
 	current_weapon = weapon_template.instantiate()
 	current_weapon.set_script(weapon_stats.weapon_script)
 	current_weapon.stats = weapon_stats
