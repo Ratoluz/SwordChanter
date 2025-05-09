@@ -1,10 +1,12 @@
 class_name Player
 extends CharacterBody2D
 
+@export var current_speed: int = 500
 var max_health: float = 100
 var current_health: float
-@onready var health_bar = $"/root/Main/CanvasLayer/HealthBar"
-@export var current_speed: int = 500
+var health_bar_packed = preload("res://scenes/UI/player_health_bar.tscn")
+var health_bar: ProgressBar
+@onready var canvas = $"../CanvasLayer"
 @onready var inventory = $Inventory
 @onready var camera = $Camera2D
 
@@ -14,6 +16,8 @@ var can_move = true
 var zoom_amount = Vector2(0.7, 0.7)
 
 func _ready() -> void:
+	health_bar = health_bar_packed.instantiate()
+	canvas.add_child(health_bar)
 	current_health = max_health
 	health_bar.max_value = max_health
 	health_bar.value = current_health

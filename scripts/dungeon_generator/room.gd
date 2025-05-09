@@ -6,7 +6,7 @@ var type: Enums.RoomType
 var level: int
 var interior: PackedScene
 var interior_instance: Node2D
-var walls: PackedScene = preload("res://scenes/dungeon_generator/room_walls.tscn")
+
 var wall_instance: Node2D
 var is_left_open := false
 var is_right_open := false
@@ -42,7 +42,7 @@ func unblock_doors():
 func instantiate_interior():
 	interior = DungeonDatabase.pick_interior(type, level)
 	interior_instance = interior.instantiate()
-	wall_instance = walls.instantiate()
+	wall_instance = DungeonDatabase.walls.instantiate()
 	add_child(interior_instance)
 	add_child(wall_instance)
 	

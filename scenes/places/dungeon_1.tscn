@@ -1,16 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cicr4g0l3hasm"]
+[gd_scene load_steps=3 format=3 uid="uid://cicr4g0l3hasm"]
 
 [ext_resource type="PackedScene" uid="uid://b64dra8vtboso" path="res://scenes/dungeon_generator/dungeon_generator.tscn" id="1_cr43l"]
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://scenes/player/player.tscn" id="2_kcu5y"]
-[ext_resource type="PackedScene" uid="uid://cyb0n1on6hcdf" path="res://scenes/UI/health_bar.tscn" id="4_212fj"]
 
 [node name="Main" type="Node2D"]
 scale = Vector2(6, 6)
 
 [node name="DungeonGenerator" parent="." instance=ExtResource("1_cr43l")]
-max_num_rooms = 14
-min_num_rooms = 14
-chance_for_room = 0.6
+max_num_rooms = 13
+min_num_rooms = 13
 max_x_grid = 3
 min_x_grid = -3
 max_y_grid = 3
@@ -22,5 +20,3 @@ min_end_rooms = 3
 [node name="Player" parent="." instance=ExtResource("2_kcu5y")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_212fj")]
