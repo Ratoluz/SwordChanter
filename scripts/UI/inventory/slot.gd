@@ -1,5 +1,5 @@
-extends Panel
 class_name Slot
+extends Panel
 
 @export var item: ItemStats = null
 @export var amount: int = 0

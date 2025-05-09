@@ -1,9 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://dwqseoo600wbk"]
+[gd_scene load_steps=9 format=4 uid="uid://dwqseoo600wbk"]
 
 [ext_resource type="PackedScene" uid="uid://dmxf54t8ial7e" path="res://scenes/UI/WeaponMenu/menu.tscn" id="1_4rvhm"]
 [ext_resource type="TileSet" uid="uid://b3syij3w5ypsf" path="res://animations_and_tilesets/tileset.tres" id="3_q5a5b"]
-[ext_resource type="Script" uid="uid://blhgla1fg323i" path="res://scripts/weapons/weapon_manager.gd" id="4_t5hy0"]
-[ext_resource type="PackedScene" uid="uid://dy5i1mi7qacia" path="res://scenes/weapons/weapon_array.tscn" id="5_wbcfw"]
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://scenes/player/player.tscn" id="6_d53s4"]
 [ext_resource type="Texture2D" uid="uid://yd6s8mqdo346" path="res://sprites/decorations/tabel.png" id="7_8hr41"]
 [ext_resource type="PackedScene" uid="uid://ctdi4epxwspfx" path="res://scenes/other/dummy.tscn" id="8_2tw74"]
@@ -59,13 +57,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_bxbx3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_x5n66")
 show_percentage = false
 
-[node name="WeaponManager" type="Node2D" parent="."]
-script = ExtResource("4_t5hy0")
-
-[node name="Timer" type="Timer" parent="WeaponManager"]
-
-[node name="WeaponList" parent="WeaponManager" instance=ExtResource("5_wbcfw")]
-
 [node name="Player" parent="." instance=ExtResource("6_d53s4")]
 position = Vector2(-3, 27)
 
@@ -84,6 +75,6 @@ shape = SubResource("CapsuleShape2D_2r4pp")
 position = Vector2(100, 0)
 
 [connection signal="body_shape_entered" from="Tilemap/HitBoxes/Area2D" to="Tilemap/HitBoxes/Area2D" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@35048" to="Tilemap/HitBoxes/@Area2D@35048" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@35049" to="Tilemap/HitBoxes/@Area2D@35049" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@35050" to="Tilemap/HitBoxes/@Area2D@35050" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@31265" to="Tilemap/HitBoxes/@Area2D@31265" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@31266" to="Tilemap/HitBoxes/@Area2D@31266" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@31267" to="Tilemap/HitBoxes/@Area2D@31267" method="_on_body_shape_entered"]

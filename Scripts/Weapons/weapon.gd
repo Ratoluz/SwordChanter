@@ -1,7 +1,7 @@
 class_name Weapon
 extends Node2D
 
-@export var weapon_stats: WeaponStats
+@export var stats: WeaponStats
 #Public
 var damage: float 
 var cooldown: float 
@@ -24,10 +24,10 @@ var current_damage: float = damage
 var is_critical: bool = false
 var can_attack: bool = true
 
-func _set_custom_stats(_stats):
+func _set_custom_stats():
 	pass
 	
-func set_stats(stats):
+func set_stats():
 	sprite = stats.sprite
 	$Sprite2D.texture = sprite
 	item_name = stats.item_name
@@ -43,16 +43,16 @@ func set_stats(stats):
 	rotate_sprite = stats.rotate_sprite
 	spread = stats.spread
 	auto_swing = stats.auto_swing
-	_set_custom_stats(stats)
+	_set_custom_stats()
 	
 func _set_references():
-	weapon_manager = $/root/Main/WeaponManager
+	weapon_manager = $"../"
 	timer = weapon_manager.get_node('Timer')
 	
 func _ready() -> void:
 	_set_references()
-	set_stats(weapon_stats)
-	_set_custom_stats(weapon_stats)
+	set_stats()
+	_set_custom_stats()
 	
 func _critical_damage():
 	var rand = randf_range(0, 1.0)

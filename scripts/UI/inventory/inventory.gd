@@ -11,6 +11,9 @@ var slots : Array[Slot] = []
 
 var is_open: bool = false
 
+@export var hotbar_slots: Array[HotbarSlot] = [] 
+var active_slot_index: int = 0
+
 func _ready():
 	slots = []
 	for child in grid.get_children():
@@ -18,6 +21,9 @@ func _ready():
 			slots.append(child)
 	for slot in slots:
 		slot.update_slot()
+
+func _process(delta: float) -> void:
+	change_active_slots()
 
 func _input(event):
 	if event.is_action_pressed("inventory"):
@@ -87,3 +93,20 @@ func remove_item(item: ItemStats, amount: int = 1) -> bool:
 				
 	emit_signal("inventory_updated")
 	return false
+	
+func change_active_slots():
+	if Input.is_action_just_pressed("Change_Hotbar_Slot_1"):
+		change_active_slot(0)
+	elif Input.is_action_just_pressed("Change_Hotbar_Slot_2"):
+		change_active_slot(1)
+	elif Input.is_action_just_pressed("Change_Hotbar_Slot_3"):
+		change_active_slot(2)
+	elif Input.is_action_just_pressed("Change_Hotbar_Slot_4"):
+		change_active_slot(3)
+
+func change_active_slot(index):	
+	active_slot_index = index
+	for i in range(len(hotbar_slots)):
+		hotbar_slots[i].modulate = Color(1,1,1,1)
+	hotbar_slots[index].modulate = Color(.7, .7, 1, 1)
+	hotbar_slots[index].on_set_as_active()

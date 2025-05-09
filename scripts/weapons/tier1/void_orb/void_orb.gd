@@ -2,7 +2,7 @@ extends Weapon
 var projectile_2_angle: float
 var projectile_2: PackedScene
 
-func _set_custom_stats(stats):
+func _set_custom_stats():
 	projectile_2_angle = stats.projectile_2_angle
 	projectile_2 = stats.projectile_2
 	
