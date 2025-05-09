@@ -2,26 +2,18 @@ class_name Weapon
 extends Node2D
 
 @export var stats: WeaponStats
-#Public
-var damage: float 
-var cooldown: float 
-var projectile: PackedScene 
-var speed: float
-var critical_chance: float
-var critical_chance_multiplier: float 
-var bullet_number: int
-var live_time: float
-var rotate_sprite: bool
-var spread: float
-var auto_swing: bool = false 
-var sprite: Texture2D
+@export var projectile_stats: ProjectileStats
 var item_name: String
 var description: String 
+var sprite: Texture2D
+var cooldown: float 
+var bullet_number: int
+var rotate_sprite: bool
+var auto_swing: bool 
 #Private
+var projectile_template = load('res://scenes/weapons/projectile_template.tscn')
 var weapon_manager
 var timer: Timer
-var current_damage: float = damage
-var is_critical: bool = false
 var can_attack: bool = true
 	
 func set_stats():
@@ -29,17 +21,11 @@ func set_stats():
 	$Sprite2D.texture = sprite
 	item_name = stats.item_name
 	description = stats.description
-	damage = stats.damage
 	cooldown = stats.cooldown
-	projectile = stats.projectile
-	speed = stats.speed
-	critical_chance = stats.critical_chance
-	critical_chance_multiplier = stats.critical_chance_multiplier
 	bullet_number = stats.bullet_number
-	live_time = stats.live_time
 	rotate_sprite = stats.rotate_sprite
-	spread = stats.spread
 	auto_swing = stats.auto_swing
+	projectile_stats = stats.projectile_stats
 	_set_stats_override()
 	
 func _set_stats_override():
@@ -48,12 +34,9 @@ func _set_stats_override():
 func _set_projectile_stats(temp_projectile):
 	temp_projectile.position = weapon_manager.global_position / 6
 	temp_projectile.angle = weapon_manager.angle 
-	temp_projectile.speed = speed
-	temp_projectile.damage = current_damage
-	temp_projectile.is_critical = is_critical
-	temp_projectile.spread = spread
-	temp_projectile.live_time = live_time
 	temp_projectile.rotate_sprite = rotate_sprite
+	temp_projectile.stats = projectile_stats
+	print(projectile_stats == null)
 	_set_projectile_stats_override(temp_projectile)
 	
 func _set_projectile_stats_override(temp_projectile):
@@ -66,15 +49,6 @@ func _set_references():
 func _ready() -> void:
 	_set_references()
 	set_stats()
-	
-func _critical_damage():
-	var rand = randf_range(0, 1.0)
-	if rand < critical_chance:
-		current_damage = damage * critical_chance_multiplier
-		is_critical = true
-		return
-	current_damage = damage 
-	is_critical = false
 
 func attack():
 	if can_attack:
@@ -89,9 +63,7 @@ func attack():
 		can_attack = true
 
 func _perform_attack():
-	_critical_damage()
-	var temp_projectile = projectile.instantiate()
-	print(get_tree().root.get_child(0).name)
+	var temp_projectile = projectile_template.instantiate()
 	get_tree().root.get_node("Main").add_child(temp_projectile)
 	_set_projectile_stats(temp_projectile)
 	temp_projectile.initialize()

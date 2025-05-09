@@ -1,12 +1,10 @@
 extends Projectile
 
 var timer2: Timer
-var projectile = preload('res://scenes/weapons/tier_1/void_orb/void_orb_projectile_2.tscn')
-
+var projectile_template = preload('res://scenes/weapons/projectile_template.tscn')
 #var player
 var projectile_2_angle: float
-var projectile_2: PackedScene
-var critical_chance_multiplier
+var projectile_2_stats: ProjectileStats
 
 func _ready() -> void:
 	#player = $/root/Main/Player
@@ -15,7 +13,7 @@ func _ready() -> void:
 	timer2.timeout.connect(_on_timer_timeout)
 	
 func _spawn_projectile(side):
-	var temp_projectile = projectile_2.instantiate()
+	var temp_projectile = projectile_template.instantiate()
 	$/root/Main.add_child(temp_projectile)
 	temp_projectile.position = position
 	print( rad_to_deg(rotation) )
@@ -24,6 +22,7 @@ func _spawn_projectile(side):
 	temp_projectile.damage = damage * critical_chance_multiplier
 	temp_projectile.is_critical = true
 	temp_projectile.spread = spread
+	
 func _on_timer_timeout():
 	_spawn_projectile(0)
 	_spawn_projectile(180)

@@ -1,11 +1,17 @@
 class_name Projectile
 extends Area2D
 
+var stats: ProjectileStats
+@onready var sprite: Sprite2D = $"Sprite2D"
 var angle
 var speed: float
+var spread: float 
 var damage: float
+var critical_chance: float 
+var critical_chance_multiplier: float 
+
+var current_damage: float
 var is_critical: bool
-var spread = 0
 var timer: SceneTreeTimer
 var rotate_sprite
 var live_time 
@@ -27,6 +33,7 @@ func _on_body_entered(body: Node):
 		queue_free()  
 
 func initialize():
+	_set_stats()
 	var angle_offset: float = 0
 	angle_offset = randf_range(-spread, spread)
 	angle_offset = deg_to_rad(angle_offset)
@@ -35,8 +42,18 @@ func initialize():
 		global_rotation = angle + deg_to_rad(45)
 	else:
 		global_rotation = angle + deg_to_rad(90)
+	_critical_damage()
 	timer = get_tree().create_timer(live_time)
 	timer.timeout.connect(die)
+
+func _set_stats():
+	sprite.texture = stats.sprite
+	speed = stats.speed
+	spread = stats.spread
+	damage = stats.damage
+	critical_chance = stats.critical_chance
+	critical_chance_multiplier = stats.critical_chance_multiplier
+	live_time = stats.live_time
 
 func die():
 	queue_free()
@@ -44,3 +61,12 @@ func die():
 func _move(delta):
 	var dir = Vector2(cos(angle), sin(angle))
 	position += dir * speed * delta
+	
+func _critical_damage():
+	var rand = randf_range(0, 1.0)
+	if rand < critical_chance:
+		current_damage = damage * critical_chance_multiplier
+		is_critical = true
+		return
+	current_damage = damage 
+	is_critical = false

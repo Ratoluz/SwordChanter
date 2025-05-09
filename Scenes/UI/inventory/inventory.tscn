@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://64q4x6l64b2q" path="res://scenes/UI/inventory/slot.tscn" id="1_pohso"]
 [ext_resource type="Script" uid="uid://dgmj56gv6tmjv" path="res://scripts/UI/inventory/inventory.gd" id="1_psafj"]
 [ext_resource type="Resource" uid="uid://e8jec17g6tpx" path="res://resources/materials/ruby.tres" id="3_5tt2m"]
-[ext_resource type="Resource" uid="uid://7erb52467wgc" path="res://resources/weapons/tier_1/sword.tres" id="3_p0vv6"]
+[ext_resource type="Resource" uid="uid://dende63l7g52v" path="res://resources/weapons/tier_1/sword.tres" id="3_p0vv6"]
 [ext_resource type="Script" uid="uid://bgau8vgpck5rb" path="res://scripts/UI/inventory/hotbar_slot.gd" id="4_06oe3"]
 
 [node name="Inventory" type="Control" node_paths=PackedStringArray("hotbar_slots")]
