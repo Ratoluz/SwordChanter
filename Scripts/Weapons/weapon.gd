@@ -8,7 +8,6 @@ var description: String
 var sprite: Texture2D
 var cooldown: float 
 var bullet_number: int
-var rotate_sprite: bool
 var auto_swing: bool 
 #Private
 var projectile_template = load('res://scenes/weapons/projectile_template.tscn')
@@ -23,7 +22,6 @@ func set_stats():
 	description = stats.description
 	cooldown = stats.cooldown
 	bullet_number = stats.bullet_number
-	rotate_sprite = stats.rotate_sprite
 	auto_swing = stats.auto_swing
 	projectile_stats = stats.projectile_stats
 	_set_stats_override()
@@ -32,11 +30,10 @@ func _set_stats_override():
 	pass
 	
 func _set_projectile_stats(temp_projectile):
+	temp_projectile.set_script(projectile_stats.projectile_script)
 	temp_projectile.position = weapon_manager.global_position / 6
 	temp_projectile.angle = weapon_manager.angle 
-	temp_projectile.rotate_sprite = rotate_sprite
 	temp_projectile.stats = projectile_stats
-	print(projectile_stats == null)
 	_set_projectile_stats_override(temp_projectile)
 	
 func _set_projectile_stats_override(temp_projectile):
@@ -64,6 +61,7 @@ func attack():
 
 func _perform_attack():
 	var temp_projectile = projectile_template.instantiate()
+	print(projectile_stats == null)
 	get_tree().root.get_node("Main").add_child(temp_projectile)
 	_set_projectile_stats(temp_projectile)
 	temp_projectile.initialize()

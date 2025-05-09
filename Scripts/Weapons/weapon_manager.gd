@@ -8,13 +8,13 @@ var angle: float
 
 var weapon_template = preload("res://scenes/weapons/weapon_template.tscn")
 
-func equip_weapon(weapon_res):
+func equip_weapon(weapon_stats):
 	if current_weapon != null:
 		current_weapon.queue_free()
 	current_weapon = weapon_template.instantiate()
-	current_weapon.set_script(weapon_res.custom_script)
-	current_weapon.stats = weapon_res
-	distance_from_player = weapon_res.distance_from_player
+	current_weapon.set_script(weapon_stats.weapon_script)
+	current_weapon.stats = weapon_stats
+	distance_from_player = weapon_stats.distance_from_player
 	add_child(current_weapon)
 	firstScale = current_weapon.scale.x
 

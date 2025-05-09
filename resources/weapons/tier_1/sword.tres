@@ -17,15 +17,15 @@ damage = 10.0
 critical_chance = 0.3
 critical_chance_multiplier = 1.3
 live_time = 2.0
+rotate_sprite = true
 metadata/_custom_type_script = "uid://cnwne4dmwegsk"
 
 [resource]
 script = ExtResource("2_l5dw7")
-custom_script = ExtResource("1_l5dw7")
+weapon_script = ExtResource("1_l5dw7")
 cooldown = 0.5
 projectile_stats = SubResource("Resource_07fv6")
 bullet_number = 1
-rotate_sprite = true
 auto_swing = true
 distance_from_player = 5.0
 sprite = ExtResource("3_f1d03")

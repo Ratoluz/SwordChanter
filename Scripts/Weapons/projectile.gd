@@ -2,26 +2,24 @@ class_name Projectile
 extends Area2D
 
 var stats: ProjectileStats
-@onready var sprite: Sprite2D = $"Sprite2D"
+var sprite: Sprite2D
 var angle
 var speed: float
 var spread: float 
 var damage: float
 var critical_chance: float 
 var critical_chance_multiplier: float 
+var rotate_sprite
+var live_time 
 
 var current_damage: float
 var is_critical: bool
 var timer: SceneTreeTimer
-var rotate_sprite
-var live_time 
 
 func _process(delta: float) -> void:
 	_move(delta)
 
-func _init() -> void:
-	body_shape_entered.connect(_on_body_shape_entered)
-	body_entered.connect(_on_body_entered)
+
 	
 func _on_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body is DamageTaker:
@@ -33,6 +31,8 @@ func _on_body_entered(body: Node):
 		queue_free()  
 
 func initialize():
+	body_shape_entered.connect(_on_body_shape_entered)
+	body_entered.connect(_on_body_entered)
 	_set_stats()
 	var angle_offset: float = 0
 	angle_offset = randf_range(-spread, spread)
@@ -47,6 +47,7 @@ func initialize():
 	timer.timeout.connect(die)
 
 func _set_stats():
+	sprite = $"Sprite2D"
 	sprite.texture = stats.sprite
 	speed = stats.speed
 	spread = stats.spread
@@ -54,6 +55,7 @@ func _set_stats():
 	critical_chance = stats.critical_chance
 	critical_chance_multiplier = stats.critical_chance_multiplier
 	live_time = stats.live_time
+	rotate_sprite = stats.rotate_sprite
 
 func die():
 	queue_free()
