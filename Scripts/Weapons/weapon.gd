@@ -23,9 +23,6 @@ var timer: Timer
 var current_damage: float = damage
 var is_critical: bool = false
 var can_attack: bool = true
-
-func _set_custom_stats():
-	pass
 	
 func set_stats():
 	sprite = stats.sprite
@@ -43,7 +40,24 @@ func set_stats():
 	rotate_sprite = stats.rotate_sprite
 	spread = stats.spread
 	auto_swing = stats.auto_swing
-	_set_custom_stats()
+	_set_stats_override()
+	
+func _set_stats_override():
+	pass
+	
+func _set_projectile_stats(temp_projectile):
+	temp_projectile.position = weapon_manager.global_position / 6
+	temp_projectile.angle = weapon_manager.angle 
+	temp_projectile.speed = speed
+	temp_projectile.damage = current_damage
+	temp_projectile.is_critical = is_critical
+	temp_projectile.spread = spread
+	temp_projectile.live_time = live_time
+	temp_projectile.rotate_sprite = rotate_sprite
+	_set_projectile_stats_override(temp_projectile)
+	
+func _set_projectile_stats_override(temp_projectile):
+	pass
 	
 func _set_references():
 	weapon_manager = $"../"
@@ -52,7 +66,6 @@ func _set_references():
 func _ready() -> void:
 	_set_references()
 	set_stats()
-	_set_custom_stats()
 	
 func _critical_damage():
 	var rand = randf_range(0, 1.0)
@@ -75,23 +88,10 @@ func attack():
 		
 		can_attack = true
 
-func _set_projectile_stats(temp_projectile):
-	temp_projectile.position = weapon_manager.player.position
-	temp_projectile.angle = weapon_manager.angle 
-	temp_projectile.speed = speed
-	temp_projectile.damage = current_damage
-	temp_projectile.is_critical = is_critical
-	temp_projectile.spread = spread
-	temp_projectile.live_time = live_time
-	temp_projectile.rotate_sprite = rotate_sprite
-	_set_projectile_stats_custom(temp_projectile)
-	
-func _set_projectile_stats_custom(temp_projectile):
-	pass
-
 func _perform_attack():
 	_critical_damage()
 	var temp_projectile = projectile.instantiate()
-	weapon_manager.add_child(temp_projectile)
+	print(get_tree().root.get_child(0).name)
+	get_tree().root.get_node("Main").add_child(temp_projectile)
 	_set_projectile_stats(temp_projectile)
 	temp_projectile.initialize()

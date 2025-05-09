@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://dwqseoo600wbk"]
+[gd_scene load_steps=9 format=4 uid="uid://dwqseoo600wbk"]
 
+[ext_resource type="PackedScene" uid="uid://dmxf54t8ial7e" path="res://scenes/UI/WeaponMenu/menu.tscn" id="1_4rvhm"]
 [ext_resource type="TileSet" uid="uid://b3syij3w5ypsf" path="res://animations_and_tilesets/tileset.tres" id="3_q5a5b"]
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://scenes/player/player.tscn" id="6_d53s4"]
 [ext_resource type="Texture2D" uid="uid://yd6s8mqdo346" path="res://sprites/decorations/tabel.png" id="7_8hr41"]
@@ -41,6 +42,8 @@ tile_set = ExtResource("3_q5a5b")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="WeaponMenu" parent="CanvasLayer" instance=ExtResource("1_4rvhm")]
+
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
@@ -70,3 +73,8 @@ shape = SubResource("CapsuleShape2D_2r4pp")
 
 [node name="Dummy" parent="." instance=ExtResource("8_2tw74")]
 position = Vector2(100, 0)
+
+[connection signal="body_shape_entered" from="Tilemap/HitBoxes/Area2D" to="Tilemap/HitBoxes/Area2D" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@34517" to="Tilemap/HitBoxes/@Area2D@34517" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@34518" to="Tilemap/HitBoxes/@Area2D@34518" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@34519" to="Tilemap/HitBoxes/@Area2D@34519" method="_on_body_shape_entered"]

@@ -22,13 +22,11 @@ var block_top
 
 var room_generator
 var minimap_displayer
-var room_list
 
 func _ready() -> void:
 	room_generator = get_node("/root/Main/DungeonGenerator")
 	minimap_displayer = room_generator.get_node("MinimapDisplayer")
-	room_list = room_generator.get_node("RoomList")
-
+	
 func block_doors():
 	block_left.enabled = is_left_open
 	block_right.enabled = is_right_open
@@ -42,7 +40,7 @@ func unblock_doors():
 	block_top.enabled = false
 
 func instantiate_interior():
-	interior = room_list.pick_interior(type, level)
+	interior = DungeonDatabase.pick_interior(type, level)
 	interior_instance = interior.instantiate()
 	wall_instance = walls.instantiate()
 	add_child(interior_instance)

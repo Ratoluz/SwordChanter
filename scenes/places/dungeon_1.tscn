@@ -1,11 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cicr4g0l3hasm"]
+[gd_scene load_steps=4 format=3 uid="uid://cicr4g0l3hasm"]
 
 [ext_resource type="PackedScene" uid="uid://b64dra8vtboso" path="res://scenes/dungeon_generator/dungeon_generator.tscn" id="1_cr43l"]
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://scenes/player/player.tscn" id="2_kcu5y"]
-[ext_resource type="PackedScene" uid="uid://dmxf54t8ial7e" path="res://scenes/UI/WeaponMenu/menu.tscn" id="2_vf4mh"]
 [ext_resource type="PackedScene" uid="uid://cyb0n1on6hcdf" path="res://scenes/UI/health_bar.tscn" id="4_212fj"]
-[ext_resource type="PackedScene" uid="uid://btykco3oexbsl" path="res://scenes/weapons/weapon_manager.tscn" id="4_uwjar"]
-[ext_resource type="PackedScene" uid="uid://bxw0s8xy5qk42" path="res://debug_object.tscn" id="6_uxaq8"]
 
 [node name="Main" type="Node2D"]
 scale = Vector2(6, 6)
@@ -26,15 +23,4 @@ min_end_rooms = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MinimapBackground" type="Panel" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" parent="CanvasLayer" instance=ExtResource("2_vf4mh")]
-
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_212fj")]
-
-[node name="WeaponManager" parent="." instance=ExtResource("4_uwjar")]
-
-[node name="DebugObject" parent="." instance=ExtResource("6_uxaq8")]
-position = Vector2(3.66667, 16.3333)

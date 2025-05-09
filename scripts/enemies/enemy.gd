@@ -21,7 +21,6 @@ var state: EnemyState = EnemyState.CHASE
 var can_see_player: bool
 
 @onready var target = $"/root/Main/Player"
-@onready var weapon_manager = $/root/Main/WeaponManager
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var agent: NavigationAgent2D = $"NavigationAgent2D"
 @onready var shoot_cooldown: Timer = $"ShootCooldown"
@@ -185,7 +184,7 @@ func _follow_target(pos):
 func shoot():
 	if shoot_cooldown.is_stopped():
 		var temp_projectile = projectile.instantiate()
-		weapon_manager.add_child(temp_projectile)
+		get_tree().root.get_node("Main").add_child(temp_projectile)
 		_set_projectile_stats(temp_projectile)
 		shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
 		shoot_cooldown.start()

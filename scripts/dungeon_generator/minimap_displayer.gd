@@ -1,12 +1,5 @@
 extends Node2D
 
-var room_icon = preload('res://scenes/dungeon_generator/minimap_cell.tscn')
-var current_icon = preload('res://sprites/dungeon_generator/current.png')
-var explored_icon = preload('res://sprites/dungeon_generator/explored.png')
-var unexplored_icon = preload('res://sprites/dungeon_generator/unexplored.png')
-var chest_icon = preload("res://sprites/dungeon_generator/chest.png")
-var skull_icon = preload("res://sprites/dungeon_generator/skull.png")
-
 var minimap_offset_x 
 var minimap_offset_y 
 
@@ -14,23 +7,24 @@ var icons = {}
 var minimap_created = false
 var last_current_cords: Vector2i
 var currnet_room_cords: Vector2i
-var room_gen
-var canvas
-var minimap_background
-var player
+
+@onready var room_gen = $"../"
+@onready var canvas = $"/root/Main/CanvasLayer"
+@onready var player = $"/root/Main/Player"
 
 func _ready() -> void:
-	room_gen = get_node('../')
-	canvas = get_node('/root/Main/CanvasLayer')
-	player = get_node('/root/Main/Player')
-	minimap_background = canvas.get_node('MinimapBackground')
+	_set_minimap_panel()
+	
+func _set_minimap_panel():	
+	var minimap_background = DungeonDatabase.minimap_background_packed.instantiate()
+	canvas.add_child(minimap_background)
 	var grid_width = abs(room_gen.max_x_grid - room_gen.min_x_grid) + 1
 	var grid_height = abs(room_gen.max_y_grid - room_gen.min_y_grid) + 1
 	minimap_background.size = Vector2(room_gen.room_cell_width * grid_width, room_gen.room_cell_height * grid_height)
 	
 func display_minimap(rooms):
 	for key in rooms:
-		var temp_icon = room_icon.instantiate()
+		var temp_icon = DungeonDatabase.room_icon.instantiate()
 		canvas.add_child(temp_icon)
 		temp_icon.get_child(0).texture = pick_icon(rooms[key].type)
 		icons[key] = temp_icon
@@ -43,9 +37,9 @@ func display_minimap(rooms):
 func pick_icon(type):
 	match type:
 		Enums.RoomType.CHEST:
-			return chest_icon
+			return DungeonDatabase.chest_icon
 		Enums.RoomType.BOSS:
-			return skull_icon
+			return DungeonDatabase.skull_icon
 		Enums.RoomType.ENEMY:
 			return null
 
@@ -74,8 +68,8 @@ func _update_room_icons():
 		else:
 			icons[key].visible = true
 		if room_gen.rooms[key].status == Enums.RoomStatus.UNEXPLORED:
-			icons[key].texture = unexplored_icon
+			icons[key].texture = DungeonDatabase.unexplored_icon
 		if room_gen.rooms[key].status == Enums.RoomStatus.EXPLORED:
-			icons[key].texture = explored_icon
+			icons[key].texture = DungeonDatabase.explored_icon
 		if room_gen.rooms[key].status == Enums.RoomStatus.CURRENT:
-			icons[key].texture = current_icon
+			icons[key].texture = DungeonDatabase.current_icon

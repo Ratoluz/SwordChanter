@@ -1,5 +1,13 @@
 extends Node2D
 
+var room_icon = load('res://scenes/dungeon_generator/minimap_cell.tscn')
+var current_icon = load('res://sprites/dungeon_generator/current.png')
+var explored_icon = load('res://sprites/dungeon_generator/explored.png')
+var unexplored_icon = load('res://sprites/dungeon_generator/unexplored.png')
+var chest_icon = load("res://sprites/dungeon_generator/chest.png")
+var skull_icon = load("res://sprites/dungeon_generator/skull.png")
+var minimap_background_packed = load('res://scenes/dungeon_generator/minimap_background.tscn')
+
 var starter_room
 var enemies_1 = [] # tier 1 Enemies etc.
 var chests_1 = []

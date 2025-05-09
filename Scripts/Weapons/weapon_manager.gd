@@ -6,11 +6,7 @@ var distance_from_player: float = 45
 var firstScale: float 
 var angle: float
 
-var player: Node
 var weapon_template = preload("res://scenes/weapons/weapon_template.tscn")
-
-func _ready() -> void:
-	player = $/root/Main/Player
 
 func equip_weapon(weapon_res):
 	if current_weapon != null:
@@ -23,17 +19,17 @@ func equip_weapon(weapon_res):
 	firstScale = current_weapon.scale.x
 
 func _flip_weapon():
-	var mousePos = get_local_mouse_position()
-	if mousePos.x < player.position.x and current_weapon.scale.x > 0:
+	var mousePos = get_global_mouse_position()
+	if mousePos.x < global_position.x and current_weapon.scale.x > 0:
 		current_weapon.scale.y = -firstScale
-	if mousePos.x > player.position.x:
+	if mousePos.x > global_position.x:
 		current_weapon.scale.y = firstScale
 
 func _set_weapon_pos():
-	var mousePos = get_local_mouse_position()
-	var dir = mousePos - player.position
+	var mousePos = get_global_mouse_position()
+	var dir = mousePos - global_position
 	angle = dir.angle()
-	current_weapon.rotation = angle
+	current_weapon.global_rotation = angle
 	current_weapon.position = Vector2( cos(angle) * distance_from_player, sin(angle) * distance_from_player)
 
 func _attack():
