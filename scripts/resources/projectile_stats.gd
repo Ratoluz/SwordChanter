@@ -7,6 +7,6 @@ extends Resource
 @export var spread: float = 0
 @export var damage: float = 10
 @export var critical_chance: float = 0.3
-@export var critical_chance_multiplier: float = 1.3
+@export var critical_chance_multiplier: float = 1.5
 @export var live_time: float = 2
 @export var rotate_sprite: bool = false

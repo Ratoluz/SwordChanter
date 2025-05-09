@@ -17,7 +17,6 @@ func _spawn_projectile(side):
 	$/root/Main.add_child(temp_projectile)
 	temp_projectile.initialize()
 
-	
 func die():
 	_spawn_projectile(0)
 	_spawn_projectile(180)

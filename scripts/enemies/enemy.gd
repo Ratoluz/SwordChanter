@@ -3,15 +3,13 @@ extends DamageTaker
 
 enum EnemyState {CHASE, WALK_AROUND}
 @export var stats: EnemyStats
-var projectile: PackedScene = preload('res://scenes/enemies/enemy_projectile.tscn')
+var projectile_template: PackedScene = preload('res://scenes/weapons/projectile_template.tscn')
+var projectile_stats: ProjectileStats
 var current_hp: int 
 var max_hp: int 
-var speed: float 
-var damage: float 
-var cooldown_min: float
-var cooldown_max: float
-var projectile_speed: float 
-var live_time: float 
+var speed: float
+var attack_cooldown_min: float
+var attack_cooldown_max: float
 
 var died := false
 var room
@@ -57,28 +55,23 @@ func _physics_process(_delta):
 	_enemy_AI()
 
 func _set_projectile_stats(temp_projectile):
-	speed = stats.speed
-	projectile_speed = stats.projectile_speed
+	temp_projectile.set_script(projectile_stats.projectile_script)
 	temp_projectile.position = global_position / 6 
 	temp_projectile.angle =  global_position.direction_to(target.global_position).angle()
-	temp_projectile.speed = projectile_speed
-	temp_projectile.damage = damage
-	temp_projectile.live_time = live_time
-	temp_projectile.initialize()
-	_set_projectile_stats_custom(temp_projectile)
-
-func _set_projectile_stats_custom(temp_projectile):
+	temp_projectile.stats = projectile_stats
+	_set_projectile_stats_override(temp_projectile)
+	
+func _set_projectile_stats_override(temp_projectile):
 	pass
 
 func set_stats(stats):
+	projectile_stats = stats.projectile_stats
 	max_hp = stats.max_health
 	current_hp = stats.max_health
-	damage = stats.damage
-	cooldown_min = stats.cooldown_min
-	cooldown_max = stats.cooldown_max
+	attack_cooldown_min = stats.attack_cooldown_min
+	attack_cooldown_max = stats.attack_cooldown_max
 	speed = stats.speed
-	agent.max_speed = speed
-	live_time = stats.live_time
+	
 	_set_custom_stats(stats)
 
 func _set_custom_stats(_stats):
@@ -153,8 +146,7 @@ func _on_state_walk_around():
 		
 # State Transitions
 func _to_walk_around():
-	#label.text ="walk"
-	shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
+	shoot_cooldown.wait_time = randf_range(attack_cooldown_min, attack_cooldown_max)
 	agent.target_desired_distance = 500
 	state = EnemyState.WALK_AROUND
 	print('walk around')
@@ -163,7 +155,6 @@ func _from_walk_around():
 	pass
 	
 func _to_chase():
-	#label.text  = "chase"
 	state = EnemyState.CHASE
 	agent.target_desired_distance = 40
 	print('chase')
@@ -181,12 +172,14 @@ func _follow_target(pos):
 		velocity = adjusted_velocity
 		update_path_cooldown.start()
 	move_and_slide()
+	
 func shoot():
 	if shoot_cooldown.is_stopped():
-		var temp_projectile = projectile.instantiate()
+		var temp_projectile = projectile_template.instantiate()
 		get_tree().root.get_node("Main").add_child(temp_projectile)
 		_set_projectile_stats(temp_projectile)
-		shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
+		temp_projectile.initialize()
+		shoot_cooldown.wait_time = randf_range(attack_cooldown_min, attack_cooldown_max)
 		shoot_cooldown.start()
 	
 func _set_can_see_player():
@@ -200,11 +193,9 @@ func _set_can_see_player():
 			print(i)
 			if collider.name == "Obstacles" or collider.get_node("../").name == "RoomWalls":
 				can_see_player = false
-				#label.text = "NOT"
 				raycast_cooldown.start()
 				return
 	can_see_player = true
-	#label.text = "SEE"
 	raycast_cooldown.start()
 
 func is_point_in_navigation_area(point: Vector2) -> bool:
