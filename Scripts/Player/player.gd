@@ -9,6 +9,7 @@ var health_bar: ProgressBar
 @onready var canvas = $"../CanvasLayer"
 @onready var inventory = $Inventory
 @onready var camera = $Camera2D
+@onready var animator = $"AnimatedSprite2D"
 
 var screen_size
 var flipped: bool
@@ -22,7 +23,7 @@ func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 	screen_size = get_viewport_rect().size
-	$AnimatedSprite2D.play("idle")
+	animator.play("idle")
 	inventory.inventory_opened.connect(_on_inventory_opened)
 	inventory.inventory_closed.connect(_on_inventory_closed)
 	
@@ -34,26 +35,26 @@ func _physics_process(_delta: float) -> void:
 		_flip()
 		_play_anims()
 	else:
-		$AnimatedSprite2D.play("idle")
+		animator.play("idle")
 
 func _apply_velocity():
 	var input_direction = Input.get_vector('Move_Left', 'Move_Right', 'Move_Up', 'Move_Down')
 	velocity = current_speed * input_direction 
 	
 func _flip():
-	if not $AnimatedSprite2D.flip_h and velocity.x < 0:
-		$AnimatedSprite2D.flip_h = true
+	if not animator.flip_h and velocity.x < 0:
+		animator.flip_h = true
 		flipped = true
 		return
-	if $AnimatedSprite2D.flip_h and velocity.x > 0:
-		$AnimatedSprite2D.flip_h = false
+	if animator.flip_h and velocity.x > 0:
+		animator.flip_h = false
 		flipped = false
 	
 func _play_anims():
 	if velocity.length() > 0:
-		$AnimatedSprite2D.play("walk")
+		animator.play("walk")
 		return
-	$AnimatedSprite2D.play("idle")
+	animator.play("idle")
 	
 func pickup_item(item_drop: ItemDrop):
 	print("Picking up: ", item_drop.stack)

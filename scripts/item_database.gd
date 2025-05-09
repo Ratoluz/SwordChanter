@@ -1,15 +1,21 @@
 extends Node
-# weapons id range 1-999; material id range 1000-1999
-const SWORD = 1 
-const WATER_WAND = 2
-const VOID_ORB = 3
-const SHOTGUN = 4
-const RUBY = 1000
 
-var items: Dictionary[int, Resource] = {
-	SWORD: preload('res://resources/weapons/tier_1/sword.tres'),
-	WATER_WAND: preload('res://resources/weapons/tier_1/water_wand.tres'),
-	VOID_ORB: preload('res://resources/weapons/tier_1/void_orb.tres'),
-	SHOTGUN: preload('res://resources/weapons/tier_1/shotgun.tres'),
-	RUBY: preload('res://resources/materials/ruby.tres')
-}
+var id = 0
+var items: Dictionary[int, Resource] = {}
+var items_ids: Dictionary[String, int] = {}
+
+func _ready() -> void:
+	_load_room_group('res://resources/weapons/tier_1/')
+
+func _load_room_group(path: String):
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file = dir.get_next()
+		print(file)
+		while file != "":
+			if file.ends_with(".tres"):
+				id+=1
+				items[id] = load(path + file)
+				items_ids[file] = id
+			file = dir.get_next()
