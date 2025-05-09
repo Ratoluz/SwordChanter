@@ -156,7 +156,7 @@ func _on_state_walk_around():
 func _to_walk_around():
 	#label.text ="walk"
 	shoot_cooldown.wait_time = randf_range(cooldown_min, cooldown_max)
-	agent.target_desired_distance = 300
+	agent.target_desired_distance = 500
 	state = EnemyState.WALK_AROUND
 	print('walk around')
 	
