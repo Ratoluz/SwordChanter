@@ -52,18 +52,18 @@ func _flip():
 	
 func _play_anims():
 	if velocity.length() > 0:
-		animator.play("walk")
+		if animator.animation != "walk":
+			animator.play("walk")
 		return
-	animator.play("idle")
+	if animator.animation != "idle":
+		animator.play("idle")
 	
 func pickup_item(item_drop: ItemDrop):
-	print("Picking up: ", item_drop.stack)
 	var remaining_stack = inventory.add_item(item_drop.stack)
 	if remaining_stack:
-		print("Inventory full, remaining stack: ", remaining_stack)
+		#print("Inventory full, remaining stack: ", remaining_stack)
 		item_drop.stack = remaining_stack
 	else:
-		print("Item picked up successfully!")
 		item_drop.queue_free()
 
 func _on_inventory_opened():

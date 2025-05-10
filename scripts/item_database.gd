@@ -12,10 +12,10 @@ func _load_room_group(path: String):
 	if dir:
 		dir.list_dir_begin()
 		var file = dir.get_next()
-		print(file)
 		while file != "":
 			if file.ends_with(".tres"):
 				id+=1
 				items[id] = load(path + file)
 				items_ids[file] = id
+				print(file)
 			file = dir.get_next()

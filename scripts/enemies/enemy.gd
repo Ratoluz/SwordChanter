@@ -52,6 +52,7 @@ func _ready() -> void:
 
 func _physics_process(_delta):
 	_flip()
+	_play_animations()
 	_enemy_AI()
 
 func set_stats(stats):
@@ -106,8 +107,15 @@ func _flip():
 		can_turn = false
 		flip_cooldown.start()
 		
-func _on_filp_cooldown_timeout():
-	can_turn = true
+func _play_animations():
+	if animator.animation == "attack" and animator.is_playing():
+		return
+	if velocity.length() > 0.3:
+		if animator.animation != "walk":
+			animator.play("walk")
+		return
+	if animator.animation != "idle":
+		animator.play("idle")
 # ----------------ENEMY AI----------------------
 
 func _enemy_AI():
@@ -142,7 +150,7 @@ func _to_walk_around():
 	shoot_cooldown.wait_time = randf_range(attack_cooldown_min, attack_cooldown_max)
 	agent.target_desired_distance = 500
 	state = EnemyState.WALK_AROUND
-	print('walk around')
+	#print('walk around')
 	
 func _from_walk_around():
 	pass
@@ -150,7 +158,7 @@ func _from_walk_around():
 func _to_chase():
 	state = EnemyState.CHASE
 	agent.target_desired_distance = 40
-	print('chase')
+	#print('chase')
 	
 func _from_chase():
 	pass
@@ -168,6 +176,7 @@ func _follow_target(pos):
 	
 func shoot():
 	if shoot_cooldown.is_stopped():
+		animator.play("attack")
 		var temp_projectile = projectile_template.instantiate()
 		get_tree().root.get_node("Main").add_child(temp_projectile)
 		temp_projectile.set_script(projectile_stats.projectile_script)
@@ -183,7 +192,6 @@ func _set_can_see_player():
 	if raycast.is_colliding():
 		for i in raycast.get_collision_count():
 			var collider = raycast.get_collider(i)
-			print(i)
 			if collider.name == "Obstacles" or collider.get_node("../").name == "RoomWalls":
 				can_see_player = false
 				raycast_cooldown.start()

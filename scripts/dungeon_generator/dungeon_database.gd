@@ -48,10 +48,8 @@ func _load_room_group(path: String) -> Array:
 	if dir:
 		dir.list_dir_begin()
 		var file = dir.get_next()
-		print(file)
 		while file != "":
 			if file.ends_with(".tscn"):
 				room_group.append(load(path + file))
 			file = dir.get_next()
-	print(room_group)
 	return room_group
