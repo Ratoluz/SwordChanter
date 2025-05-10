@@ -3,7 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://biov7vqj040bx" path="res://sprites/enemies/goblin.png" id="1_7wnqn"]
 [ext_resource type="Script" uid="uid://dxfeogf1awqti" path="res://scripts/enemies/enemy.gd" id="1_yeoui"]
 [ext_resource type="Resource" uid="uid://cpxb51ywtpok0" path="res://resources/enemies/goblin.tres" id="2_fydqd"]
-[ext_resource type="Texture2D" uid="uid://diywhpng2dhwq" path="res://sprites/enemies/goblin_attack.png" id="4_en706"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fydqd"]
+atlas = ExtResource("1_7wnqn")
+region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnqii"]
 atlas = ExtResource("1_7wnqn")
@@ -25,7 +28,7 @@ region = Rect2(48, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_en706")
+"texture": SubResource("AtlasTexture_fydqd")
 }],
 "loop": false,
 "name": &"attack",
@@ -76,8 +79,7 @@ stats = ExtResource("2_fydqd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bn4bw")
-animation = &"attack"
-frame_progress = 1.0
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
