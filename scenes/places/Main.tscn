@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=4 uid="uid://dwqseoo600wbk"]
+[gd_scene load_steps=7 format=4 uid="uid://dwqseoo600wbk"]
 
+[ext_resource type="PackedScene" uid="uid://dgma486u8lafy" path="res://scenes/UI/debug_console/debug_console.tscn" id="2_3vxdv"]
 [ext_resource type="TileSet" uid="uid://b3syij3w5ypsf" path="res://animations_and_tilesets/tileset.tres" id="3_q5a5b"]
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://scenes/player/player.tscn" id="6_d53s4"]
 [ext_resource type="Texture2D" uid="uid://yd6s8mqdo346" path="res://sprites/decorations/tabel.png" id="7_8hr41"]
@@ -34,6 +35,8 @@ tile_map_data = PackedByteArray("AADz//b/AAABAAAAAAD0//b/AAABAAAAAAD1//b/AAABAAA
 tile_set = ExtResource("3_q5a5b")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="container" parent="CanvasLayer" instance=ExtResource("2_3vxdv")]
 
 [node name="Player" parent="." instance=ExtResource("6_d53s4")]
 position = Vector2(-3, 27)

@@ -149,7 +149,6 @@ func calculate_equal_spread_increment(bullet_num, i):
 			x = -1
 	if abs(x) == 1 and bullet_num % 2 == 0:
 		x /= 2
-	print(x)
 	return x
 
 func shoot():
