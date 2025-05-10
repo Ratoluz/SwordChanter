@@ -7,3 +7,5 @@ extends Resource
 @export var	attack_cooldown_min: float = 2
 @export var	attack_cooldown_max: float = 2.5
 @export var loot_table : LootTable
+@export var bullet_num: int
+@export var equal_spread: float

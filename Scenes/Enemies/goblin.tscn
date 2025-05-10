@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://g2kr5y6da2w"]
 
 [ext_resource type="Texture2D" uid="uid://biov7vqj040bx" path="res://sprites/enemies/goblin.png" id="1_7wnqn"]
-[ext_resource type="Script" uid="uid://dxfeogf1awqti" path="res://scripts/enemies/enemy.gd" id="1_yeoui"]
+[ext_resource type="Script" uid="uid://c302b5h8kygag" path="res://scripts/enemies/tier_1/goblin_ai.gd" id="1_yeoui"]
 [ext_resource type="Resource" uid="uid://cpxb51ywtpok0" path="res://resources/enemies/goblin.tres" id="2_fydqd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fydqd"]

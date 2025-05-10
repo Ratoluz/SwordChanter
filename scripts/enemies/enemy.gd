@@ -1,7 +1,6 @@
 class_name Enemy
 extends DamageTaker
 
-enum EnemyState {CHASE, WALK_AROUND}
 @export var stats: EnemyStats
 var projectile_template: PackedScene = preload('res://scenes/weapons/projectile_template.tscn')
 var projectile_stats: ProjectileStats
@@ -10,12 +9,13 @@ var max_hp: int
 var speed: float
 var attack_cooldown_min: float
 var attack_cooldown_max: float
+var bullet_num: int
+var equal_spread: float
 
 var died := false
 var room
 var flipped := false
 var can_turn := true
-var state: EnemyState = EnemyState.CHASE
 var can_see_player: bool
 
 @onready var target = $"/root/Main/Player"
@@ -62,6 +62,8 @@ func set_stats(stats):
 	attack_cooldown_min = stats.attack_cooldown_min
 	attack_cooldown_max = stats.attack_cooldown_max
 	speed = stats.speed
+	bullet_num = stats.bullet_num
+	equal_spread = stats.equal_spread
 	
 	_set_custom_stats(stats)
 
@@ -116,51 +118,8 @@ func _play_animations():
 		return
 	if animator.animation != "idle":
 		animator.play("idle")
-# ----------------ENEMY AI----------------------
 
 func _enemy_AI():
-	_set_can_see_player()
-	match state:
-		EnemyState.CHASE:
-			_on_state_chase()
-		EnemyState.WALK_AROUND:
-			_on_state_walk_around()
-
-# State Behavoiurs
-func _on_state_chase():
-	var dist_to_player = global_position.distance_to(target.global_position)
-	
-	_follow_target(target.global_position)
-		
-	if can_see_player and dist_to_player < 1000:
-		_to_walk_around()
-		_from_chase()
-
-func _on_state_walk_around():
-	var dist_to_player = global_position.distance_to(target.global_position)
-	
-	_follow_target(target.global_position)
-	shoot()
-	if not can_see_player or dist_to_player > 1000:
-		_to_chase()
-		_from_walk_around()
-		
-# State Transitions
-func _to_walk_around():
-	shoot_cooldown.wait_time = randf_range(attack_cooldown_min, attack_cooldown_max)
-	agent.target_desired_distance = 500
-	state = EnemyState.WALK_AROUND
-	#print('walk around')
-	
-func _from_walk_around():
-	pass
-	
-func _to_chase():
-	state = EnemyState.CHASE
-	agent.target_desired_distance = 40
-	#print('chase')
-	
-func _from_chase():
 	pass
 
 # State Actions 
@@ -174,16 +133,42 @@ func _follow_target(pos):
 		update_path_cooldown.start()
 	move_and_slide()
 	
+func calculate_equal_spread_increment(bullet_num, i):
+	var x: float = 0
+	if bullet_num % 2 == 0:
+		if i % 2 == 0:
+			x = 1
+		else:
+			x = -1
+	else:
+		if i == 0:
+			x = 0
+		elif not(i % 2) == 0:
+			x = 1
+		else:
+			x = -1
+	if abs(x) == 1 and bullet_num % 2 == 0:
+		x /= 2
+	print(x)
+	return x
+
 func shoot():
 	if shoot_cooldown.is_stopped():
 		animator.play("attack")
-		var temp_projectile = projectile_template.instantiate()
-		get_tree().root.get_node("Main").add_child(temp_projectile)
-		temp_projectile.set_script(projectile_stats.projectile_script)
-		temp_projectile.initialize(global_position / 6, global_position.direction_to(target.global_position).angle(), projectile_stats)
 		shoot_cooldown.wait_time = randf_range(attack_cooldown_min, attack_cooldown_max)
 		shoot_cooldown.start()
-	
+		var angle = global_position.direction_to(target.global_position).angle()
+		
+		for i in range(bullet_num):
+			var x: float = calculate_equal_spread_increment(bullet_num, i)
+			angle = rad_to_deg(angle) + equal_spread * i * x
+			angle = deg_to_rad(angle)
+		
+			var temp_projectile = projectile_template.instantiate()
+			get_tree().root.get_node("Main").add_child(temp_projectile)
+			temp_projectile.set_script(projectile_stats.projectile_script)
+			temp_projectile.initialize(global_position / 6, angle, projectile_stats)
+
 func _set_can_see_player():
 	if not raycast_cooldown.is_stopped():
 		return

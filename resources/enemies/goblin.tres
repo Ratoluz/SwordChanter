@@ -27,4 +27,6 @@ speed = 200.0
 attack_cooldown_min = 2.0
 attack_cooldown_max = 2.5
 loot_table = ExtResource("1_8t8dg")
+bullet_num = 1
+equal_spread = 0.0
 metadata/_custom_type_script = "uid://clrbaw8y5nyjp"
