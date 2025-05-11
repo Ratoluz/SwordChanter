@@ -28,7 +28,11 @@ func clear_slot():
 	update_slot()
 
 func can_accept_item(check_item: ItemStats) -> bool:
-	return item == null or (item == check_item and amount < ItemStack.max_count)
+	if item == null:
+		return true
+	if item == check_item and item.is_stackable():
+		return amount < ItemStack.max_count
+	return false
 
 func _get_drag_data(_at_position):
 	if item == null:
@@ -74,18 +78,17 @@ func _drop_data(at_position, data):
 		return
 
 	# Case 2: Same item type - try to merge stacks
-	if item == dragged_item:
+	if item == dragged_item and item.is_stackable():
 		var total = amount + dragged_amount
 		if total <= ItemStack.max_count:
-			# Full merge
 			set_slot(item, total)
 			source_slot.clear_slot()
 		else:
-			# Partial merge
 			var remaining = total - ItemStack.max_count
 			set_slot(item, ItemStack.max_count)
 			source_slot.set_slot(item, remaining)
 		return
+
 
 	# Case 3: Different items - swap them
 	var temp_item = item

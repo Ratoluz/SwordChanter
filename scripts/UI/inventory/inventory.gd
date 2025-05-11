@@ -42,26 +42,35 @@ func add_item(item_stack: ItemStack) -> ItemStack:
 	if not item_stack or item_stack.is_empty():
 		return null
 		
+	var is_stackable = item_stack.item.is_stackable()
+	
+	if is_stackable:
+		# Try to stack with existing slots
+		for slot in slots:
+			if slot.item == item_stack.item and slot.amount < ItemStack.max_count:
+				var remaining_space = ItemStack.max_count - slot.amount
+				var add_amount = min(remaining_space, item_stack.count)
+				slot.amount += add_amount
+				item_stack.count -= add_amount
+				slot.update_slot()
+				
+				if item_stack.count <= 0:
+					emit_signal("inventory_updated")
+					return null
+					
 	for slot in slots:
-		if slot.item == item_stack.item and slot.amount < ItemStack.max_count:
-			var remaining_space = ItemStack.max_count - slot.amount
-			var add_amount = min(remaining_space, item_stack.count)
-			slot.amount += add_amount
-			item_stack.count -= add_amount
-			slot.update_slot()
+		if slot.item == null:
+			var add_count = item_stack.count if is_stackable else 1
+			slot.set_slot(item_stack.item, add_count)
+			item_stack.count -= add_count
 			
 			if item_stack.count <= 0:
 				emit_signal("inventory_updated")
 				return null
-	
-	for slot in slots:
-		if slot.item == null:
-			slot.set_slot(item_stack.item, item_stack.count)
-			emit_signal("inventory_updated")
-			return null
-	
+				
 	emit_signal("inventory_updated")
 	return item_stack
+
 
 
 func has_item(item: ItemStats, amount: int = 1) -> bool:
