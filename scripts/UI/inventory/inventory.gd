@@ -21,6 +21,8 @@ func _ready():
 			slots.append(child)
 	for slot in slots:
 		slot.update_slot()
+	for hotbar_slot in hotbar_slots:
+		hotbar_slot.inventory = self
 
 func _process(delta: float) -> void:
 	change_active_slots()
