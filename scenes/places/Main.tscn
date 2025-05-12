@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://dwqseoo600wbk"]
 
-[ext_resource type="PackedScene" uid="uid://dgma486u8lafy" path="res://scenes/UI/debug_console/debug_console.tscn" id="2_3vxdv"]
 [ext_resource type="TileSet" uid="uid://b3syij3w5ypsf" path="res://animations_and_tilesets/tileset.tres" id="3_q5a5b"]
+[ext_resource type="PackedScene" uid="uid://csntqod327868" path="res://scenes/UI/canvas_layer.tscn" id="5_3vxdv"]
 [ext_resource type="PackedScene" uid="uid://vntnhm8hh417" path="res://scenes/player/player.tscn" id="6_d53s4"]
 [ext_resource type="Texture2D" uid="uid://yd6s8mqdo346" path="res://sprites/decorations/tabel.png" id="7_8hr41"]
 [ext_resource type="PackedScene" uid="uid://ctdi4epxwspfx" path="res://scenes/other/dummy.tscn" id="8_2tw74"]
@@ -12,6 +12,8 @@ height = 16.0
 
 [node name="Main" type="Node2D"]
 scale = Vector2(6, 6)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_3vxdv")]
 
 [node name="Tilemap" type="Node2D" parent="."]
 z_index = -6
@@ -34,10 +36,6 @@ tile_set = ExtResource("3_q5a5b")
 tile_map_data = PackedByteArray("AADz//b/AAABAAAAAAD0//b/AAABAAAAAAD1//b/AAABAAAAAAD2//b/AAABAAAAAAD3//b/AAABAAAAAAD4//b/AAABAAAAAAD5//b/AAABAAAAAAD6//b/AAABAAAAAAD7//b/AAABAAAAAAD8//b/AAABAAAAAAD9//b/AAABAAAAAAD+//b/AAABAAAAAAD///b/AAABAAAAAAAAAPb/AAABAAAAAAABAPb/AAABAAAAAAACAPb/AAABAAAAAAADAPb/AAABAAAAAAAEAPb/AAABAAAAAAAFAPb/AAABAAAAAAAGAPb/AAABAAAAAAAHAPb/AAABAAAAAAAIAPb/AAABAAAAAAAJAPb/AAABAAAAAAAKAPb/AAABAAAAAAALAPb/AAABAAAAAAAMAPb/AAABAAIAAADx//n/AAAAAAEAAADx//r/AAAAAAEAAADx//v/AAAAAAEAAADx//z/AAAAAAEAAADx//3/AAAAAAEAAADx//7/AAAAAAEAAADx////AAAAAAEAAADx/wAAAAAAAAEAAADx/wEAAAAAAAEAAADx/wIAAAAAAAEAAADx/wMAAAAAAAEAAADx/wQAAAAAAAEAAADx/wUAAAAAAAEAAADx/wYAAAAAAAEAAADx/wcAAAAAAAEAAADx/wgAAAAAAAEAAAAOAPn/AAACAAEAAAAOAPr/AAACAAEAAAAOAPv/AAACAAEAAAAOAPz/AAACAAEAAAAOAP3/AAACAAEAAAAOAP7/AAACAAEAAAAOAP//AAACAAEAAAAOAAAAAAACAAEAAAAOAAEAAAACAAEAAAAOAAIAAAACAAEAAAAOAAMAAAACAAEAAAAOAAQAAAACAAEAAAAOAAUAAAACAAEAAAAOAAYAAAACAAEAAAAOAAcAAAACAAEAAAAOAAgAAAACAAEAAAD0/woAAAABAAIAAAD1/woAAAABAAIAAAD2/woAAAABAAIAAAD3/woAAAABAAIAAAD4/woAAAABAAIAAAD5/woAAAABAAIAAAD6/woAAAABAAIAAAD7/woAAAABAAIAAAD8/woAAAABAAIAAAD9/woAAAABAAIAAAD+/woAAAABAAIAAAD//woAAAABAAIAAAAAAAoAAAABAAIAAAABAAoAAAABAAIAAAACAAoAAAABAAIAAAADAAoAAAABAAIAAAAEAAoAAAABAAIAAAAFAAoAAAABAAIAAAAGAAoAAAABAAIAAAAHAAoAAAABAAIAAAAIAAoAAAABAAIAAAAJAAoAAAABAAIAAAAKAAoAAAABAAIAAAALAAoAAAABAAIAAADx/woAAAAAAAIAAADx/wkAAAAAAAEAAADy/woAAAABAAIAAADz/woAAAABAAIAAAAOAAoAAAACAAIAAAAOAAkAAAACAAEAAAAMAAoAAAABAAIAAAANAAoAAAABAAIAAAANAPb/AAABAAIAAAAOAPj/AAACAAEAAAAOAPf/AAACAAEAAAAOAPb/AAACAAAAAADx//b/AAAAAAAAAADx//j/AAAAAAEAAADx//f/AAAAAAEAAADy//b/AAABAAAAAAA=")
 tile_set = ExtResource("3_q5a5b")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="container" parent="CanvasLayer" instance=ExtResource("2_3vxdv")]
-
 [node name="Player" parent="." instance=ExtResource("6_d53s4")]
 position = Vector2(-3, 27)
 
@@ -54,3 +52,8 @@ shape = SubResource("CapsuleShape2D_2r4pp")
 
 [node name="Dummy" parent="." instance=ExtResource("8_2tw74")]
 position = Vector2(100, 0)
+
+[connection signal="body_shape_entered" from="Tilemap/HitBoxes/Area2D" to="Tilemap/HitBoxes/Area2D" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@23595" to="Tilemap/HitBoxes/@Area2D@23595" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@23596" to="Tilemap/HitBoxes/@Area2D@23596" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Tilemap/HitBoxes/@Area2D@23597" to="Tilemap/HitBoxes/@Area2D@23597" method="_on_body_shape_entered"]
